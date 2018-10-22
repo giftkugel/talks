@@ -1,0 +1,879 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@giftkugel" />
+		<meta name="twitter:creator" content="@giftkugel" />
+		<meta property="og:url" content="https://giftkugel.github.io/pwa-manifest-serviceworker/index.html" />
+		<meta property="og:title" content="Progressive Web Apps, Mainifest and Service Worker API" />
+		<meta property="og:description" content="Slides of my talk" />
+
+		<title>Progressive Web Apps, Mainifest &amp; Service Worker API</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		
+		<link rel="stylesheet" href="css/font.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="stylesheet" href="css/slides.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="header">
+					<div class="title">Progressive Web Apps</div>
+					<div>Manifest &amp; Service Worker API</div>
+					<div class="column">
+						<div><img class="icon pulse bigger" src="images/svg/ic_list_black_48px.svg" alt="Manifest"></div>
+						<div><img class="icon rotating bigger" src="images/svg/ic_settings_black_48px.svg" alt="Service Worker"></div>
+					</div>
+					<div><a class="small" href="https://giftkugel.github.io/pwa-manifest-serviceworker/index.html" target="_blank">https://giftkugel.github.io/pwa-manifest-serviceworker/index.html</a></div>
+					<div class="smaller">or</div>
+					<div><a class="small" href="http://bit.ly/2tijRT3" target="_blank">http://bit.ly/2tijRT3</a></div>
+					
+				</section>
+				<section>
+					<section class="footer">
+						<div class="header before">About me</div>
+						<div class="column aligend">
+							<div>
+								<img src="images/profile.jpg">
+								<div class="subtext"><a class="dark" href="https://www.twitter.com/giftkugel" target="_blank"><img class="text" src="images/svg/094.svg">&nbsp;giftkugel</a></div>
+								<div class="subtext"><a class="dark" href="https://www.skoczylas.net" target="_blank"><img class="text" src="images/svg/211.svg">&nbsp;www.skoczylas.net</a></div>
+							</div>
+							<div>
+								<div class="title">Simon Skoczylas</div>
+								<div>Senior Software Engineer</div>
+								<div><a href="https://www.karakun.com" class="invisible" target="_blank"><img class="biggest" src="images/svg/karakun-logo.svg"></a></div>
+								<div>&nbsp;</div>
+								<div>
+									<img class="raccoon-logo" src="images/svg/racoon.svg">
+									<div><a href="https://dev.karakun.com" class="invisible" target="_blank"><span class="my-karakun">Karakun</span> Developer Hub</a></div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Legal stuff</div>
+						<div>
+							<div class="distance">Images (CC0) taken from</div>
+							<div class="distance">
+								<div class="smaller">https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/</div>
+								<div class="smaller">https://www.pexels.com/photo/silhouette-of-woman-raising-her-hands-615334/</div>
+								<div class="smaller">https://www.pexels.com/photo/man-in-white-shirt-using-macbook-pro-52608/</div>
+								<div class="smaller">https://www.pexels.com/photo/bind-blank-blank-page-business-315790/</div>
+								<div class="smaller">https://www.pexels.com/photo/building-construction-site-work-38293/</div>
+								<div class="smaller">https://www.pexels.com/photo/road-pavement-229014/</div>
+							</div>
+							<div class="distance">Phone mockups generated with</div>
+							<div class="distance">
+								<div class="smaller">https://mockuphone.com/#android</div>
+							</div>
+							<div class="distance">Icons</div>
+							<div>
+								<div class="smaller">https://material.io/icons/</div>
+								<div class="smaller">http://mariodelvalle.github.io/CaptainIconWeb/</div>
+								<div class="smaller">https://github.com/alrra/browser-logos</div>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section class="left footer">
+						<div class="header before">WTF is a PWA?</div>
+						<div class="row aligend">
+							<div class="title medium"><span class="underline">P</span>rogressive</div>
+							<div class="fragment distance">Add functionality step by step</div>
+							<div class="title medium"><span class="underline">W</span>eb</div>
+							<div class="fragment distance">Web standards, high reach and best availability</div>
+							<div class="title medium"><span class="underline">A</span>pplications</div>
+							<div class="fragment distance">Can be installed, network independent, secure</div>
+						</div>
+					</section>
+					<section class="left top footer">
+						<div class="header before">Google PWA labs definition 1/2</div>
+						<div class="row aligend">
+							<div class="distance">
+								<a class="small" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp">https://codelabs.developers.google.com/codelabs/your-first-pwapp</a>
+							</div>
+							<div>
+								<div>Progressive</div>
+								<div class="small italic distance">Works for every user, regardless of browser choice because it's built with progressive enhancement as a core tenet.</div>
+							</div>
+							<div class="fragment">
+								<div>Responsive</div>
+								<div class="small italic distance">Fits any form factor: desktop, mobile, tablet, or whatever is next.</div>
+							</div>
+							<div class="fragment">
+								<div>Connectivity independent</div>
+								<div class="small italic distance">Enhanced with service workers to work offline or on low-quality networks.</div>
+							</div>
+							<div class="fragment">
+								<div>App-like</div>
+								<div class="small italic distance">Feels like an app, because the app shell model separates the application functionality from application content.</div>
+							</div>
+							<div class="fragment">
+								<div>Fresh</div>
+								<div class="small italic distance">Always up-to-date thanks to the <a href="https://developers.google.com/web/fundamentals/getting-started/primers/service-workers" target="_blank">service worker</a> update process.</div>
+							</div>
+							
+						</div>
+					</section>
+					<section class="left top footer">
+						<div class="header before">Google PWA labs definition 2/2</div>
+						<div class="row aligend">
+							<div class="distance">
+								<a class="small" href="https://codelabs.developers.google.com/codelabs/your-first-pwapp" target="_blank">https://codelabs.developers.google.com/codelabs/your-first-pwapp</a>
+							</div>
+							<div>
+								<div>Safe</div>
+								<div class="small italic distance">Served via HTTPS to prevent snooping and to ensure content hasn't been tampered with.</div>
+							</div>
+							<div class="fragment">
+								<div>Discoverable</div>
+								<div class="small italic distance">Is identifiable as an "application" thanks to <a href="https://developers.google.com/web/updates/2014/11/Support-for-installable-web-apps-with-webapp-manifest-in-chrome-38-for-Android" target="_blank">W3C manifest</a> and <a href="https://developers.google.com/web/fundamentals/primers/service-workers/registration" target="_blank">service worker registration</a> scope, allowing search engines to find it.</div>
+							</div>
+							<div class="fragment">
+								<div>Re-engageable</div>
+								<div class="small italic distance">Makes re-engagement easy through features like push notifications.</div>
+							</div>
+							<div class="fragment">
+								<div>Installable</div>
+								<div class="small italic distance">Allows users to add apps they find most useful to their home screen without the hassle of an app store.</div>
+							</div>
+							<div class="fragment">
+								<div>Linkable</div>
+								<div class="small italic distance">Easily share the application via URL, does not require complex installation.</div>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section>
+					<section class="footer left">
+						<div class="header before">Why?</div>
+						<div class="row">
+							<div class="distance">
+								<div>Worthy of being on the home screen</div>
+							</div>
+							<div class="distance">
+								<div>Work reliably, no matter the network conditions</div>
+							</div>
+							<div class="distance">
+								<div>Increased engagement</div>
+							</div>
+							<div class="distance">
+								<div>Improved conversions</div>
+							</div>
+							<div class="distance">
+								<div>And at least ... because of the <span class="underline">Web</span> 😉 😃</div>
+							</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div class="title">PWA Case Studies</div>
+							<div><a href="https://developers.google.com/web/showcase/" target="_blank">https://developers.google.com/web/showcase/</a></div>
+						</div>
+					</section>
+				</section>
+				<section class="footer">
+					<div class="header before">When?</div>
+					<div class="title">PWA or native application?</div>
+					<div class="fragment">No competition because of different purposes</div>
+					<div class="fragment distance">Go for a native app, if web standards don't fit your needs</div>
+					<div class="fragment">
+						<div class="pulse distance">Do you really know all <a href="https://developer.mozilla.org/en-US/docs/Web/API" target="_blank">Web APIs?</a></div>
+						<div class="hidden hide-pdf" id="speech-wrapper">
+							<div><select class="smaller" id="speech-voices"></select></div>
+							<div><input class="normal" type="text" id="speech-input"> <input class="normal" type="button" value="Say" id="speech-button"></div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<section class="footer">
+						<div class="header before">Example</div>
+						<div class="title">Take a look at my PWA</div>
+						<div><a href="https://www.skoczylas.net" target="_blank">https://www.skoczylas.net</a></div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div class="middle">
+								<img class="sub" src="images/Screenshot_20180306-091301_pixel_quite_black_portrait.png">
+								<img class="sub" src="images/homescreen.png">
+							</div>
+							<div><a class="dark" href="https://developers.google.com/web/tools/lighthouse/audits/install-prompt" target="_blank">Add to home screen</a></div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div class="middle">
+								<img class="sub" src="images/Screenshot_20180306-091315_pixel_quite_black_portrait_marked.png">
+								<img class="sub" src="images/applauncher.png">
+							</div>
+							<div>Listed as application in the launcher</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div><img class="sub" src="images/Screenshot_20180306-093839_pixel_quite_black_portrait.png"></div>
+							<div>Splashscreen</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div><img class="sub" src="images/Screenshot_20180306-091321_pixel_quite_black_portrait.png"></div>
+							<div>No browser visible</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div class="middle">
+								<img class="sub" src="images/Screenshot_20180306-144240_pixel_quite_black_portrait.png">
+								<img class="sub" src="images/offline.png">
+							</div>
+							<div>Behaves differently when offline</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div><img class="sub" src="images/Screenshot_20180306-091344_pixel_quite_black_portrait.png"></div>
+							<div>Listed as currently running application</div>
+						</div>
+					</section>
+				</section>
+				<section class="header footer">
+					<div class="title big">Let's build a PWA</div>
+					<div class="fragment">In just a few steps</div>
+				</section>
+				<section class="transparent" data-background-image="images/person-girl-human-joy-615334.jpeg" data-background-position="left">
+					<div class="title big"><img class="text" src="images/svg/130.svg">&nbsp;Got a website?</div>
+					<div class="fragment">First step accomplished!</div>
+				</section>
+				<section class="transparent" data-background-image="images/pexels-photo-274895.jpeg" data-background-position="left">
+					<div class="title big"><img class="text" src="images/svg/009.svg">&nbsp;Using HTTPS?</div>
+					<div class="fragment">Perfect, keep going!</div>
+				</section>
+				<section class="transparent" data-background-image="images/pexels-photo-315790.jpeg" data-background-position="right">
+					<div>Take the next step</div>
+					<div class="title big fragment"><img class="text" src="images/svg/313.svg">&nbsp;Add a manifest</div>
+				</section>
+				<section>
+					<section class="header footer top left">
+						<div class="title">Web App Manifest</div>
+						<div class="row aligend">
+							<div class="distance">
+								<a class="small" href="https://w3c.github.io/manifest/" target="_blank">https://w3c.github.io/manifest/</a>
+							</div>
+							<div class="distance">
+								<div>JSON file that provides information about your application</div>
+							</div>
+							<div class="fragment distance">
+								<div>General information</div>
+								<div class="small italic ">name, short_name, description</div>
+							</div>
+							<div class="fragment distance">
+								<div>Colors</div>
+								<div class="small italic ">background_color, theme_color</div>
+							</div>
+							<div class="fragment distance">
+								<div>Icons</div>
+								<div class="small">Array of Icons with <span class="italic">src, sizes, type</span></div>
+							</div>
+							<div class="fragment distance">
+								<div>and more...</div>
+								<div class="small italic">lang, orientation, display, scope, start_url, dir, related_applications</span></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Web App Manifest</div>
+						<div>Deploy a manifest</div>
+						<pre><code class="html">
+<link rel='manifest' href='manifest.json'>
+						</code></pre>
+						<div>Content-Type</div>
+						<div class="small">application/manifest+json 🤔</div>
+						<div class="small">application/json</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Web App Manifest</div>
+						<div class="row">
+								<div>Example</div>
+								<pre><code class="json stretch">
+{
+  name: "skoczylas",
+  short_name: "skoczylas",
+  icons: [
+    {
+      src: "img/fav/android-icon-36x36.png",
+      sizes: "36x36",
+      type: "image/png",
+      density: "0.75"
+    },
+    {
+      src: "img/fav/android-icon-48x48.png",
+      sizes: "48x48",
+      type: "image/png",
+      density: "1.0"
+    }
+  ],
+  lang: "en",
+  start_url: "index.html",
+  display: "standalone",
+  orientation: "portrait",
+  theme_color: "#212121",
+  background_color: "#212121"
+}				
+								</code></pre>
+							</div>
+						</section>
+				</section>
+				<section class="transparent" data-background-image="images/workers-construction-site-hardhats-38293.jpeg" data-background-position="right">
+					<div>We're almost there</div>
+					<div class="title medium fragment"><img class="text" src="images/svg/006.svg">&nbsp;Add a service worker</div>
+				</section>
+				<section>
+					<section class="footer left">
+						<div class="header before">Service Worker API</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>Service Worker is a script that runs in the background</div>
+								<div class="small italic">A special <a href="https://html.spec.whatwg.org/multipage/workers.html#workers" target="_blank">Web Worker (Thread)</a></div>
+							</div>
+							<div class="fragment distance">
+								<div>As a Worker it can't access the DOM directly</div>
+							</div>
+							<div class="fragment distance">
+									<div>Can communicate with the page via the <a href="https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage" target="_blank">postMessage</a> interface</div>
+								</div>
+							<div class="fragment distance">
+								<div>It's a programmable network proxy, allowing you to control how network requests are handled</div>
+								<div class="center">
+									<img class="bigger" src="images/svg/130.svg">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="icon rotating bigger" src="images/svg/ic_settings_black_48px.svg" style="position: relative; top: 0.3em;" alt="Service Worker">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="bigger" src="images/svg/005.svg" style="position: relative; top: 0.3em;">
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>It can access the Cache API to read and write assets</div>
+							</div>
+							<div>
+								<div class="center distance">
+									<img class="bigger" src="images/svg/130.svg">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="icon rotating bigger" src="images/svg/ic_settings_black_48px.svg" style="position: relative; top: 0.3em;" alt="Service Worker">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="bigger" src="images/svg/005.svg" style="position: relative; top: 0.3em;">
+								</div>
+								<div class="center distance">
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; left: 0.05em; transform: rotate(90deg);">&nbsp;
+								</div>
+								<div class="center">
+									<img class="icon big" src="images/svg/338.svg" style="position: relative; left: 0.05em">&nbsp;
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div class="title distance">Requires HTTPS</div>
+						<div class="fragement distance">Works without HTTPS on localhost (for development)</div>
+						<div class="fragement small distance">Requirement can be disabled through browser settings 🤫</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div class="title distance">Lifecycle</div>
+						<div>
+							<img class="sub" src="images/svg/lifecycle.svg">
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">The Navigator object</div>
+						<div>Register your service worker</div>
+						<pre><code class="javascript">
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js');
+}
+						</code></pre>
+						<div class="fragment small">Easy 😍</div>
+					</section>
+					<section class="footer">
+						<div class="header before">The Navigator object</div>
+						<div>Maybe add a scope, wait for an event and handle result?</div>
+						<pre><code class="javascript">
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js', {scope: './'})
+    .then((registration) => { ... })
+    .catch((error) => { ... });
+  });
+}
+						</code></pre>
+						<div class="fragment small"><a href="https://w3c.github.io/ServiceWorker/#serviceworkerregistration-interface" target="_blank">ServiceWorkerRegistration</a></div>
+					</section>
+					<section class="footer">
+						<div class="header before">The Navigator object</div>
+						<div>Online and offline events</div>
+						<pre><code class="javascript">
+window.addEventListener('online', (event) => { ... });
+
+window.addEventListener('offline', (event) => { ... });
+
+if (navigator.onLine) { ... }
+						</code></pre>
+						<div class="small">Network status, not server connection</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div class="title">this and self</div>
+						<div class="distance">Both points to the <a href="https://w3c.github.io/ServiceWorker/#serviceworkerglobalscope-interface" target="_blank">ServiceWorkerGlobalScope</a></div>
+						<div>Use <span class="italic">self</span>, because you never get a guarantee about <span class="italic">this</span> 😱</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div>Service Worker Events</div>
+						<pre><code class="javascript">
+self.addEventListener('install', (event) => { ... }); // InstallEvent
+
+self.addEventListener('activate', (event) => { ... }); // ExtendableEvent
+
+self.addEventListener('message', (event) => { ... }); // MessageEvent
+						</code></pre>
+						<div class="small">aka ExtendableEvent</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div>Service Worker Functional Events</div>
+						<pre><code class="javascript">
+self.addEventListener('fetch', (event) => { ... }); // FetchEvent
+
+self.addEventListener('sync', (event) => { ... }); // SyncEvent
+
+self.addEventListener('push', (event) => { ... }); // PushEvent
+						</code></pre>
+						<div class="small">aka ExtendableEvent</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div>It's my turn now!</div>
+						<pre><code class="javascript">
+self.skipWaiting();
+						</code></pre>
+						<div class="small">Skip waiting on install event</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Service Worker API</div>
+						<div>I am working, don't terminate me...</div>
+						<pre><code class="javascript">
+event.waitUntil(promise);
+						</code></pre>
+						<div class="small">on ExtendableEvent</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Cache API</div>
+						<div>Store assets in cache</div>
+						<pre><code class="javascript">
+event.waitUntil(
+  self.caches.open(name)
+  .then(cache => cache.addAll([ ... ]))
+);
+						</code></pre>
+						<div class="small">Cache stuff during installation (App shell)</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Cache API</div>
+						<div>Get asset from cache</div>
+						<pre><code class="javascript stretch">
+event.respondWith(
+  self.caches.match(event.request)
+  .then((response) => {
+    if (response) {
+      return response; // cached response
+    }
+
+    const fetchRequest = event.request.clone();
+
+    return fetch(fetchRequest); // network reponse
+  })
+);
+						</code></pre>
+						<div class="small">Check cache on fetch event</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Cache API</div>
+						<div>Get asset from cache, or store missing asset in cache</div>
+						<pre><code class="javascript stretch">
+event.respondWith(
+  self.caches.match(event.request)
+  .then((response) => {
+    if (response) {
+      return response; // cached response
+    }
+    const fetchRequest = event.request.clone();
+    return fetch(fetchRequest).then((response) => {
+      if(!response || response.status !== 200 || response.type !== 'basic') {
+        return response; // network reponse which should not be cached
+      }
+      const responseToCache = response.clone();
+      self.caches.open(name)
+      .then((cache) => cache.put(event.request, responseToCache)); // update cache
+      return response; // network reponse
+    });
+  })
+);
+						</code></pre>
+						<div class="small">Check cache on fetch event, refresh cache over network</div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Caching strategies 1/2</div>
+						<div class="row aligned">
+							<div class="title">Caching strategies</div>
+							<div class="small distance"><a href="https://serviceworke.rs/caching-strategies.html" target="_blank">https://serviceworke.rs/caching-strategies.html</a></div>
+							<div class="fragment distance">
+								<div>Network or cache</div>
+								<div class="small">The service worker tries to retrieve the most up to date content from the network but if the network is taking too much, it will serve cached content instead.</div>
+							</div>
+							<div class="fragment distance">
+								<div>Cache only</div>
+								<div class="small">Always answering from cache on fetch events.</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Caching strategies 2/2</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>Cache and update</div>
+								<div class="small">Responding from cache to deliver fast responses and also updating the cache entry from the network.</div>
+							</div>
+							<div class="fragment distance">
+								<div>Cache, update and refresh</div>
+								<div class="small">Responding from cache to deliver fast responses and also updating the cache entry from the network. When the network response is ready, the UI updates automatically.</div>
+							</div>
+							<div class="fragment distance">
+								<div>Embedded fallback</div>
+								<div class="small">Serving an embedded content fallback in case of missing resources.</div>
+							</div>
+							<div class="fragment">
+								<div>See also</div>
+								<div class="small"><a href="https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/" target="blank">https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/</a></div>
+							</div>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="title">Is Service Worker ready?</div>
+						<div class="distance"><a href="https://jakearchibald.github.io/isserviceworkerready/" target="_blank">https://jakearchibald.github.io/isserviceworkerready/</a></div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;🙂<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;🤔<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section class="transparent" data-background-image="images/pexels-photo-229014.jpeg" data-background-position="right">
+					<div>Keep going further with</div>
+					<div class="title medium fragment"><img class="text" src="images/svg/014.svg">&nbsp;HTTP/2</div>
+					<div class="title medium fragment"><img class="text" src="images/svg/004.svg">&nbsp;Push notifications</div>
+				</section>
+				<section>
+					<section class="footer left">
+						<div class="header before">Tools 1/2</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>Lighthouse 👍</div>
+								<div class="small"><a href="https://developers.google.com/web/tools/lighthouse/" target="_blank">https://developers.google.com/web/tools/lighthouse/</a></div>
+							</div>
+							<div  class="distance">
+								<div>Workbox</div>
+								<div class="small"><a href="https://developers.google.com/web/tools/workbox/" target="_blank">https://developers.google.com/web/tools/workbox/</a></div>
+							</div>
+							<div  class="distance">
+								<div>Webpack OfflinePlugin</div>
+								<div class="small"><a href="https://github.com/NekR/offline-plugin" target="_blank">https://github.com/NekR/offline-plugin</a></div>
+							</div>
+							<div class="distance">
+								<div>PWA Builder</div>
+								<div class="small"><a href="https://www.pwabuilder.com" target="_blank">https://www.pwabuilder.com</a></div>
+							</div>
+							<div  class="distance">
+								<div>Service Worker Toolchain, you even get a Mock 🤗</div>
+								<div class="small"><a href="https://github.com/pinterest/service-workers" target="_blank">https://github.com/pinterest/service-workers</a></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Tools 2/2</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>Service Worker Precache &amp; Toolbox</div>
+								<div class="small"><a href="https://github.com/GoogleChromeLabs" target="_blank">https://github.com/GoogleChromeLabs</a></div>
+							</div>
+							<div class="distance">
+								<div>Create React App</div>
+								<div class="small"><a href="https://github.com/facebook/create-react-app" target="_blank">https://github.com/facebook/create-react-app</a></div>
+							</div>
+							<div class="distance">
+								<div>Polymer App Toolbox</div>
+								<div class="small"><a href="https://www.polymer-project.org/2.0/toolbox/" target="_blank">https://www.polymer-project.org/2.0/toolbox/</a></div>
+							</div>
+							<div class="distance">
+								<div>Vue.js PWA Template</div>
+								<div class="small"><a href="https://github.com/vuejs-templates/pwa/" target="_blank">https://github.com/vuejs-templates/pwa</a></div>
+							</div>
+							<div class="distance">
+								<div>Angular CLI</div>
+								<div class="small"><a href="https://cli.angular.io/" target="_blank">https://cli.angular.io/</a></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Lighthouse analysis</div>
+						<img class="main big" src="images/lighthouse.png">
+					</section>
+				</section>
+				<section class="transparent" data-background-image="images/pexels-photo-52608.jpeg" data-background-position="right">
+					<div class="title title">Let's take a look at some code</div>
+					<img class="text big" src="images/svg/053.svg">
+				</section>
+				<section>
+					<section class="left footer header">
+						<div class="row aligend">
+							<div class="title"><img class="text" src="images/svg/043.svg">&nbsp;PWA Checklists</div>
+							<div class="small distance"><a href="https://developers.google.com/web/progressive-web-apps/checklist" target="_blank">https://developers.google.com/web/progressive-web-apps/checklist</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/tools/lighthouse/" target="_blank">Baseline Checklist</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#sites-content-is-indexed-by-google" target="_blank">Indexability &amp; social</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#content-doesnt-jump-as-the-page-loads" target="_blank">User experience</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#first-load-very-fast-even-on-3g" target="_blank">Performance</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#site-uses-cache-first-networking" target="_blank">Caching</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#provide-context-to-the-user-about-how-notifications-will-be-used" target="_blank">Push notifications</a></div>
+							<div><a class="dark" href="https://developers.google.com/web/progressive-web-apps/checklist#user-is-logged-in-across-devices-via-credential-management-api" target="_blank">Additional features</a></div>
+						</div>
+					</section>
+					<section class="footer top left">
+						<div class="header before">Further reading</div>
+						<div class="row aligned">
+							<div class="distance">
+								<div>Web Fundamentals</div>
+								<div class="small"><a href="https://developers.google.com/web/fundamentals/" target="_blank">https://developers.google.com/web/fundamentals/</a></div>
+							</div>
+							<div class="distance">
+								<div>Progressive Web Apps Training <a href="https://www.youtube.com/watch?v=17kGWJOuL-A&list=PLNYkxOF6rcIAdnzEsWkg0KpMn2WJwMBmN" target="_blank">📺</a> 👍</div>
+								<div class="small"><a href="https://developers.google.com/web/ilt/pwa/" target="_blank">https://developers.google.com/web/ilt/pwa/</a></div>
+							</div>
+							<div class="distance">
+								<div>Making A Service Worker: A Case Study</div>
+								<div class="small"><a href="https://www.smashingmagazine.com/2016/02/making-a-service-worker/" target="_blank">https://www.smashingmagazine.com/2016/02/making-a-service-worker/</a></div>
+							</div>
+							<div class="distance">
+								<div>ServiceWorker Cookbook by Mozilla</div>
+								<div class="small"><a href="https://serviceworke.rs" target="_blank">https://serviceworke.rs</a></div>
+							</div>
+							<div class="distance">
+								<div>Progressive Web Apps ILT - Codelabs</div>
+								<div class="small"><a href="https://www.gitbook.com/book/google-developer-training/progressive-web-apps-ilt-codelabs/details" target="_blank">https://www.gitbook.com/book/google-developer-training/progressive-web-apps-ilt-codelabs/details</a></div>
+							</div>
+							<div class="distance">
+								<div>Caching best practices &amp; max-age gotchas</div>
+								<div class="small"><a href="https://jakearchibald.com/2016/caching-best-practices/" target="_blank">https://jakearchibald.com/2016/caching-best-practices/</a></div>
+							</div>
+						</div>
+					</section>
+				</section>
+				<section class="footer">
+					<div class="header before">Thank you for listening</div>
+					<div class="title distance">PWA are <span class="underline">cool</span> with at least those Web APIs</div>
+					<div class="column">
+						<div>
+							<div><a href="https://w3c.github.io/ServiceWorker/" target="_blank">Service Worker API</a></div>
+							<div><a href="https://w3c.github.io/manifest/" target="_blank">Web App Manifest</a></div>
+							<div><a href="https://w3c.github.io/ServiceWorker/#cache" target="_blank">Cache API</a></div>
+							<div><a href="https://fetch.spec.whatwg.org/" target="_blank">Fetch API</a></div>
+							<div><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise API</a></div>
+						</div>
+						<div>	
+							<div><a href="https://notifications.spec.whatwg.org/" target="_blank">Notification API</a></div>
+							<div><a href="https://www.w3.org/TR/IndexedDB/" target="_blank">Indexed DB</a></div>
+							<div><a href="https://wicg.github.io/BackgroundSync/spec/" target="_blank">BackroundSync API</a></div>
+							<div><a href="https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API" target="_blank">Credentials API</a></div>
+							<div><a href="https://w3c.github.io/payment-request/" target="_blank">Payment Request API</a></div>
+							<div><a href="https://wicg.github.io/web-share/" target="_blank">Web Share API</a></div>
+						</div>
+					</div>
+					<div class="big">🙌</div>
+				</section>
+			</div>
+		</div>
+		<div style="display: none" class="extras">
+			<div class="header">&nbsp;</div>
+			<div class="footer">Progressive Web Apps, Mainifest &amp; Service Worker API</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				slideNumber: "c/t",
+				center: false,
+				display: 'grid',
+				history: true,
+				pdfMaxPagesPerSlide: 1,
+				backgroundTransition: 'slide',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			Reveal.addEventListener('ready', function( event ) {
+				var slides = document.querySelectorAll('.reveal .slides section');
+				var header = document.querySelector('.extras .header');
+				var footer = document.querySelector('.extras .footer');
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					var children = slide.childNodes;
+					for (var j = 0; j < children.length; j++) {
+						var child = children[j];
+						if (child.nodeName === 'SECTION') {
+							slide.skip = true;
+						}
+					}
+				}
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					if (slide.skip) {
+						slide.classList.add('wrapper')
+						continue;
+					}
+					slide.classList.add('slide')
+					var newChildren = [];
+					var before = [];
+					var after = [];
+					var addHeaderClass = false;
+					var addFooterClass = false;
+					while (slide.firstChild) {
+						var childNode = slide.removeChild(slide.firstChild);
+						var newChildNode = childNode.cloneNode(true);
+						var wrap = !(newChildNode.classList && (newChildNode.classList.contains('header') || newChildNode.classList.contains('footer')));
+						if (wrap) {
+							newChildren.push(newChildNode);
+						} else {
+							if (newChildNode.classList.contains('header')) {
+								before.push(newChildNode);
+								addHeaderClass = true;
+							} else if (newChildNode.classList.contains('footer')) {
+								after.push(newChildNode);
+								addFooterClass = true;
+							}
+						}
+
+					}
+
+					if (slide.classList.contains('header')) {
+						var newHeader = header.cloneNode(true);
+						slide.appendChild(newHeader);
+					}
+
+					for (var j = 0; j < before.length; j++) {
+						var childNode = before[j];
+						slide.appendChild(childNode);
+					}
+					
+					var content = document.createElement('div');
+					content.classList.add("content");
+					for (var j = 0; j < newChildren.length; j++) {
+						var childNode = newChildren[j];
+						content.appendChild(childNode);
+					}
+					slide.appendChild(content);
+
+					for (var j = 0; j < after.length; j++) {
+						var childNode = after[j];
+						slide.appendChild(childNode);
+					}
+
+					if (slide.classList.contains('footer')) {
+						var newFooter = footer.cloneNode(true);
+						slide.appendChild(newFooter);
+					}
+					
+					if (addHeaderClass) {
+						slide.classList.add('header');
+					}
+
+					if (addFooterClass) {
+						slide.classList.add('footer');
+					}
+					
+				}
+
+				// Speech
+				if (window.speechSynthesis) {
+					document.getElementById('speech-wrapper').classList.remove('hidden');
+					const choice = document.getElementById('speech-voices');
+					window.speechSynthesis.addEventListener('voiceschanged', () => {
+						const voices = window.speechSynthesis.getVoices();
+
+						for (i = 0; i < voices.length ; i++) {
+							const option = document.createElement('option');
+							option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+							
+							if (voices[i].default) {
+								option.textContent += ' (default)';
+							}
+
+							option.setAttribute('data-lang', voices[i].lang);
+							option.setAttribute('data-name', voices[i].name);
+							choice.appendChild(option);
+						}
+					});
+
+					document.getElementById('speech-button').addEventListener('click', (event) => {
+						event.preventDefault();
+						const value = document.getElementById('speech-input').value;
+						const speech = new SpeechSynthesisUtterance(value);
+						const voices = window.speechSynthesis.getVoices();
+						
+						const choice = document.getElementById('speech-voices');
+						var selectedOption = choice.selectedOptions[0].getAttribute('data-name');
+						for (let i = 0; i < voices.length ; i++) {
+							if (voices[i].name === selectedOption) {
+								speech.voice = voices[i];
+							}
+						}
+						
+						window.speechSynthesis.speak(speech);
+					});
+				}
+				
+			} );
+		</script>
+	</body>
+</html>

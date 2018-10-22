@@ -1,0 +1,274 @@
+.reveal {
+    font-size: 0.85vmin;
+}
+
+.reveal > .slides section.wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+.reveal > .slides section.slide {
+    font-size: 4.25vmin;
+    height: 100%;
+    width: 100%;
+}
+
+.reveal > .slides section.slide img {
+    box-shadow: none;
+    border: none;
+    margin: 0;
+    background: transparent;
+}
+
+.reveal > .slides section.slide .underline {
+    text-decoration: underline;
+}
+
+.reveal > .slides section.slide img.border {
+    border: 0.15em solid black;
+}
+
+.reveal > .slides section.slide img.text {
+    width: 0.65em;
+}
+
+.reveal > .slides section.slide img.small {
+    width: 2vmax;
+}
+
+.reveal > .slides section.slide img.big {
+    width: 8vmin;
+}
+
+.reveal > .slides section.slide img.bigger {
+    width: 16vmin;
+}
+
+.reveal > .slides section.slide img.biggest {
+    width: 32vmin;
+}
+
+.reveal > .slides section.slide img.sub {
+    width: 64vmin;
+}
+
+.reveal > .slides section.slide img.main {
+    width: 80vmin;
+}
+
+.reveal > .slides section.slide img.main.big {
+    width: 120vmin;
+}
+
+.reveal > .slides section.slide {
+    grid-template-rows: auto;
+}
+
+.reveal > .slides section.slide.header {
+    grid-template-rows: max-content auto;
+}
+
+.reveal > .slides section.slide.footer {
+    grid-template-rows: auto max-content;
+}
+
+.reveal > .slides section.slide.header.footer {
+    grid-template-rows: max-content auto max-content;
+}
+
+.reveal .slides section.slide {
+    padding: 0;
+}
+
+.reveal > .slides section.slide > div {
+    width: 100%;
+    display: flex;
+}
+
+.reveal > .slides section.slide > div .column {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.reveal > .slides section.slide > div .row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reveal > .slides section.slide > div .column.aligend {
+    align-items: flex-start;
+}
+
+.reveal > .slides section.slide > div .row.aligend {
+    align-items: flex-start;
+}
+
+.reveal > .slides section.slide > div .column > div {
+    margin: 0 1.5em;
+}
+
+.reveal > .slides section.slide div.distance {
+    margin-bottom: 0.75em;
+}
+
+.reveal > .slides section.slide img.distance {
+    margin-right: 0.75em;
+}
+
+.reveal > .slides section.slide > .header,
+.reveal > .slides section.slide > .footer {
+    align-items: left;
+    padding: 1.5vmax 0;
+    padding-left: 2vmax;
+    align-items: left;
+}
+
+.reveal > .slides section.slide > .content {
+    padding: 1.5vmax 0;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.reveal > .slides section.slide.left > .content {
+    padding-left: 10vmax;
+    padding-right: 5vmax;
+    width: calc(100% - 10vmax - 5vmax);
+    text-align: left;
+}
+
+.reveal > .slides section.slide .center {
+    text-align: center;
+}
+
+.reveal > .slides section.slide.top > .content {
+    justify-content: flex-start;
+}
+
+.reveal > .slides section.slide > .header {
+    font-size: 0.75em;
+    background-color: #0A1C24;
+    color: #69C86C;
+}
+.reveal > .slides section.slide > .footer {
+    font-size: 0.45em;
+    background-color: white;
+    color: #4C4C4C;
+    justify-content: space-between;
+}
+
+.reveal > .slides section.slide .title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.reveal > .slides section.slide .big {
+    font-size: 3em;
+}
+
+.reveal > .slides section.slide .medium {
+    font-size: 2.5em;
+}
+
+.reveal > .slides section.slide .normal {
+    font-size: 1em;
+}
+
+.reveal > .slides section.slide .smaller {
+    font-size: 0.5em;
+}
+
+.reveal > .slides section.slide .small {
+    font-size: 0.75em;
+}
+
+.reveal > .slides section.slide .dark {
+    color: black;
+}
+
+.reveal > .slides section.slide .italic {
+    font-style: italic;
+}
+
+.reveal > .slides section.slide .subtext {
+    font-size: 0.75em;
+    font-style: italic;
+}
+
+.reveal > .slides section.slide .mono {
+    color: white;
+    background-color: black;
+}
+
+.reveal > .slides section.slide .title.big.mono {
+    padding: 0 0.25em;
+    opacity: 0.75;
+}
+
+.reveal .backgrounds .slide-background.transparent {
+    opacity: 0.5;
+}
+
+input[type=button] {
+    background-color: #BE1432;
+    color: white;
+    padding: 0.06em 0.5em;
+}
+
+.reveal .hidden {
+    display: none;
+}
+
+.reveal a.invisible {
+    color: black;
+}
+
+.reveal div.middle {
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.reveal .raccoon-logo {
+    max-width: 5vw;
+}
+
+.reveal .my-karakun {
+    color: #69C86C;
+    font-weight: bold;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+
+.rotating {
+    animation: rotating 4s linear infinite;
+}
+
+.pulse {
+    display: inline-block;
+    animation: pulse 4s linear infinite;
+}

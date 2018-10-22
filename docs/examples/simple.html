@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Service Worker API</title>
+        <link rel="manifest" href="manifest.json">
+        <style>
+            .hidden {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hey there!</h1>
+        <div>
+            <img src="image.gif" />
+        </div>
+        <div>
+            <img src="image2.gif" />
+        </div>
+        <h2 id="offline" class="hidden">You are offline!</h2>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('simple.js')
+                .then(registration => {
+                    console.log('Yay!');
+                })
+                .catch(error => {
+                    console.log('D\'oh!');
+                });
+
+                window.addEventListener('online', (event) => {
+                    console.log('online', event);
+                    document.getElementById('offline').classList.add('hidden');
+                }, false);
+
+                window.addEventListener('offline', (event) => {
+                    console.log('offline', event);
+                    document.getElementById('offline').classList.remove('hidden');
+                }, false);
+                
+                if (!navigator.onLine) {
+                    document.getElementById('offline').classList.remove('hidden');
+                }
+
+            }
+        </script>
+    </body>
+</html>
