@@ -325,6 +325,10 @@ input[type=button] {
     font-weight: bold;
 }
 
+.reveal .api-worldcloud svg {
+    width: 80vw;
+}
+
 @keyframes rotating {
     from {
         transform: rotate(0deg);
