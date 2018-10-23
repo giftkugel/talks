@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@giftkugel" />
+		<meta name="twitter:creator" content="@giftkugel" />
+		<meta property="og:url" content="https://giftkugel.github.io/talks/" />
+		<meta property="og:title" content="Web-APIs: The missing manual" />
+		<meta property="og:description" content="Slides of my talk" />
+
+		<title>Web-APIs &colon; The missing manual</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		
+		<link rel="stylesheet" href="css/font.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="stylesheet" href="css/slides.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="header">
+					<div class="title">Web-APIs</div>
+					<div>The missing manual</div>
+					<div>&nbsp;</div>
+					<div><a class="small" href="https://giftkugel.github.io/talks/" target="_blank" rel="noopener">https://giftkugel.github.io/talks/</a></div>
+					<div class="smaller">or</div>
+					<div><a class="small" href="https://bit.ly/2JdoLoG" target="_blank" rel="noopener">https://bit.ly/2JdoLoG</a></div>			
+				</section>
+				<section>
+						<section class="footer">
+							<div class="header before">About me</div>
+							<div class="column aligend">
+								<div>
+									<img src="images/profile.jpg">
+									<div class="subtext"><a class="dark" href="https://www.twitter.com/giftkugel" target="_blank" rel="noopener"><img class="text" src="images/svg/094.svg">&nbsp;giftkugel</a></div>
+									<div class="subtext"><a class="dark" href="https://www.skoczylas.net" target="_blank" rel="noopener"><img class="text" src="images/svg/211.svg">&nbsp;www.skoczylas.net</a></div>
+								</div>
+								<div>
+									<div class="title">Simon Skoczylas</div>
+									<div>Senior Software Engineer</div>
+									<div><a href="https://www.karakun.com" class="invisible" target="_blank" rel="noopener"><img class="biggest" src="images/svg/karakun-logo.svg"></a></div>
+									<div>&nbsp;</div>
+									<div>
+										<img class="raccoon-logo" src="images/svg/racoon.svg">
+										<div><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener"><span class="my-karakun">Karakun</span> Developer Hub</a></div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<section class="footer">
+							<div class="header before">Legal stuff</div>
+							<div>
+								<div class="distance">Images (CC0) taken from</div>
+								<div class="distance">
+									<div class="smaller">https://www.pexels.com/photo/camera-cctv-control-monitoring-274895/</div>
+									<div class="smaller">https://www.pexels.com/photo/silhouette-of-woman-raising-her-hands-615334/</div>
+									<div class="smaller">https://www.pexels.com/photo/man-in-white-shirt-using-macbook-pro-52608/</div>
+									<div class="smaller">https://www.pexels.com/photo/bind-blank-blank-page-business-315790/</div>
+									<div class="smaller">https://www.pexels.com/photo/building-construction-site-work-38293/</div>
+									<div class="smaller">https://www.pexels.com/photo/road-pavement-229014/</div>
+								</div>
+								<div class="distance">Phone mockups generated with</div>
+								<div class="distance">
+									<div class="smaller">https://mockuphone.com/#android</div>
+								</div>
+								<div class="distance">Icons</div>
+								<div>
+									<div class="smaller">https://material.io/icons/</div>
+									<div class="smaller">http://mariodelvalle.github.io/CaptainIconWeb/</div>
+									<div class="smaller">https://github.com/alrra/browser-logos</div>
+								</div>
+							</div>
+						</section>
+					</section>
+			</div>
+		</div>
+		<div style="display: none" class="extras">
+			<div class="header">&nbsp;</div>
+			<div class="footer">Progressive Web Apps, Mainifest &amp; Service Worker API</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				slideNumber: "c/t",
+				center: false,
+				display: 'grid',
+				history: true,
+				pdfMaxPagesPerSlide: 1,
+				backgroundTransition: 'slide',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			Reveal.addEventListener('ready', function( event ) {
+				var slides = document.querySelectorAll('.reveal .slides section');
+				var header = document.querySelector('.extras .header');
+				var footer = document.querySelector('.extras .footer');
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					var children = slide.childNodes;
+					for (var j = 0; j < children.length; j++) {
+						var child = children[j];
+						if (child.nodeName === 'SECTION') {
+							slide.skip = true;
+						}
+					}
+				}
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					if (slide.skip) {
+						slide.classList.add('wrapper')
+						continue;
+					}
+					slide.classList.add('slide')
+					var newChildren = [];
+					var before = [];
+					var after = [];
+					var addHeaderClass = false;
+					var addFooterClass = false;
+					while (slide.firstChild) {
+						var childNode = slide.removeChild(slide.firstChild);
+						var newChildNode = childNode.cloneNode(true);
+						var wrap = !(newChildNode.classList && (newChildNode.classList.contains('header') || newChildNode.classList.contains('footer')));
+						if (wrap) {
+							newChildren.push(newChildNode);
+						} else {
+							if (newChildNode.classList.contains('header')) {
+								before.push(newChildNode);
+								addHeaderClass = true;
+							} else if (newChildNode.classList.contains('footer')) {
+								after.push(newChildNode);
+								addFooterClass = true;
+							}
+						}
+
+					}
+
+					if (slide.classList.contains('header')) {
+						var newHeader = header.cloneNode(true);
+						slide.appendChild(newHeader);
+					}
+
+					for (var j = 0; j < before.length; j++) {
+						var childNode = before[j];
+						slide.appendChild(childNode);
+					}
+					
+					var content = document.createElement('div');
+					content.classList.add("content");
+					for (var j = 0; j < newChildren.length; j++) {
+						var childNode = newChildren[j];
+						content.appendChild(childNode);
+					}
+					slide.appendChild(content);
+
+					for (var j = 0; j < after.length; j++) {
+						var childNode = after[j];
+						slide.appendChild(childNode);
+					}
+
+					if (slide.classList.contains('footer')) {
+						var newFooter = footer.cloneNode(true);
+						slide.appendChild(newFooter);
+					}
+					
+					if (addHeaderClass) {
+						slide.classList.add('header');
+					}
+
+					if (addFooterClass) {
+						slide.classList.add('footer');
+					}
+					
+				}
+
+				// Speech
+				if (window.speechSynthesis) {
+					document.getElementById('speech-wrapper').classList.remove('hidden');
+					const choice = document.getElementById('speech-voices');
+					window.speechSynthesis.addEventListener('voiceschanged', () => {
+						const voices = window.speechSynthesis.getVoices();
+
+						for (i = 0; i < voices.length ; i++) {
+							const option = document.createElement('option');
+							option.textContent = voices[i].name + ' (' + voices[i].lang + ')';
+							
+							if (voices[i].default) {
+								option.textContent += ' (default)';
+							}
+
+							option.setAttribute('data-lang', voices[i].lang);
+							option.setAttribute('data-name', voices[i].name);
+							choice.appendChild(option);
+						}
+					});
+
+					document.getElementById('speech-button').addEventListener('click', (event) => {
+						event.preventDefault();
+						const value = document.getElementById('speech-input').value;
+						const speech = new SpeechSynthesisUtterance(value);
+						const voices = window.speechSynthesis.getVoices();
+						
+						const choice = document.getElementById('speech-voices');
+						var selectedOption = choice.selectedOptions[0].getAttribute('data-name');
+						for (let i = 0; i < voices.length ; i++) {
+							if (voices[i].name === selectedOption) {
+								speech.voice = voices[i];
+							}
+						}
+						
+						window.speechSynthesis.speak(speech);
+					});
+				}
+				
+			} );
+		</script>
+	</body>
+</html>
