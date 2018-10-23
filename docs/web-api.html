@@ -136,6 +136,59 @@
 						</div>
 					</section>
 				</section>
+				<section>
+						<section class="header footer">
+							<div class="title">Battery Status API</div>
+							<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API</a></div>
+						</section>
+						<section class="footer left">
+							<div class="header before">Battery Status API</div>
+							<div class="row">
+								<div class="distance">
+									<div>Provides information about the battey charge level</div>
+								</div>
+								<div class="distance fragment">
+									<div>Notifes about changes</div>
+								</div>
+								<div class="distance fragment">
+									<div id="battery-status"></div>
+								</div>
+								<div class="distance fragment">
+									<div id="battery-charging"></div>
+								</div>
+								<div class="distance fragment">
+									<div>Removed from <a href="https://groups.google.com/forum/#!msg/mozilla.dev.platform/5U8NHoUY-1k/9ybyzQIYCAAJ" target="_blank" rel="noopener">Mozilla</a> and <a href="https://trac.webkit.org/changeset/208300/webkit"  target="_blank" rel="noopener">WebKit</a> 😵</div>
+								</div>
+							</div>
+						</section>
+						<section class="footer top">
+							<div class="header before">Battery Status API</div>
+							<div class="row">
+									<div>Example</div>
+									<pre><code class="javascript stretch">
+if (navigator.getBattery) {
+	navigator.getBattery().then((battery) => {
+		// battery.level (0 - 1)
+		// battery.charging (true, false)
+
+		battery.addEventListener('chargingchange', function() {});
+
+		battery.addEventListener('levelchange', function() {});
+
+		battery.addEventListener('chargingtimechange', function() {});
+
+		battery.addEventListener('dischargingtimechange', function() {});
+	});
+}
+									</code></pre>
+								</div>
+							</section>
+						<section class="footer">
+							<div class="header before">Battery Status API</div>
+							<div class="title distance">Browser compatibility</div>
+							<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;🤔<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+						</section>
+				</section>
 			</div>
 		</div>
 		<div style="display: none" class="extras">
@@ -250,6 +303,17 @@
 						slide.classList.add('footer');
 					}
 					
+				}
+
+				// Battery
+				if (navigator.getBattery) {
+					navigator.getBattery().then((battery) => {
+						document.getElementById('battery-status').textContent = 'Current charge level: ' + battery.level*100 + '%';
+						document.getElementById('battery-charging').textContent = 'Charging: ' + (battery.charging ? 'Yes' : 'No');
+					});
+				} else {
+					document.getElementById('battery-status').textContent = 'Current charge level: Not supported';
+					document.getElementById('battery-status').textContent = 'Charging: Not supported';
 				}
 
 				// Speech
