@@ -164,29 +164,70 @@
 						<section class="footer top">
 							<div class="header before">Battery Status API</div>
 							<div class="row">
-									<div>Example</div>
-									<pre><code class="javascript stretch">
+								<div>Example</div>
+								<pre><code class="javascript stretch">
 if (navigator.getBattery) {
-	navigator.getBattery().then((battery) => {
-		// battery.level (0 - 1)
-		// battery.charging (true, false)
+navigator.getBattery().then((battery) => {
+	// battery.level (0 - 1)
+	// battery.charging (true, false)
 
-		battery.addEventListener('chargingchange', function() {});
+	battery.addEventListener('chargingchange', function() {});
 
-		battery.addEventListener('levelchange', function() {});
+	battery.addEventListener('levelchange', function() {});
 
-		battery.addEventListener('chargingtimechange', function() {});
+	battery.addEventListener('chargingtimechange', function() {});
 
-		battery.addEventListener('dischargingtimechange', function() {});
-	});
+	battery.addEventListener('dischargingtimechange', function() {});
+});
 }
-									</code></pre>
-								</div>
-							</section>
+								</code></pre>
+							</div>
+						</section>
 						<section class="footer">
 							<div class="header before">Battery Status API</div>
 							<div class="title distance">Browser compatibility</div>
 							<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;🤔<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+						</section>
+				</section>
+				<section>
+						<section class="header footer">
+							<div class="title">Page Visibility API</div>
+							<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
+						</section>
+						<section class="footer left">
+							<div class="header before">Page Visibility API</div>
+							<div class="row">
+									<div class="distance">
+									<div>Provides the visiblity state of the current document</div>
+								</div>
+								<div class="distance fragment">
+									<div>Notifies when the document becomes hidden or visible</div>
+								</div>
+								<div class="distance fragment">
+									<div>Can be used to stop/pause long or expensive tasks</div>
+								</div>
+							</div>
+						</section>
+						<section class="footer top">
+							<div class="header before">Page Visibility API</div>
+							<div class="row">
+								<div>Example</div>
+								<pre><code class="javascript stretch">
+// document.hidden (true, false)
+document.addEventListener('visibilitychange', function() {}, false);
+								</code></pre>
+							</div>
+						</section>
+						<section class="footer">
+							<div class="header before">Page Visibility API</div>
+							<div class="title distance">Demo</div>
+							<div class="distance"><a href="http://daniemon.com/tech/webapps/page-visibility/" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
+						</section>
+						
+						<section class="footer">
+							<div class="header before">Page Visibility API</div>
+							<div class="title distance">Browser compatibility</div>
+							<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
 						</section>
 				</section>
 			</div>
