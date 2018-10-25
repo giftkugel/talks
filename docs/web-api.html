@@ -91,6 +91,47 @@
 				<section>
 					<section class="footer">
 						<div class="header before">Overview</div>
+						<div class="title distance">There is a bunch of Web APIs you can use</div>
+						<div class="column">
+							<div>
+								<div>
+									<a>BatteryStatus</a>
+								</div>
+								<div>
+									<a>PageVisibility</a>
+								</div>
+								<div>
+									<a>NavigatorOnLine</a>
+								</div>
+								<div>
+									<a>Notifications</a>
+								</div>
+								<div>
+									<a>Fetch</a>
+								</div>
+								<div>
+									<a>Clipboard</a>
+								</div>
+								<div>
+									<a>Presentation</a>
+								</div>
+								<div>
+									<a>Vibration</a>
+								</div>
+							</div>
+							<div>
+								<div>
+									<a>WebGL</a>
+								</div>
+								<div>
+									<a>WebVR</a>
+								</div>
+								<div>
+									<a>WebRTC</a>
+								</div>
+							</div>
+						</div>
+						<!--
 						<div class="api-worldcloud">
 								<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
 									<defs>
@@ -102,11 +143,9 @@
 									<text x="-327.62579345703125" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(1182, 300) rotate(-14.601772153278949)">ServerSentEvents</text>
 									<text x="-314.3735656738281" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(820, 626)">NavigatorOnLine</text>
 									<text x="-291.46441650390625" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(10, 28, 36)" stroke="none" transform="translate(714, 198)">ShapeDetection</text>
-									<text x="-246.64947509765625" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(652, 726) rotate(18.010708871941727)">PageVisibility</text>
 									<text x="-315.6903991699219" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(1398, 804) rotate(40.65322418616043)">PaymentRequest</text>
 									<text x="-234.40060424804688" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(924, 126)">Notifications</text>
 									<text x="-270.541015625" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(10, 28, 36)" stroke="none" transform="translate(1032, 914) rotate(12)">ServiceWorker</text>
-									<text x="-254.4251708984375" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(918, 42)">BatteryStatus</text>
 									<text x="-269.4540710449219" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(105, 200, 108)" stroke="none" transform="translate(522, 858)">WebBluetooth</text>
 									<text x="-235.52932739257812" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(10, 28, 36)" stroke="none" transform="translate(516, 282)">Presentation</text>
 									<text x="-245.18629455566406" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(10, 28, 36)" stroke="none" transform="translate(1422, 324) rotate(-16.76191530750243)">ServerTiming</text>
@@ -134,6 +173,7 @@
 									<text x="-237.908279" y="8.361581399999999" style="font: normal 83.615814px Encode Sans" text-anchor="start" dy="33.04972885375494" opacity="1" fill="rgb(10, 28, 36)" stroke="none" transform="translate(1068, 724) rotate(-5)">Paint</text>
 								</svg>
 						</div>
+						-->
 					</section>
 				</section>
 				<section>
@@ -164,21 +204,21 @@
 						<section class="footer top">
 							<div class="header before">Battery Status API</div>
 							<div class="row">
-								<div>Example</div>
+								<div>Snippet</div>
 								<pre><code class="javascript stretch">
 if (navigator.getBattery) {
-navigator.getBattery().then((battery) => {
-	// battery.level (0 - 1)
-	// battery.charging (true, false)
+	navigator.getBattery().then((battery) => {
+		// battery.level (0 - 1)
+		// battery.charging (true, false)
 
-	battery.addEventListener('chargingchange', function() {});
+		battery.addEventListener('chargingchange', (event) => {});
 
-	battery.addEventListener('levelchange', function() {});
+		battery.addEventListener('levelchange', (event) => {});
 
-	battery.addEventListener('chargingtimechange', function() {});
+		battery.addEventListener('chargingtimechange', (event) => {});
 
-	battery.addEventListener('dischargingtimechange', function() {});
-});
+		battery.addEventListener('dischargingtimechange', f(event) => {});
+	});
 }
 								</code></pre>
 							</div>
@@ -206,30 +246,175 @@ navigator.getBattery().then((battery) => {
 								<div class="distance fragment">
 									<div>Can be used to stop/pause long or expensive tasks</div>
 								</div>
+								<div class="distance fragment">
+									<div id="visibility-status"></div>
+								</div>
 							</div>
 						</section>
 						<section class="footer top">
 							<div class="header before">Page Visibility API</div>
 							<div class="row">
-								<div>Example</div>
+								<div>Snippet</div>
 								<pre><code class="javascript stretch">
 // document.hidden (true, false)
-document.addEventListener('visibilitychange', function() {}, false);
+document.addEventListener('visibilitychange', (event) => {});
 								</code></pre>
 							</div>
 						</section>
 						<section class="footer">
 							<div class="header before">Page Visibility API</div>
 							<div class="title distance">Demo</div>
-							<div class="distance"><a href="http://daniemon.com/tech/webapps/page-visibility/" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
+							<div class="distance"><a href="http://daniemon.com/tech/webapps/page-visibility/" target="_blank" rel="noopener">http://daniemon.com/tech/webapps/page-visibility/</a></div>
 						</section>
-						
 						<section class="footer">
 							<div class="header before">Page Visibility API</div>
 							<div class="title distance">Browser compatibility</div>
 							<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
 						</section>
 				</section>
+				<section>
+					<section class="header footer">
+						<div class="title">NavigatorOnLine</div>
+						<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">NavigatorOnLine</div>
+						<div class="row">
+								<div class="distance">
+								<div>Provides information about the connectivity status of the browser</div>
+							</div>
+							<div class="distance fragment">
+								<div>Notifies when the connectivity changes</div>
+							</div>
+							<div class="distance fragment">
+								<div id="online-status"></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">NavigatorOnLine</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+// navigator.onLine (true, false)
+window.addEventListener('offline', (event) => {});
+window.addEventListener('online', (event) => {});
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">NavigatorOnLine</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section>
+					<section class="header footer">
+						<div class="title">Notifications API</div>
+						<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Notifications API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Allows web pages to control system notifications</div>
+							</div>
+							<div class="distance fragment">
+								<div>ServiceWorker got some special abilities for notifications</div>
+							</div>
+							<div class="distance fragment">
+								<div>That's it!</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Notifications API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+// Notification.permission (denied, granted, default)
+
+Notification.requestPermission().then((permission) => {});
+
+new Notification("A fancy notification", options);
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Notifications API</div>
+						<div class="title distance">Demo</div>
+						<div class="distance">
+							<div><input class="normal" type="text" id="notification-input"><input class="normal" type="button" value="Request" id="notification-request-button" disabled="disabled"><input class="normal" type="button" value="Notify" id="notification-notify-button" disabled="disabled"></div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Notifications API</div>
+						<div class="title distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification" target="_blank" rel="noopener">Options</a></div>
+						<div class="column">
+							<div>
+								<div>dir</div>
+								<div>lang</div>
+								<div>body</div>
+								<div>badge</div>
+								<div>icon</div>
+								<div>image</div>
+							</div>
+							<div>
+								<div>data</div>
+								<div>vibrate</div>
+								<div>renotify</div>
+								<div>tag</div>
+								<div>requireInteraction</div>
+								<div>actions*</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Notifications API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+									<!--
+				<section>
+					<section class="header footer">
+						<div class="title">Header</div>
+						<div class="distance"><a href="LINK" target="_blank" rel="noopener">LINK</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Header</div>
+						<div class="row">
+								<div class="distance">
+								<div>1</div>
+							</div>
+							<div class="distance fragment">
+								<div>2</div>
+							</div>
+							<div class="distance fragment">
+								<div>3</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">HEADER</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">HEADER</div>
+						<div class="title distance">Demo</div>
+						<div class="distance"><a href="http://daniemon.com/tech/webapps/page-visibility/" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
+					</section>
+					<section class="footer">
+						<div class="header before">HEADER</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				-->
 			</div>
 		</div>
 		<div style="display: none" class="extras">
@@ -349,13 +534,73 @@ document.addEventListener('visibilitychange', function() {}, false);
 				// Battery
 				if (navigator.getBattery) {
 					navigator.getBattery().then((battery) => {
-						document.getElementById('battery-status').textContent = 'Current charge level: ' + battery.level*100 + '%';
-						document.getElementById('battery-charging').textContent = 'Charging: ' + (battery.charging ? 'Yes' : 'No');
+						const updateChargeInfo = function() {
+							document.getElementById('battery-charging').textContent = 'Charging: ' + (battery.charging ? 'Yes' : 'No');
+						}
+
+						const updateLevelInfo = function() {
+							document.getElementById('battery-status').textContent = 'Current charge level: ' + battery.level*100 + '%';
+						}
+						updateChargeInfo();
+						updateLevelInfo();
+						battery.addEventListener('chargingchange', (event) => updateChargeInfo());
+						battery.addEventListener('levelchange', (event) => updateLevelInfo()); 
 					});
 				} else {
 					document.getElementById('battery-status').textContent = 'Current charge level: Not supported';
 					document.getElementById('battery-status').textContent = 'Charging: Not supported';
 				}
+
+				// NavigatorOnline
+				const onlineStatus = function(event) {
+					const statusText = navigator.onLine ? 'online 🙂' : 'offline 🤨';
+					document.getElementById('online-status').textContent = 'Current status: ' + statusText;
+				}
+				
+				onlineStatus();
+				window.addEventListener('online', onlineStatus);
+				window.addEventListener('offline', onlineStatus);
+
+				// Page Visibility
+				const visibilityStatus = function(event) {
+					console.log('visibility-status', document.hidden);
+					const statusText = document.hidden ? 'not visible 🤨' : 'visible 🙂';
+					document.getElementById('visibility-status').textContent = 'Current status: ' + statusText;
+				}
+
+				visibilityStatus();
+				window.addEventListener('visibilitychange', visibilityStatus);
+
+				// Notification
+				if (Notification) {
+					const notifyButton = document.getElementById('notification-notify-button');
+					notifyButton.onclick = () => {
+						const options = {
+							body: document.getElementById('notification-input').value,
+							icon: 'images/profile.jpg',
+							renotify: true,
+							tag: Date.now(),
+							vibrate: [200, 100, 200],
+						}
+						const notification = new Notification("A fancy notification", options);
+					}
+
+					const requestButton = document.getElementById('notification-request-button');
+					if (Notification.permission === 'granted') {
+						notifyButton.removeAttribute('disabled');
+					} else if (Notification.permission !== 'denied') {
+						requestButton.removeAttribute('disabled');
+						requestButton.onclick = () => {
+							Notification.requestPermission().then(function (permission) {
+								if (permission === "granted") {
+									notifyButton.removeAttribute('disabled');
+									requestButton.setAttribute('disabled', 'disabled');
+								}
+							});
+						};
+					}
+				}
+				
 
 				// Speech
 				if (window.speechSynthesis) {
