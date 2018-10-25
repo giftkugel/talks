@@ -436,8 +436,8 @@ new Notification("A fancy notification", options);
 							<div class="distance">
 								<div>Offers the ablity to access the vibration hardware</div>
 							</div>
-							<div class="distance">
-								<div>Offers the ablity to access the vibration hardware</div>
+							<div class="distance fragment">
+								<div>Does not work with display disabled ... <span class="fragment">🤨</span></div>
 							</div>
 							<div class="distance fragment">
 								<div>Shakes your device!</div>
@@ -461,14 +461,14 @@ navigator.vibrate(0); // stop vibration
 						<div class="header before">Vibration API</div>
 						<div class="title distance">Demo</div>
 						<div class="distance">
-							<div><input class="normal" type="button" value="Vibrate" id="vibration-start-button" disabled="disabled"><input class="normal" type="button" value="Stop" id="vibration-stop-button" disabled="disabled"></div>
+							<div><input class="normal" type="button" value="Vibrate after 5 secends" id="vibration-start-button" disabled="disabled"><input class="normal" type="button" value="Stop" id="vibration-stop-button" disabled="disabled"></div>
 						</div>
-						<div class="smaller" id="clipboard-status"></div>
+						<div class="smaller" id="vibration-status">&nbsp;</div>
 					</section>
 					<section class="footer">
 						<div class="header before">Vibration API</div>
 						<div class="title distance">Browser compatibility</div>
-						<div class="column">Mostly supported for mobile browsers</div>
+						<div class="column">Mostly supported by mobile browsers</div>
 					</section>
 				</section>
 									<!--
@@ -709,7 +709,11 @@ navigator.vibrate(0); // stop vibration
 				if (navigator.vibrate) {
 					document.getElementById('vibration-start-button').removeAttribute('disabled');
 					document.getElementById('vibration-stop-button').removeAttribute('disabled');
-					document.getElementById('vibration-start-button').addEventListener('click', (event) => setTimeout(() => navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]), 5000));
+					document.getElementById('vibration-start-button').addEventListener('click', (event) => setTimeout(() => {
+						document.getElementById('vibration-status').textContent = 'Shaking...'
+						setTimeout(() => document.getElementById('vibration-status').innerHTML = '&nbsp;', 3000);
+						navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]);
+					}, 5000));
 					document.getElementById('vibration-stop-button').addEventListener('click', (event) => navigator.vibrate(0));
 				}
 
