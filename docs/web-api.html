@@ -91,9 +91,9 @@
 				<section>
 					<section class="footer">
 						<div class="header before">Overview</div>
-						<div class="title distance">There is a bunch of Web APIs you can use</div>
+						<div class="title distance">Web-APIs</div>
 						<div class="column">
-							<div>
+							<div class="small">
 								<div>
 									<a>BatteryStatus</a>
 								</div>
@@ -107,19 +107,19 @@
 									<a>Notifications</a>
 								</div>
 								<div>
-									<a>Fetch</a>
-								</div>
-								<div>
 									<a>Clipboard</a>
-								</div>
-								<div>
-									<a>Presentation</a>
 								</div>
 								<div>
 									<a>Vibration</a>
 								</div>
+								<div>
+									<a>Fetch</a>
+								</div>	
+								<div>
+									<a>Presentation</a>
+								</div>
 							</div>
-							<div>
+							<div class="small">
 								<div>
 									<a>WebGL</a>
 								</div>
@@ -175,11 +175,27 @@
 						</div>
 						-->
 					</section>
+					<section class="footer">
+						<div class="header before">Status</div>
+						<div class="title distance">Current status</div>
+						<div class="distance small"><a href="https://platform-status.mozilla.org/" target="_blank" rel="noopener">https://platform-status.mozilla.org/</a></div>
+						<div class="distance small"><a href="https://webkit.org/status/" target="_blank" rel="noopener">https://webkit.org/status/</a></div>
+						<div class="distance small"><a href="https://www.chromestatus.com/features" target="_blank" rel="noopener">https://www.chromestatus.com/features</a></div>
+						<div class="distance small"><a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/status/" target="_blank" rel="noopener">https://developer.microsoft.com/en-us/microsoft-edge/platform/status/</a></div>
+						<div>***</div>
+						<div class="distance"><a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/status/" target="_blank" rel="noopener">https://caniuse.com/</a></div>
+					</section>
+					<section class="footer">
+						<div class="header before">Feature detection</div>
+						<div class="title distance">Feature detection</div>
+						<div class="distance small"><a href="https://html5test.com/" target="_blank" rel="noopener">https://html5test.com/</a></div>
+						<div class="distance small"><a href="https://whatwebcando.today/" target="_blank" rel="noopener">https://whatwebcando.today/</a></div>
+					</section>
 				</section>
 				<section>
 						<section class="header footer">
 							<div class="title">Battery Status API</div>
-							<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API</a></div>
+							<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API</a></div>
 						</section>
 						<section class="footer left">
 							<div class="header before">Battery Status API</div>
@@ -232,7 +248,7 @@ if (navigator.getBattery) {
 				<section>
 						<section class="header footer">
 							<div class="title">Page Visibility API</div>
-							<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
+							<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API</a></div>
 						</section>
 						<section class="footer left">
 							<div class="header before">Page Visibility API</div>
@@ -275,7 +291,7 @@ document.addEventListener('visibilitychange', (event) => {});
 				<section>
 					<section class="header footer">
 						<div class="title">NavigatorOnLine</div>
-						<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine</a></div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">NavigatorOnLine</div>
@@ -311,7 +327,7 @@ window.addEventListener('online', (event) => {});
 				<section>
 					<section class="header footer">
 						<div class="title">Notifications API</div>
-						<div class="distance"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API</a></div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Notifications API</div>
@@ -320,10 +336,7 @@ window.addEventListener('online', (event) => {});
 								<div>Allows web pages to control system notifications</div>
 							</div>
 							<div class="distance fragment">
-								<div>ServiceWorker got some special abilities for notifications</div>
-							</div>
-							<div class="distance fragment">
-								<div>That's it!</div>
+								<div>ServiceWorker got some additional abilities for notifications</div>
 							</div>
 						</div>
 					</section>
@@ -346,6 +359,7 @@ new Notification("A fancy notification", options);
 						<div class="distance">
 							<div><input class="normal" type="text" id="notification-input"><input class="normal" type="button" value="Request" id="notification-request-button" disabled="disabled"><input class="normal" type="button" value="Notify" id="notification-notify-button" disabled="disabled"></div>
 						</div>
+						<div class="smaller" id="notification-status"></div>
 					</section>
 					<section class="footer">
 						<div class="header before">Notifications API</div>
@@ -373,6 +387,72 @@ new Notification("A fancy notification", options);
 						<div class="header before">Notifications API</div>
 						<div class="title distance">Browser compatibility</div>
 						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😍<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😍<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section>
+					<section class="header footer">
+						<div class="title">Clipboard API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Clipboard</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Clipboard API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Allows web pages to read from and write to the system clipboard</div>
+							</div>
+							<div class="distance fragment">
+								<div>Provides events to respond to clipboard commands like cut, copy and paste</div>
+							</div>
+							<div class="distance fragment">
+								<div>Should replace the document.execCommand()</div>
+							</div>
+							<div class="distance fragment">
+								<div>Does not work as supposed right now</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Clipboard API</div>
+						<div class="title distance">Demo</div>
+						<div class="distance">
+							<div><a href="https://googlechrome.github.io/samples/async-clipboard/" target="_blank" rel="noopener">https://googlechrome.github.io/samples/async-clipboard/</a></div>
+						</div>
+						<div class="smaller" id="clipboard-status"></div>
+					</section>
+					<section class="footer">
+						<div class="header before">Clipboard API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;🙄<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section>
+					<section class="header footer">
+						<div class="title">Vibration API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Vibration API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Offers the ablity to access the vibration hardware</div>
+							</div>
+							<div class="distance fragment">
+								<div>Shake your device!</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Vibration API</div>
+						<div class="title distance">Demo</div>
+						<div class="distance">
+							<div><input class="normal" type="button" value="Vibrate" id="vibration-start-button" disabled="disabled"><input class="normal" type="button" value="Stop" id="vibration-stop-button" disabled="disabled"></div>
+						</div>
+						<div class="smaller" id="clipboard-status"></div>
+					</section>
+					<section class="footer">
+						<div class="header before">Vibration API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">Mostly supported for mobile browsers</div>
 					</section>
 				</section>
 									<!--
@@ -583,6 +663,10 @@ new Notification("A fancy notification", options);
 							vibrate: [200, 100, 200],
 						}
 						const notification = new Notification("A fancy notification", options);
+						notification.onclose = () => {
+							document.getElementById('notification-status').textContent = '"' + options.body + '" notification was closed by user';
+							setTimeout(() => document.getElementById('notification-status').textContent = '', 5000);
+						}
 					}
 
 					const requestButton = document.getElementById('notification-request-button');
@@ -601,6 +685,19 @@ new Notification("A fancy notification", options);
 					}
 				}
 				
+				// Clipboard
+				document.getElementById('clipboard-input').addEventListener('paste' (event => {
+					document.getElementById('clipboard-status').textContent = 'Yay!';
+				}));
+
+
+				// Vibration API
+				if (navigator.vibrate) {
+					document.getElementById('vibration-start-button').removeAttribute('disabled');
+					document.getElementById('vibration-stop-button').removeAttribute('disabled');
+					document.getElementById('vibration-start-button').addEventListener('click', (event) => navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]));
+					document.getElementById('vibration-stop-button').addEventListener('click', (event) => navigator.vibrate(0));
+				}
 
 				// Speech
 				if (window.speechSynthesis) {
