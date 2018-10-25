@@ -436,9 +436,25 @@ new Notification("A fancy notification", options);
 							<div class="distance">
 								<div>Offers the ablity to access the vibration hardware</div>
 							</div>
-							<div class="distance fragment">
-								<div>Shake your device!</div>
+							<div class="distance">
+								<div>Offers the ablity to access the vibration hardware</div>
 							</div>
+							<div class="distance fragment">
+								<div>Shakes your device!</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Vibration API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+navigator.vibrate(500);
+
+navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]);
+
+navigator.vibrate(0); // stop vibration
+							</code></pre>
 						</div>
 					</section>
 					<section class="footer">
@@ -686,16 +702,14 @@ new Notification("A fancy notification", options);
 				}
 				
 				// Clipboard
-				document.getElementById('clipboard-input').addEventListener('paste' (event => {
-					document.getElementById('clipboard-status').textContent = 'Yay!';
-				}));
+				//document.getElementById('clipboard-input').addEventListener('paste', (event) => document.getElementById('clipboard-status').textContent = 'Yay!');
 
 
 				// Vibration API
 				if (navigator.vibrate) {
 					document.getElementById('vibration-start-button').removeAttribute('disabled');
 					document.getElementById('vibration-stop-button').removeAttribute('disabled');
-					document.getElementById('vibration-start-button').addEventListener('click', (event) => navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]));
+					document.getElementById('vibration-start-button').addEventListener('click', (event) => setTimeout(() => navigator.vibrate([500, 250, 500, 250, 500, 250, 500, 250, 500, 250, 500]), 5000));
 					document.getElementById('vibration-stop-button').addEventListener('click', (event) => navigator.vibrate(0));
 				}
 
