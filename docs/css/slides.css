@@ -415,7 +415,7 @@ input[type=button]:disabled {
 }
 
 .reveal > .slides section.list .column {
-    font-size: 0.75em;
+    font-size: 0.65em;
 }
 
 @media (max-aspect-ratio: 4/3) {
