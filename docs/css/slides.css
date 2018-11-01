@@ -156,6 +156,16 @@
     white-space: nowrap;
 }
 
+.reveal > .slides section.list .column > div > div > a:not([href]) {
+    color: #AAAAAA;
+    font-style: italic;
+}
+
+.reveal > .slides section.list .column > div > div > a[href^='http'] {
+    color: #555555;
+    font-style: italic;
+}
+
 .reveal > .slides section.slide {
     grid-template-rows: auto;
 }
@@ -269,12 +279,16 @@
 }
 .reveal > .slides section.slide > .footer {
     display: flex;
-    font-size: 0.45em;
+    font-size: 0.6em;
     background-color: #0A1C24;
     color: #FFFFFF;
     justify-content: space-between;
     padding-right: 2vmax;
     width: auto;
+}
+
+.reveal > .slides section.slide > .footer a {
+    color: #FFFFFF;
 }
 
 .reveal > .slides section.slide > .footer span.main {
@@ -288,7 +302,7 @@
 }
 
 .reveal > .slides section.slide > .footer > div img {
-    max-width: 3vw;
+    max-width: 6vw;
     margin-right: 1em;
 }
 
@@ -422,4 +436,11 @@ input[type=button]:disabled {
     .reveal > .slides section.list .column {
         font-size: 0.5em;
     }
+}
+
+.reveal .controls {
+    bottom: 8px;
+    right: 140px;
+    opacity: 0.35;
+    font-size: 1em;
 }
