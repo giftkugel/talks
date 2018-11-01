@@ -152,6 +152,11 @@
     border-bottom: 0.05em dotted #CCCCCC;
 }
 
+.reveal > .slides section.list .column > div > div.title {
+    margin-bottom: 0.25em;
+    font-size: 1em;
+}
+
 .reveal > .slides section.list .column > div > div > a {
     white-space: nowrap;
 }
