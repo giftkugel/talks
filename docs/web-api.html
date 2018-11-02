@@ -143,7 +143,7 @@
 									<a href="#/cache-api">Cache</a>
 								</div>
 								<div>
-									<a>Push</a>
+									<a href="#/push-api">Push</a>
 								</div>
 								<div>
 									<a>Background Sync</a>
@@ -165,19 +165,19 @@
 								<div>
 									<a href="#/web-bluetooth-api">Web Bluetooth</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/USB" target="_blank" rel="noopener">Web USB</a>
 								</div>
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank" rel="noopener">Web Audio</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API" target="_blank" rel="noopener">Web Crypto</a>
 								</div>
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API" target="_blank" rel="noopener">Payment Request</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API" target="_blank" rel="noopener">Credential Management</a>
 								</div>
 								<div>
@@ -195,12 +195,15 @@
 									<a href="https://w3c.github.io/server-timing/" target="_blank" rel="noopener">Server Timing</a>
 								</div>
 								<div>
+									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API" target="_blank" rel="noopener">Navigation Timing</a>
+								</div>
+								<div>
 									<a href="https://www.w3.org/TR/generic-sensor/" target="_blank" rel="noopener">Generic Sensor</a>
 								</div>
-								<div>
+								<div class="hidden">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileSystem" target="_blank" rel="noopener">FileSystem</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Streams_API" target="_blank" rel="noopener">Streams</a>
 								</div>
 								<div>
@@ -214,7 +217,7 @@
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard" target="_blank" rel="noopener">Clipboard</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Selection" target="_blank" rel="noopener">Selection</a>
 								</div>
 								<div>
@@ -229,14 +232,17 @@
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API" target="_blank" rel="noopener">WebGL</a>
 								</div>
-								<div>
+								<div class="experimental">
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVR_API" target="_blank" rel="noopener">WebVR</a>
 								</div>
 							</div>
+						</div>
+					</section>
+					<section class="list footer">
+						<div class="header before">Overview</div>
+						<div class="title distance"><a href="https://houdini.glitch.me/"  target="_blank" rel="noopener">CSS Houdini</a></div>
+						<div class="column">
 							<div>
-								<div class="title distance">
-									<a href="https://houdini.glitch.me/"  target="_blank" rel="noopener">CSS Houdini</a>
-								</div>
 								<div>
 									<a href="https://drafts.css-houdini.org/worklets/" target="_blank" rel="noopener">Worklets</a>
 								</div>
@@ -725,6 +731,113 @@ cache.keys(request, options)
 						<div class="distance">Like the Service Worker API</div>
 					</section>
 				</section>
+				<section id="push-api">
+					<section class="header footer title">
+						<div class="title main">Push API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/de/docs/Web/API/Push_API" target="_blank" rel="noopener">https://developer.mozilla.org/de/docs/Web/API/Push_API</a></div>
+						<div class="distance smaller"><a href="https://w3c.github.io/push-api/" target="_blank" rel="noopener">https://w3c.github.io/push-api/</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Push API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Provides the ability to receive messages pushed from a server</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Push API</div>
+						<div class="row">
+							<div>Snippet (Subscribe)</div>
+							<pre><code class="javascript stretch">
+// const applicationServerKey = urlBase64ToUint8Array(applicationServerPublicKey);
+navigator.serviceWorker.register('/sw.js').then((registration) => {
+	// user interaction, then:
+	registration.pushManager.getSubscription().then((subscription) => {
+		if (subscription == null) {
+			registration.pushManager.subscribe({
+				userVisibleOnly: true,
+				applicationServerKey: applicationServerKey
+			})
+			.then((newSubscription) => { /* store on server */ })
+			.catch((error) => {});
+		}
+	}, (error) => {});
+});
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Push API</div>
+						<div class="row">
+							<div>Snippet (Handle push in Service Worker)</div>
+							<pre><code class="javascript stretch">
+self.addEventListener('push', (event) => {
+	const text = event.data.text();
+	const title = 'Push notification!';
+	const options = {
+		body: text
+	};
+	event.waitUntil(self.registration.showNotification(title, options));
+});
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Push API</div>
+						<div class="row">
+							<div class="title">Web Push Protocol</div>
+							<div class="distance smaller">
+								<div><a href="https://tools.ietf.org/html/draft-ietf-webpush-protocol-12"  target="_blank" rel="noopener">https://tools.ietf.org/html/draft-ietf-webpush-protocol-12</a></div>
+							</div>
+							<div class="">
+								<div>Server libraries</div>
+							</div>
+							<div class="smaller">
+								<a href="https://github.com/web-push-libs"  target="_blank" rel="noopener">https://github.com/web-push-libs</a>
+							</div>
+							<div class="smaller">Node.js, Java, PHP, Pyhton, C#</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Push API</div>
+						<div class="row">
+							<div>Snippet (Server-side with Node.js)</div>
+							<pre><code class="javascript stretch">
+const webpush = require('web-push');
+
+const vapidKeys = {
+	publicKey: /* public key */,
+	privateKey: /* private key */
+}
+
+webpush.setVapidDetails(
+	'mailto:some@example.com',
+	vapidKeys.publicKey,
+	vapidKeys.privateKey
+);
+
+webpush.sendNotification(subscription, text);
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Push API</div>
+						<div class="title distance">Demo</div>
+						<div class="distance">
+							<div><input class="normal" type="button" value="Request" id="push-request-button" disabled="disabled"></div>
+						</div>
+						<div id="push-subscription-content" class="hidden">
+							<div class="small">Subscription</div>
+							<div class="smallest margin" id="push-subscription"></div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Push API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😵<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
 				<section id="web-speech-api">
 					<section class="header footer title">
 						<div class="title main">Web Speech API</div>
@@ -781,7 +894,7 @@ recognition.start();
 								<div><input class="normal" type="text" id="speech-input"> <input class="normal" type="button" value="Say" id="speech-button"></div>
 							</div>
 						</div>
-						<div class="smaller" id="vibration-status">&nbsp;</div>
+						<div class="smaller">&nbsp;</div>
 						<div class="smaller"><a href="https://mdn.github.io/web-speech-api/speech-color-changer/" target="_blank" rel="noopener">https://mdn.github.io/web-speech-api/speech-color-changer/</a></div>
 					</section>
 					<section class="footer">
@@ -1152,9 +1265,11 @@ navigator.share({
 						}
 					}
 					
-					window.speechSynthesis.addEventListener('voiceschanged', (event) => {
-						fillOptions();
-					});
+					if (window.speechSynthesis.addEventListener) {
+						window.speechSynthesis.addEventListener('voiceschanged', (event) => {
+							fillOptions();
+						});
+					}
 					fillOptions();
 
 					document.getElementById('speech-button').addEventListener('click', (event) => {
@@ -1211,7 +1326,77 @@ navigator.share({
 				}
 
 				// Network Information API
-				document.getElementById('network-info-status').textContent = 'Effective network: ' + navigator.connection.effectiveType;
+				if (navigator.connection) {
+					document.getElementById('network-info-status').textContent = 'Effective network: ' + navigator.connection.effectiveType;
+				}
+
+				// Service Worker
+				if ('serviceWorker' in navigator) {
+					const urlBase64ToUint8Array = (base64String) => {
+						const padding = '='.repeat((4 - base64String.length % 4) % 4);
+						const base64 = (base64String + padding)
+							.replace(/\-/g, '+')
+							.replace(/_/g, '/');
+
+						const rawData = window.atob(base64);
+						const outputArray = new Uint8Array(rawData.length);
+
+						for (let i = 0; i < rawData.length; ++i) {
+							outputArray[i] = rawData.charCodeAt(i);
+						}
+						return outputArray;
+					}
+
+					//Public Key: BIuCCzjNykFFISt93kuCRBhHW1k7PHmW8qzgaMf4QnyAl3uee2cetZDqE4MQOptLGArxTWrlgqcoKAKw0W4Uv-8
+					const applicationServerPublicKey = 'BIuCCzjNykFFISt93kuCRBhHW1k7PHmW8qzgaMf4QnyAl3uee2cetZDqE4MQOptLGArxTWrlgqcoKAKw0W4Uv-8';
+
+					window.addEventListener('load', () => {
+						navigator.serviceWorker.register('/sw.js').then((registration) => {
+							console.log('ServiceWorker registration successful with scope: ', registration.scope, );
+							if (registration.pushManager) {
+								registration.pushManager.getSubscription().then((subscription) => {
+									const isSubscribed = !(subscription === null);
+
+									if (isSubscribed) {
+										document.getElementById('push-subscription').textContent = JSON.stringify(subscription);
+										
+										console.log('User IS subscribed.', subscription);
+										document.getElementById('push-subscription-content').classList.remove('hidden');
+									} else {
+										console.log('User is NOT subscribed.');
+										document.getElementById('push-request-button').removeAttribute('disabled');
+										document.getElementById('push-request-button').addEventListener('click', (event) => {
+											if (isSubscribed) {
+												// TODO: Unsubscribe user
+											} else {
+												const applicationServerKey = urlBase64ToUint8Array(applicationServerPublicKey);
+												registration.pushManager.subscribe({
+													userVisibleOnly: true,
+													applicationServerKey: applicationServerKey
+												})
+												.then((newSubscription) => {
+													console.log('User is subscribed.', newSubscription);
+													document.getElementById('push-subscription').textContent = JSON.stringify(newSubscription);
+													document.getElementById('push-subscription-content').classList.remove('hidden');
+													document.getElementById('push-request-button').setAttribute('disabled', 'disabled');
+												})
+												.catch((error) => {
+													console.log('Failed to subscribe the user: ', error);
+												});
+											}
+										});
+									}
+								
+								}, (error) => {
+									console.log('ServiceWorker registration failed: ', error);
+								});
+							} else {
+								document.getElementById('push-subscription').textContent = 'PushManager not supported';
+								document.getElementById('push-subscription-content').classList.remove('hidden');
+							}
+						});
+					});
+				}
 				
 			} );
 		</script>
