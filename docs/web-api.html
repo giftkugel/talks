@@ -146,7 +146,7 @@
 									<a href="#/push-api">Push</a>
 								</div>
 								<div>
-									<a>Background Sync</a>
+									<a href="#/background-sync-api">Background Sync</a>
 								</div>
 							</div>
 						</div>
@@ -577,7 +577,7 @@ navigator.vibrate(0); // stop vibration
 					<section class="header footer title">
 						<div class="title main">Service Worker API</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API</a></div>
-						<div class="distance smaller"><a href="https://w3c.github.io/ServiceWorker/" target="_blank" rel="noopener">https://w3c.github.io/ServiceWorker/</a></div>
+						<div class="distance smaller"><a href="https://www.w3.org/TR/service-workers//" target="_blank" rel="noopener">https://www.w3.org/TR/service-workers/</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Service Worker API</div>
@@ -687,7 +687,7 @@ self.addEventListener('push', (event) => { ... }); // PushEvent
 					<section class="header footer title">
 						<div class="title main">Cache API</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/de/docs/Web/API/Cache" target="_blank" rel="noopener">https://developer.mozilla.org/de/docs/Web/API/Cache</a></div>
-						<div class="distance smaller"><a href="hhttps://w3c.github.io/ServiceWorker/#cache-objects" target="_blank" rel="noopener">https://w3c.github.io/ServiceWorker/#cache-objects</a></div>
+						<div class="distance smaller"><a href="https://www.w3.org/TR/service-workers/#cache-objects" target="_blank" rel="noopener">https://www.w3.org/TR/service-workers/#cache-objects</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Cache API</div>
@@ -735,7 +735,7 @@ cache.keys(request, options)
 					<section class="header footer title">
 						<div class="title main">Push API</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/de/docs/Web/API/Push_API" target="_blank" rel="noopener">https://developer.mozilla.org/de/docs/Web/API/Push_API</a></div>
-						<div class="distance smaller"><a href="https://w3c.github.io/push-api/" target="_blank" rel="noopener">https://w3c.github.io/push-api/</a></div>
+						<div class="distance smaller"><a href="https://www.w3.org/TR/push-api/" target="_blank" rel="noopener">https://www.w3.org/TR/push-api/</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Push API</div>
@@ -836,6 +836,51 @@ webpush.sendNotification(subscription, text);
 						<div class="header before">Push API</div>
 						<div class="title distance">Browser compatibility</div>
 						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😍<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😵<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section id="background-sync-api">
+					<section class="header footer title">
+						<div class="title main">Background Sync API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/SyncManager" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/SyncManager</a></div>
+						<div class="distance smaller"><a href="http://wicg.github.io/BackgroundSync/spec/" target="_blank" rel="noopener">http://wicg.github.io/BackgroundSync/spec/</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Background Sync API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Provides a synchronization event for the Service Worker</div>
+							</div>
+							<div class="distance fragment">
+								<div>Unlike <a href="#/navigator-online-api">NavigatorOnline</a>, the event can also be triggered when the page is not open</div>
+							</div>
+							<div class="distance fragment">
+								<div>Will be triggered instant, or when the device regains connectivity</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Background Sync API</div>
+						<div class="row">
+							<div>Snippet (Registration)</div>
+							<pre><code class="javascript stretch">
+navigator.serviceWorker.register('/sw.js').then((registration) => {
+	registration.sync.register('web-api-sync');
+});
+							</code></pre>
+							<div>Snippet (Service Worker usage)</div>
+							<pre><code class="javascript stretch">
+self.addEventListener('sync', (event) => {
+	if (event.tag === 'web-api-sync') {
+		/* do sync stuff */
+	}
+});
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Background Sync API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;🤓<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;🤓<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
 					</section>
 				</section>
 				<section id="web-speech-api">
@@ -1352,7 +1397,9 @@ navigator.share({
 
 					window.addEventListener('load', () => {
 						navigator.serviceWorker.register('/sw.js').then((registration) => {
-							console.log('ServiceWorker registration successful with scope: ', registration.scope, );
+							console.log('ServiceWorker registration successful with scope: ', registration.scope);
+
+							// Push API
 							if (registration.pushManager) {
 								registration.pushManager.getSubscription().then((subscription) => {
 									const isSubscribed = !(subscription === null);
@@ -1393,6 +1440,13 @@ navigator.share({
 							} else {
 								document.getElementById('push-subscription').textContent = 'PushManager not supported';
 								document.getElementById('push-subscription-content').classList.remove('hidden');
+							}
+
+							// Background Sync
+							if (registration.sync) {
+								registration.sync.register('web-api-sync');
+							} else {
+								console.log('Background Sync not available');
 							}
 						});
 					});
