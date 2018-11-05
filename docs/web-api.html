@@ -67,6 +67,15 @@
 					</section>
 				</section>
 				<section>
+						<section class="footer">
+							<div class="header before">Back in the days</div>
+							<div class="distance"><a href="https://get.adobe.com/de/flashplayer/" target="_blank" rel="noopener">There was Adobe Flash</a> <a href="https://www.apple.com/hotnews/thoughts-on-flash/" class="small" target="_blank" rel="noopener">(Thoughts on Flash)</a></div>
+							<div class="distance fragment"><a href="https://docs.oracle.com/javase/tutorial/deployment/applet/index.html" target="_blank" rel="noopener">and Java Applets</a></div>
+							<div class="distance fragment">
+								<div class="distance"><a href="https://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5">Mark Zuckerberg: Our Biggest Mistake Was Betting Too Much On HTML5</a></div>
+								<div class="fragment"><img src="images/omg-doggo.gif" /></div>
+							</div>
+						</section>
 					<section class="header footer title">
 						<div class="title main">The Web-Browser as runtime environment</div>
 						<div class="distance fragment">with standardized APIs</div>
@@ -79,15 +88,6 @@
 					<section class="footer header">
 						<div class="title">Web-APIs</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/kab/docs/Web/API" target="_blank" rel="noopener">https://developer.mozilla.org/kab/docs/Web/API</a></div>
-					</section>
-					<section class="footer">
-						<div class="header before">Back in the days</div>
-						<div class="distance"><a href="https://get.adobe.com/de/flashplayer/" target="_blank" rel="noopener">There was Adobe Flash</a> <a href="https://www.apple.com/hotnews/thoughts-on-flash/" class="small" target="_blank" rel="noopener">(Thoughts on Flash)</a></div>
-						<div class="distance fragment"><a href="https://docs.oracle.com/javase/tutorial/deployment/applet/index.html" target="_blank" rel="noopener">and Java Applets</a></div>
-						<div class="distance fragment">
-							<div class="distance"><a href="https://techcrunch.com/2012/09/11/mark-zuckerberg-our-biggest-mistake-with-mobile-was-betting-too-much-on-html5">Mark Zuckerberg: Our Biggest Mistake Was Betting Too Much On HTML5</a></div>
-							<div class="fragment"><img src="images/omg-doggo.gif" /></div>
-						</div>
 					</section>
 				</section>
 				<section>
@@ -706,6 +706,26 @@ self.addEventListener('push', (event) => { ... }); // PushEvent
 							</div>
 						</div>
 					</section>
+					<section class="footer">
+						<div class="header before">Cache API</div>
+						<div class="row aligned">
+							<div>
+								<div class="center distance">
+									<img class="bigger" src="images/svg/130.svg">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="icon rotating bigger" src="images/svg/ic_settings_black_48px.svg" style="position: relative; top: 0.3em;" alt="Service Worker">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="bigger" src="images/svg/005.svg" style="position: relative; top: 0.3em;">
+								</div>
+								<div class="center distance">
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; left: 0.05em; transform: rotate(90deg);">&nbsp;
+								</div>
+								<div class="center">
+									<img class="icon big" src="images/svg/338.svg" style="position: relative; left: 0.05em">&nbsp;
+								</div>
+							</div>
+						</div>
+					</section>
 					<section class="footer top">
 						<div class="header before">Cache API</div>
 						<div class="row">
@@ -745,6 +765,20 @@ cache.keys(request, options)
 						<div class="row">
 							<div class="distance">
 								<div>Provides the ability to receive messages pushed from a server</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Push API</div>
+						<div class="row aligned">
+							<div>
+								<div class="center distance">
+									<img class="bigger" src="images/svg/130.svg">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="icon rotating bigger" src="images/svg/ic_settings_black_48px.svg" style="position: relative; top: 0.3em;" alt="Service Worker">&nbsp;
+									<img class="icon big" src="images/svg/ic_compare_arrows_black_48px.svg" style="position: relative; top: -0.2em;">&nbsp;
+									<img class="bigger" src="images/svg/028.svg" style="position: relative; top: 0.3em;">
+								</div>
 							</div>
 						</div>
 					</section>
@@ -1266,12 +1300,21 @@ navigator.share({
 					} else if (Notification.permission !== 'denied') {
 						requestButton.removeAttribute('disabled');
 						requestButton.onclick = () => {
-							Notification.requestPermission().then(function (permission) {
-								if (permission === "granted") {
-									notifyButton.removeAttribute('disabled');
-									requestButton.setAttribute('disabled', 'disabled');
-								}
-							});
+							try {
+								Notification.requestPermission().then(function (permission) {
+									if (permission === "granted") {
+										notifyButton.removeAttribute('disabled');
+										requestButton.setAttribute('disabled', 'disabled');
+									}
+								});
+							} catch (error) {
+								Notification.requestPermission(function (permission) {
+									if (permission === "granted") {
+										notifyButton.removeAttribute('disabled');
+										requestButton.setAttribute('disabled', 'disabled');
+									}
+								});
+							}
 						};
 					}
 				}
