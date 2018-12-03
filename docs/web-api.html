@@ -175,7 +175,7 @@
 									<a href="#/web-bluetooth-api">Web Bluetooth</a>
 								</div>
 								<div class="experimental">
-									<a href="https://developer.mozilla.org/en-US/docs/Web/API/USB" target="_blank" rel="noopener">Web USB</a>
+									<a href="#/web-usb-api">Web USB</a>
 								</div>
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API" target="_blank" rel="noopener">Web Audio</a>
@@ -1109,6 +1109,41 @@ navigator.share({
 						<div class="column">Currently only Chrome on Android</div>
 					</section>
 				</section>
+				<section id="web-usb-api">
+					<section class="header footer title">
+						<div class="title main">Web USB API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/USB" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/USB</a></div>
+						<div class="distance smaller"><a href="https://wicg.github.io/webusb/" target="_blank" rel="noopener">hhttps://wicg.github.io/webusb/</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Web USB API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Provides the ability to connect and interact with USB peripherals</div>
+							</div>
+							<div class="distance">
+								<div><input id="web-usb-button" disabled="disabled" type="button" class="normal" value="Connect" /></div>
+							</div>
+							<div class="distance">
+								<div id="web-usb-info"></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Web USB API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+navigator.usb.getDevices()
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Web USB API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😵<img class="distance" src="images/opera_128x128.png">&nbsp;😵<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
 				<section>
 					<section class="footer">
 						<div class="header before">Thank you for listening</div>
@@ -1452,6 +1487,37 @@ navigator.share({
 					document.getElementById('network-info-status').textContent = 'Effective network: ' + navigator.connection.effectiveType;
 				} else {
 					document.getElementById('network-info-status').textContent = 'Effective network: not supported';
+				}
+
+				// Web USB
+				if (navigator.usb) {
+					document.getElementById('web-usb-button').removeAttribute('disabled');
+					navigator.usb.getDevices().then(devices => {
+						console.log(devices);
+						document.getElementById('web-usb-info').textContent = 'Found: ' + devices[0].productName;
+					}).catch(error => {
+						console.error(error);
+					});
+					navigator.usb.addEventListener('connect', event => {
+						console.log(event);
+					});
+					document.getElementById('web-usb-button').addEventListener('click', () => {
+						
+
+						let device;
+						try {
+							device = navigator.usb.requestDevice({ filters: [{
+								vendorId: 0x046d,
+								productId: 0xc01e
+							}]}).then(device => {
+								console.log(device);
+								document.getElementById('web-usb-info').textContent = 'Found: ' + device.productName;
+							});
+						} catch (err) {
+							// No device was selected.
+						}
+					});
+					
 				}
 
 				// Service Worker
