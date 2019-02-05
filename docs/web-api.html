@@ -1491,30 +1491,75 @@ navigator.usb.getDevices()
 
 				// Web USB
 				if (navigator.usb) {
+					function setUSBonSlide(device) {
+						document.getElementById('web-usb-info').textContent = 'Found: ' + device.productName + '/' + device.manufacturerName;
+						document.getElementById('web-usb-button').setAttribute('value', 'Use');
+						document.getElementById('web-usb-button').setAttribute('disabled', 'disabled');
+					}
+
 					document.getElementById('web-usb-button').removeAttribute('disabled');
+
+					let device = null;
 					navigator.usb.getDevices().then(devices => {
-						console.log(devices);
-						document.getElementById('web-usb-info').textContent = 'Found: ' + devices[0].productName;
+						if (devices.length > 0) {
+							device = devices[0];
+							setUSBonSlide(device);
+							
+						}
 					}).catch(error => {
-						console.error(error);
+						console.error('web-usb', error);
 					});
 					navigator.usb.addEventListener('connect', event => {
-						console.log(event);
+						console.log('web-usb-event', event);
+						if (event.type === 'connect') {
+							device = event.device;
+							setUSBonSlide(device);
+						}
+					});
+					navigator.usb.addEventListener('disconnect ', event => {
+						console.log('web-usb-event', event);
+						if (event.type === 'disconnect ') {
+							device = null;
+							document.getElementById('web-usb-info').textContent = '';
+							document.getElementById('web-usb-button').setAttribute('value', 'Connect');
+							document.getElementById('web-usb-button').removeAttribute('disabled');
+						}
 					});
 					document.getElementById('web-usb-button').addEventListener('click', () => {
-						
-
-						let device;
 						try {
-							device = navigator.usb.requestDevice({ filters: [{
-								vendorId: 0x046d,
-								productId: 0xc01e
-							}]}).then(device => {
-								console.log(device);
-								document.getElementById('web-usb-info').textContent = 'Found: ' + device.productName;
-							});
-						} catch (err) {
-							// No device was selected.
+							if (device === null) {
+								// micro:bit (3368, 516)
+								device = navigator.usb.requestDevice({ 
+									filters: [{
+										vendorId: 3368,
+										productId: 516
+									}]
+								})
+								.then(selectedDevice  => {
+									device = selectedDevice;
+									setUSBonSlide(selectedDevice);
+								})
+								.catch(error => { console.error('web-usb', error); });
+							} else {
+								console.log('web-usb use:', device);
+
+								device.open().then(() => {
+									if (device.configuration === null) {
+										device.selectConfiguration(0).then(() => {
+											console.log('web-usb config selected now!');
+										})
+										.catch(error => { console.error('web-usb', error); });;
+									} else {
+										console.log('web-usb config selected');
+										device.claimInterface(3).then(() => {
+											console.log('web-usb interface selected');
+										})
+										.catch(error => { console.error('web-usb', error); });;
+									}
+								});
+							}
+						} catch (error) {
+							console.error('web-usb', error);
 						}
 					});
 					
