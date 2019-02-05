@@ -83,7 +83,7 @@
 						</div>
 					</section>
 					<section class="header footer title">
-						<div class="title main">Web browser as runtime environment</div>
+						<div class="title main">Web browser as "runtime environment"</div>
 						<div class="distance fragment">with standardized APIs</div>
 						<div class="fragment"><img src="images/love.gif" /></div>
 					</section>
@@ -187,7 +187,7 @@
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API" target="_blank" rel="noopener">Payment Request</a>
 								</div>
 								<div class="experimental">
-									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API" target="_blank" rel="noopener">Credential Management</a>
+									<a href="#/web-credentials-api" target="_blank" rel="noopener">Credential Management</a>
 								</div>
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API" target="_blank" rel="noopener">WebRTC</a>
@@ -1048,7 +1048,7 @@ let options = {
 	optionalServices: ['battery_service']
 }
 	
-navigator.bluetooth.requestDevice([options]).then(function(bluetoothDevice) { ... })
+navigator.bluetooth.requestDevice([options]).then((bluetoothDevice) => { ... })
 							</code></pre>
 						</div>
 					</section>
@@ -1106,14 +1106,14 @@ navigator.share({
 					<section class="footer">
 						<div class="header before">Web Share API</div>
 						<div class="title distance">Browser compatibility</div>
-						<div class="column">Currently only Chrome on Android</div>
+						<div class="column">Currently only in Chrome on Android, on the way for&nbsp;<a href="https://twitter.com/viticci/status/1089222768976187393/" target="_blank" rel="noopener">iOS (12.2)</a></div>
 					</section>
 				</section>
 				<section id="web-usb-api">
 					<section class="header footer title">
 						<div class="title main">Web USB API</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/USB" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/USB</a></div>
-						<div class="distance smaller"><a href="https://wicg.github.io/webusb/" target="_blank" rel="noopener">hhttps://wicg.github.io/webusb/</a></div>
+						<div class="distance smaller"><a href="https://wicg.github.io/webusb/" target="_blank" rel="noopener">https://wicg.github.io/webusb/</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Web USB API</div>
@@ -1134,14 +1134,108 @@ navigator.share({
 						<div class="row">
 							<div>Snippet</div>
 							<pre><code class="javascript stretch">
-navigator.usb.getDevices()
+// Request USB device
+device = navigator.usb.requestDevice({ 
+	filters: [{
+		vendorId: 3368,
+		productId: 516
+	}]
+}).then((devices) => { ... });
+
+// Get already requested devices
+navigator.usb.getDevices().then((requestedDevice) => { ... });
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Web USB API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+device.open()
+.then(() => device.selectConfiguration(1)) // Select configuration #1 for the device.
+.then(() => device.claimInterface(2)) // Request exclusive control over interface #2.
+.then(() => device.controlTransferOut({ options })) // Ready to receive data
+.then(() => device.transferIn(5, 64)) // Waiting for 64 bytes of data from endpoint #5.
+.then(result => { ... })
+.catch(error => { console.log(error); });
 							</code></pre>
 						</div>
 					</section>
 					<section class="footer">
 						<div class="header before">Web USB API</div>
+						<div class="title distance">Further reading</div>
+						<div class="distance"><a href="https://developers.google.com/web/updates/2016/03/access-usb-devices-on-the-web" target="_blank" rel="noopener">https://developers.google.com/web/updates/2016/03/access-usb-devices-on-the-web</a></div>
+						<div><a href="https://github.com/webusb/arduino" target="_blank" rel="noopener">https://github.com/webusb/arduino</a></div>
+					</section>
+					<section class="footer">
+						<div class="header before">Web USB API</div>
 						<div class="title distance">Browser compatibility</div>
 						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😵<img class="distance" src="images/opera_128x128.png">&nbsp;😵<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
+					</section>
+				</section>
+				<section id="web-credentials-api">
+					<section class="header footer title">
+						<div class="title main">Credential Management API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API</a></div>
+						<div class="distance smaller"><a href="https://w3c.github.io/webappsec-credential-management/" target="_blank" rel="noopener">https://w3c.github.io/webappsec-credential-management/</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Credential Management API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Provides a programmatic interface to the browser's credential management</div>
+							</div>
+							<div class="distance">
+								<div><input id="web-credentials-store-button" disabled="disabled" type="button" class="normal" value="Store" />&nbsp;<input id="web-credentials-login-button" disabled="disabled" type="button" class="normal" value="Login" /></div>
+							</div>
+							<div class="distance">
+								<div id="web-credentials-info"></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Credential Management API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+// Store credentials
+navigator.credentials.create({
+	password: {
+		id: 'username',
+		name: 'display name',
+		iconURL: 'https://www.example.com/icon.jpg',
+		password: 'secret'
+	}
+}).then(() => { ... });
+
+// Request credentials
+navigator.credentials.get({
+	password: true,
+	mediation: 'optional'
+}).then(passwordCredential => { ... });
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+							<div class="header before">Credential Management API</div>
+							<div class="distance">
+								<div class="small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential" target="_blank" rel="noopener">PasswordCredential</a></div>
+								<div class="smaller">User &amp; password</div>
+							</div>
+							<div class="distance">
+								<div class="small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential" target="_blank" rel="noopener">FederatedCredential</a></div>
+								<div class="smaller">e.g. OpenID Connect</div>
+							</div>
+							<div class="distance">
+								<div class="small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential" target="_blank" rel="noopener">PublicKeyCredential</a></div>
+								<div class="smaller">Public key</div>
+							</div>
+						</section>
+					<section class="footer">
+						<div class="header before">Credential Management API</div>
+						<div class="title distance">Browser compatibility</div>
+						<div class="column">😍<img class="distance" src="images/chrome_128x128.png">&nbsp;😵<img class="distance" src="images/firefox_128x128.png">&nbsp;😵<img class="distance" src="images/safari_128x128.png">&nbsp;😍<img class="distance" src="images/opera_128x128.png">&nbsp;😵<img style="opacity: 0.5" class="" src="images/edge_128x128.png"></div>
 					</section>
 				</section>
 				<section>
@@ -1548,13 +1642,13 @@ navigator.usb.getDevices()
 										device.selectConfiguration(0).then(() => {
 											console.log('web-usb config selected now!');
 										})
-										.catch(error => { console.error('web-usb', error); });;
+										.catch(error => { console.error('web-usb', error); });
 									} else {
 										console.log('web-usb config selected');
 										device.claimInterface(3).then(() => {
 											console.log('web-usb interface selected');
 										})
-										.catch(error => { console.error('web-usb', error); });;
+										.catch(error => { console.error('web-usb', error); });
 									}
 								});
 							}
@@ -1563,6 +1657,40 @@ navigator.usb.getDevices()
 						}
 					});
 					
+				}
+
+				// Web USB
+				if (navigator.credentials) {
+					document.getElementById('web-credentials-store-button').removeAttribute('disabled');
+				
+					document.getElementById('web-credentials-store-button').addEventListener('click', event => {
+						const suffix =  + Date.now();
+						navigator.credentials.create({
+							password: {
+								id: 'foo.' + suffix,
+								name: 'Mr Foo!',
+								iconURL: 'https://giftkugel.github.io/talks/images/profile.jpg',
+								password: 'bar.' + suffix
+							}
+						}).then(creds => {	
+							navigator.credentials.store(creds).then(() => {
+								document.getElementById('web-credentials-info').textContent = "";
+								document.getElementById('web-credentials-login-button').removeAttribute('disabled');
+							});
+						});		
+					});
+
+					document.getElementById('web-credentials-login-button').addEventListener('click', event => {
+						navigator.credentials.get({
+							password: true,
+							mediation: 'optional'
+						}).then(passwordCredential => {
+							if (passwordCredential) {
+								document.getElementById('web-credentials-info').textContent = 'User: ' + passwordCredential.id + "/" + passwordCredential.password;
+								console.log(passwordCredential);
+							}
+						});
+					});
 				}
 
 				// Service Worker
