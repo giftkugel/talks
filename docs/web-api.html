@@ -330,13 +330,13 @@ if (navigator.getBattery) {
 		// battery.level (0 - 1)
 		// battery.charging (true, false)
 
-		battery.addEventListener('chargingchange', (event) => {});
+		battery.addEventListener('chargingchange', function(event) { this ... });
 
-		battery.addEventListener('levelchange', (event) => {});
+		battery.addEventListener('levelchange', function(event) { this ... });
 
-		battery.addEventListener('chargingtimechange', (event) => {});
+		battery.addEventListener('chargingtimechange', function(event) { this ... });
 
-		battery.addEventListener('dischargingtimechange', f(event) => {});
+		battery.addEventListener('dischargingtimechange', function(event) { this ... });
 	});
 }
 								</code></pre>
@@ -1415,17 +1415,17 @@ navigator.credentials.create({
 				// Battery
 				if (navigator.getBattery) {
 					navigator.getBattery().then((battery) => {
-						const updateChargeInfo = function() {
-							document.getElementById('battery-charging').textContent = 'Charging: ' + (battery.charging ? 'Yes' : 'No');
+						const updateChargeInfo = function(event) {
+							document.getElementById('battery-charging').textContent = 'Charging: ' + (this.charging ? 'Yes' : 'No');
 						}
 
-						const updateLevelInfo = function() {
-							document.getElementById('battery-status').textContent = 'Current charge level: ' + battery.level*100 + '%';
+						const updateLevelInfo = function(event) {
+							document.getElementById('battery-status').textContent = 'Current charge level: ' + this.level*100 + '%';
 						}
-						updateChargeInfo();
-						updateLevelInfo();
-						battery.addEventListener('chargingchange', (event) => updateChargeInfo());
-						battery.addEventListener('levelchange', (event) => updateLevelInfo()); 
+						updateChargeInfo.call(battery);
+						updateLevelInfo.call(battery);
+						battery.addEventListener('chargingchange', updateChargeInfo);
+						battery.addEventListener('levelchange', updateLevelInfo); 
 					});
 				} else {
 					document.getElementById('battery-status').textContent = 'Current charge level: Not supported';
