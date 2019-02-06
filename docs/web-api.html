@@ -1199,7 +1199,31 @@ device.open()
 						<div class="row">
 							<div>Snippet</div>
 							<pre><code class="javascript stretch">
-// Store credentials
+// Create credentials
+const pc = new PasswordCredential({
+	id: 'username',
+	name: 'display name',
+	iconURL: 'https://www.example.com/icon.jpg',
+	password: 'secret'
+});	
+
+// Store
+navigator.credentials.store(pc).then(() => { ... });	
+
+// Request credentials
+navigator.credentials.get({
+	password: true,
+	mediation: 'optional'
+}).then(passwordCredential => { ... });
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Credential Management API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+// Create credentials
 navigator.credentials.create({
 	password: {
 		id: 'username',
@@ -1207,13 +1231,7 @@ navigator.credentials.create({
 		iconURL: 'https://www.example.com/icon.jpg',
 		password: 'secret'
 	}
-}).then(() => { ... });
-
-// Request credentials
-navigator.credentials.get({
-	password: true,
-	mediation: 'optional'
-}).then(passwordCredential => { ... });
+}).then((pc) => { ... store ... });
 							</code></pre>
 						</div>
 					</section>
@@ -1660,25 +1678,22 @@ navigator.credentials.get({
 					
 				}
 
-				// Web USB
-				if (navigator.credentials) {
+				// Credentials Managements
+				if (navigator.credentials && window.PasswordCredential) {
 					document.getElementById('web-credentials-store-button').removeAttribute('disabled');
 				
 					document.getElementById('web-credentials-store-button').addEventListener('click', event => {
 						const suffix =  + Date.now();
-						navigator.credentials.create({
-							password: {
-								id: 'foo.' + suffix,
-								name: 'Mr Foo!',
-								iconURL: 'https://giftkugel.github.io/talks/images/profile.jpg',
-								password: 'bar.' + suffix
-							}
-						}).then(creds => {	
-							navigator.credentials.store(creds).then(() => {
-								document.getElementById('web-credentials-info').textContent = "";
-								document.getElementById('web-credentials-login-button').removeAttribute('disabled');
-							});
-						});		
+						const pc = new PasswordCredential({
+							id: 'foo.' + suffix,
+							name: 'Mr Foo!',
+							iconURL: 'https://giftkugel.github.io/talks/images/profile.jpg',
+							password: 'bar.' + suffix
+						});	
+						navigator.credentials.store(pc).then(() => {
+							document.getElementById('web-credentials-info').textContent = "";
+							document.getElementById('web-credentials-login-button').removeAttribute('disabled');
+						});	
 					});
 
 					document.getElementById('web-credentials-login-button').addEventListener('click', event => {
