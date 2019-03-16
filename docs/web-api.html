@@ -201,7 +201,7 @@
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events" target="_blank" rel="noopener">Server-Sent Events</a>
 								</div>
 								<div>
-									<a href="https://w3c.github.io/server-timing/" target="_blank" rel="noopener">Server Timing</a>
+									<a href="#/server-timing-api">Server Timing</a>
 								</div>
 								<div>
 									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API" target="_blank" rel="noopener">Navigation Timing</a>
@@ -1150,7 +1150,7 @@ navigator.bluetooth.requestDevice([options]).then((bluetoothDevice) => { ... })
 					<section class="header footer title">
 						<div class="title main">Web Share API</div>
 						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share</a></div>
-						<div class="distance smaller"><a href="https://wicg.github.io/web-share/" target="_blank" rel="noopener">hhttps://wicg.github.io/web-share/</a></div>
+						<div class="distance smaller"><a href="https://wicg.github.io/web-share/" target="_blank" rel="noopener">https://wicg.github.io/web-share/</a></div>
 					</section>
 					<section class="footer left">
 						<div class="header before">Web Share API</div>
@@ -1373,6 +1373,66 @@ navigator.credentials.create({
 						</div>
 					</section>
 				</section>
+				<section id="server-timing-api">
+					<section class="header footer title">
+						<div class="title main">Server-Timing API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server-Timing" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Server-Timing</a></div>
+						<div class="distance smaller"><a href="https://w3c.github.io/server-timing/#the-server-timing-header-field" target="_blank" rel="noopener">https://w3c.github.io/server-timing/#the-server-timing-header-field</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Server-Timing API</div>
+						<div class="row">
+								<div class="distance">
+								<div>The Server-Timing header communicates one or more metrics and descriptions for a given request-response cycle.</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Server-Timing API</div>
+						<div class="row">
+							<div>Definition</div>
+							<pre><code class="javascript stretch">
+Server-Timing             = #server-timing-metric
+server-timing-metric      = metric-name *( OWS ";" OWS server-timing-param )
+metric-name               = token
+server-timing-param       = server-timing-param-name OWS "=" OWS server-timing-param-value
+server-timing-param-name  = token
+server-timing-param-value = token / quoted-string
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Server-Timing API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+HTTP/1.1 200 OK
+...
+Server-Timing: longtask; dur=5000.4277; desc="The long task is running"
+							</code></pre>
+						</div>
+					</section>
+					<section class="header footer">
+						<div class="row">
+							<div>Dev-Tools</div>
+							<div class="middle">
+								<img class="sub" src="images/server-timing.png">
+							</div>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Server-Timing API</div>
+						<div class="title">Browser compatibility</div>
+						<div class="small distance">... it's a HTTP header ...</div>
+						<div class="column ciu_embed" data-feature="server-timing" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+							<a href="https://caniuse.com/#feat=server-timing">
+								<picture>
+									<img src="images/server-timing-2019-3-16.png">
+								</picture>
+							</a>
+						</div>
+					</section>
+				</section>
 				<section>
 					<section class="footer">
 						<div class="header before">Thank you for listening</div>
@@ -1447,37 +1507,37 @@ navigator.credentials.create({
 				]
 			});
 			Reveal.addEventListener('ready', function( event ) {
-				var slides = document.querySelectorAll('.reveal .slides section');
-				var header = document.querySelector('.extras .header');
-				var footer = document.querySelector('.extras .footer');
+				const slides = document.querySelectorAll('.reveal .slides section');
+				const header = document.querySelector('.extras .header');
+				const footer = document.querySelector('.extras .footer');
 
-				for (var i = 0; i < slides.length; i++) {
-					var slide = slides[i];
-					var children = slide.childNodes;
-					for (var j = 0; j < children.length; j++) {
-						var child = children[j];
+				for (let i = 0; i < slides.length; i++) {
+					const slide = slides[i];
+					const children = slide.childNodes;
+					for (let j = 0; j < children.length; j++) {
+						const child = children[j];
 						if (child.nodeName === 'SECTION') {
 							slide.skip = true;
 						}
 					}
 				}
 
-				for (var i = 0; i < slides.length; i++) {
-					var slide = slides[i];
+				for (let i = 0; i < slides.length; i++) {
+					const slide = slides[i];
 					if (slide.skip) {
 						slide.classList.add('wrapper')
 						continue;
 					}
 					slide.classList.add('slide')
-					var newChildren = [];
-					var before = [];
-					var after = [];
-					var addHeaderClass = false;
-					var addFooterClass = false;
+					const newChildren = [];
+					const before = [];
+					const after = [];
+					let addHeaderClass = false;
+					let addFooterClass = false;
 					while (slide.firstChild) {
-						var childNode = slide.removeChild(slide.firstChild);
-						var newChildNode = childNode.cloneNode(true);
-						var wrap = !(newChildNode.classList && (newChildNode.classList.contains('header') || newChildNode.classList.contains('footer')));
+						const childNode = slide.removeChild(slide.firstChild);
+						const newChildNode = childNode.cloneNode(true);
+						const wrap = !(newChildNode.classList && (newChildNode.classList.contains('header') || newChildNode.classList.contains('footer')));
 						if (wrap) {
 							newChildren.push(newChildNode);
 						} else {
@@ -1493,30 +1553,30 @@ navigator.credentials.create({
 					}
 
 					if (slide.classList.contains('header')) {
-						var newHeader = header.cloneNode(true);
+						const newHeader = header.cloneNode(true);
 						slide.appendChild(newHeader);
 					}
 
-					for (var j = 0; j < before.length; j++) {
-						var childNode = before[j];
+					for (let j = 0; j < before.length; j++) {
+						const childNode = before[j];
 						slide.appendChild(childNode);
 					}
 					
-					var content = document.createElement('div');
+					const content = document.createElement('div');
 					content.classList.add("content");
-					for (var j = 0; j < newChildren.length; j++) {
-						var childNode = newChildren[j];
+					for (let j = 0; j < newChildren.length; j++) {
+						const childNode = newChildren[j];
 						content.appendChild(childNode);
 					}
 					slide.appendChild(content);
 
-					for (var j = 0; j < after.length; j++) {
-						var childNode = after[j];
+					for (let j = 0; j < after.length; j++) {
+						const childNode = after[j];
 						slide.appendChild(childNode);
 					}
 
 					if (slide.classList.contains('footer')) {
-						var newFooter = footer.cloneNode(true);
+						const newFooter = footer.cloneNode(true);
 						slide.appendChild(newFooter);
 					}
 					
@@ -1831,6 +1891,12 @@ navigator.credentials.create({
 						});
 					});
 				}
+
+				// Server Timing API on localhost/expressjs
+				if (window.location.host === 'localhost:3000') {
+					fetch('longtask'); // Ignore result
+					fetch('shorttask'); // Ignore result
+				} 
 
 				// Service Worker
 				if ('serviceWorker' in navigator) {
