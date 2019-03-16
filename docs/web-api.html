@@ -204,7 +204,7 @@
 									<a href="#/server-timing-api">Server Timing</a>
 								</div>
 								<div>
-									<a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API" target="_blank" rel="noopener">Navigation Timing</a>
+									<a href="#/navigation-timing-api">Navigation Timing</a>
 								</div>
 								<div>
 									<a href="https://www.w3.org/TR/generic-sensor/" target="_blank" rel="noopener">Generic Sensor</a>
@@ -1382,8 +1382,11 @@ navigator.credentials.create({
 					<section class="footer left">
 						<div class="header before">Server-Timing API</div>
 						<div class="row">
-								<div class="distance">
-								<div>The Server-Timing header communicates one or more metrics and descriptions for a given request-response cycle.</div>
+							<div class="distance">
+								<div>Adds Server-Timing header to HTTP response</div>
+							</div>
+							<div class="distance">
+								<div>The Server-Timing header communicates one or more metrics and descriptions for a given request-response cycle</div>
 							</div>
 						</div>
 					</section>
@@ -1428,6 +1431,59 @@ Server-Timing: longtask; dur=5000.4277; desc="The long task is running"
 							<a href="https://caniuse.com/#feat=server-timing">
 								<picture>
 									<img src="images/server-timing-2019-3-16.png">
+								</picture>
+							</a>
+						</div>
+					</section>
+				</section>
+				<section id="navigation-timing-api">
+					<section class="header footer title">
+						<div class="title main">Navigation Timing API</div>
+						<div class="distance small"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/Navigation_timing_API</a></div>
+						<div class="distance smaller"><a href="https://www.w3.org/TR/navigation-timing/" target="_blank" rel="noopener">https://www.w3.org/TR/navigation-timing/</a></div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Navigation Timing API</div>
+						<div class="row">
+							<div class="distance">
+								<div>Provides data that can be used to measure the performance of a web site on the client</div>
+							</div>
+						</div>
+					</section>
+					<section class="footer left">
+						<div class="header before">Navigation Timing API</div>
+						<div class="row">
+							<div class="distance">
+								<div id="nav-timing-domcontent"></div>
+								<div id="nav-timing-domcomplete"></div>
+							</div>
+						</div>
+					</section>
+					<section class="footer top">
+						<div class="header before">Navigation Timing API</div>
+						<div class="row">
+							<div>Snippet</div>
+							<pre><code class="javascript stretch">
+const perfEntries = window.performance.getEntriesByType("navigation");
+// PerformanceNavigationTiming
+perfEntries[0].connectStart
+perfEntries[0].connectEnd
+perfEntries[0].domComplete
+perfEntries[0].domContentLoadedEventStart
+perfEntries[0].domContentLoadedEventEnd
+perfEntries[0].loadEventStart
+perfEntries[0].loadEventEnd 
+							</code></pre>
+						</div>
+					</section>
+					<section class="footer">
+						<div class="header before">Navigation Timing API</div>
+						<div class="title">Browser compatibility</div>
+						<div class="small distance">Level 1 vs Level 2?</div>
+						<div class="column ciu_embed" data-feature="nav-timing" data-periods="future_1,current,past_1,past_2" data-accessible-colours="false">
+							<a href="https://caniuse.com/#feat=nav-timing">
+								<picture>
+									<img src="images/nav-timing-2019-3-16.png">
 								</picture>
 							</a>
 						</div>
@@ -1892,11 +1948,28 @@ Server-Timing: longtask; dur=5000.4277; desc="The long task is running"
 					});
 				}
 
-				// Server Timing API on localhost/expressjs
+				// Server-Timing API only on localhost/expressjs
 				if (window.location.host === 'localhost:3000') {
 					fetch('longtask'); // Ignore result
 					fetch('shorttask'); // Ignore result
-				} 
+				}
+
+				// Navigation Timing API
+				if (window.performance) {
+					window.addEventListener("load", function load(event) {
+						window.removeEventListener("load", load, false);
+						
+						const perfEntries = performance.getEntriesByType("navigation");
+
+						for (let i=0; i < perfEntries.length; i++) {
+							const perfEntry = perfEntries[i];
+							console.log("performance entry", perfEntry);
+							document.getElementById('nav-timing-domcontent').textContent = "DOM content loaded = " + (perfEntry.domContentLoadedEventEnd - perfEntry.domContentLoadedEventStart).toFixed(2) + "ms";
+							document.getElementById('nav-timing-domcomplete').textContent = "DOM complete = " + perfEntry.domComplete.toFixed(2) + "ms";
+						}
+
+					});
+				}
 
 				// Service Worker
 				if ('serviceWorker' in navigator) {
