@@ -21,10 +21,10 @@
   },
   "homepage": "https://github.com/giftkugel/talks#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "morgan": "~1.9.0",
-    "server-timing": "~2.1.0"
+    "cookie-parser": "1.4.4",
+    "debug": "4.1.1",
+    "express": "4.17.1",
+    "morgan": "1.9.1",
+    "server-timing": "3.1.1"
   }
 }
