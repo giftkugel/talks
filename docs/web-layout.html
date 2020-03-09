@@ -1,0 +1,311 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@giftkugel" />
+		<meta name="twitter:creator" content="@giftkugel" />
+		<meta property="og:url" content="https://giftkugel.github.io/talks/" />
+		<meta property="og:title" content="Layout for the Web (Flexbox & Grid)" />
+		<meta property="og:description" content="Slides of my talk" />
+
+		<title>Layout for the Web (Flexbox & Grid)</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+		
+		<link rel="stylesheet" href="css/font.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<link rel="stylesheet" href="css/slides.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section class="header title">
+					<div class="title main big">Layout for the Web</div>
+					<div>Flexbox and Grid</div>
+					<div>&nbsp;</div>
+					<div><a class="small" href="https://giftkugel.github.io/talks/" target="_blank" rel="noopener">https://giftkugel.github.io/talks/</a></div>
+					<div><img src="images/QR.png"></div>
+				</section>
+				<section class="footer">
+					<div class="header before">About me</div>
+					<div class="column aligend">
+						<div>
+							<div><a href="https://www.karakun.com" class="invisible" target="_blank" rel="noopener"><img class="biggest" src="images/svg/karakun-logo.svg"></a></div>
+							<div class="title">Simon Skoczylas</div>
+							<div>Senior Software Engineer</div>
+							<div class="distance">&nbsp;</div>
+							<div>
+								<img class="raccoon-logo" src="images/svg/racoon.svg">
+								<div><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener"><span class="my-karakun">Karakun</span> Developer Hub</a></div>
+								<div class="smaller"><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener">https://dev.karakun.com</a></div>
+							</div>
+						</div>
+						<div>&nbsp;</div>
+						<div>&nbsp;</div>
+						<div>
+							<img src="images/profile.jpg">
+							<div class="subtext"><a class="dark" href="https://www.twitter.com/giftkugel" target="_blank" rel="noopener"><img class="text" src="images/svg/094.svg">&nbsp;giftkugel</a></div>
+							<div class="subtext"><a class="dark" href="https://www.skoczylas.net" target="_blank" rel="noopener"><img class="text" src="images/svg/211.svg">&nbsp;www.skoczylas.net</a></div>
+						</div>
+					</div>
+				</section>
+				<section class="footer">
+					<div class="title big distance">History</div>
+					<div class="fragment hidden"><img src="images/history.gif"></div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">A bit of history</div>
+					<div class="row">
+						<div class="title distance">Markup</div>
+						<div class="distance fragment column distributed">
+							<div>1990</div>
+							<div><a href="https://www.w3.org/Proposal.html" target="_blank" rel="noopener">HTML Proposal</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>1995</div>
+							<div><a href="https://tools.ietf.org/html/rfc1866" target="_blank" rel="noopener">HTML 2.0 (RFC 1866)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>1997</div>
+							<div><a href="https://www.w3.org/TR/2018/SPSD-html32-20180315/" target="_blank" rel="noopener">HTML 3.2 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>1997</div>
+							<div><a href="https://www.w3.org/TR/REC-html40-971218/" target="_blank" rel="noopener">HTML 4.0 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>2014</div>
+							<div><a href="https://www.w3.org/TR/2014/REC-html5-20141028/" target="_blank" rel="noopener">HTML 5.0 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>2017</div>
+							<div><a href="https://www.w3.org/TR/html52/" target="_blank" rel="noopener">HTML 5.2 (W3C)</a></div>
+						</div>
+					</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">A bit of history</div>
+					<div class="row">
+						<div class="title distance">Styles</div>
+						<div class="distance fragment column distributed">
+							<div>1996</div>
+							<div><a href="https://www.w3.org/TR/2008/REC-CSS1-20080411/" target="_blank" rel="noopener">CSS 1.0 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>1998</div>
+							<div><a href="https://www.w3.org/TR/1998/REC-CSS2-19980512/" target="_blank" rel="noopener">CSS 2.0 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>2000</div>
+							<div><a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener">CSS Modules aka CSS 3.0 (W3C)</a></div>
+						</div>
+						<div class="distance fragment column distributed">
+							<div>?</div>
+							<div><a href="https://www.xanthir.com/b4Ko0" target="_blank" rel="noopener">There is no such thing as CSS4</a></div>
+						</div>
+					</div>
+				</section>
+				<section class="transparent" data-background-image="images/layout-2020-3-6.jpg" data-background-position="left">
+					<div class="title big">But the Layout?</div>
+				</section>
+				<section class="transparent" data-background-image="images/frames-javadoc.jpg" data-background-position="left">
+					<div class="title big">Frames</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Frames</div>
+					<div>Frames</div>
+					<pre><code class="html">
+&lt;frameset cols=&quot;*,*,*&quot;&gt;
+	&lt;frameset rows=&quot;*,*&quot;&gt;
+		&lt;frame src=&quot;frame_1.html&quot;&gt;
+		&lt;frame src=&quot;frame_2.html&quot;&gt;
+	&lt;/frameset&gt;
+	&lt;frame src=&quot;frame_3.html&quot;&gt;
+	&lt;frame src=&quot;frame_4.html&quot;&gt;
+&lt;/frameset&gt;
+					</code></pre>
+					<div class="fragment small"><a href="https://www.w3.org/TR/html5-diff/#obsolete-elements" target="_blank" rel="noopener">Obsolete Element in HTML 5</a></div>
+				</section>
+				<section class="transparent" data-background-image="images/killer-websites.jpg" data-background-position="left">
+					<div class="title big">Killer Web Sites</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Killer Web Sites</div>
+					<div class="row">
+						<div class="title distance">Creating Killer Web Sites</div>
+						<div class="distance fragment"><a href="https://www.amazon.com/Creating-Killer-Sites-David-Siegel/dp/1568304331/ref=pd_ybh_a_1?_encoding=UTF8&psc=1&refRID=8YKHKWVV9W2WWVD5FKY5" target="_blank" rel="noopener">1995 by David Siegel</a></div>
+						<div class="distance fragment">Transparent 1-Pixel GIF Trick</div>
+						<div class="distance fragment">Table Layout <span class="fragment">&rarr; Slices</span></div>
+						<div class="distance fragment"><a href="https://www.xml.com/pub/a/w3j/s1.people.html" target="_blank" rel="noopener">The Web is Ruined and I ruined it</a></div>
+					</div>
+				</section>
+				<section class="transparent" data-background-image="images/explore-2020-3-9.jpg" data-background-position="left">
+					<div class="title big">There is more ... <span class="fragment hidden">of history</span></div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">A bit of histroy</div>
+					<div class="row">
+						<div class="distance">Float and clear</div>
+						<div class="distance fragment">Absolute positioning</div>
+						<div class="distance fragment">Bootstrap Grid System</div>
+					</div>
+				</section>
+				<section class="transparent" data-background-image="images/future-2020-3-9.jpg" data-background-position="left">
+					<div class="title big">The future is now</div>
+				</section>
+				<section class="header footer title">
+					<div class="title big main">Flexbox</div>
+				</section>
+			</div>
+		</div>
+		<div style="display: none" class="extras">
+			<div class="header">&nbsp;</div>
+			<div class="footer">
+				<div>
+					<a href="#"/><img src="images/racoon.png" /></a>
+					<div><span class="main">Karakun</span>&nbsp;DevHub_</div>
+				</div>
+				<div><a href="https://www.twitter.com/giftkugel">@giftkugel</a></div>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/editor/ace.js"></script>
+		<script>
+			/*
+			const editor = ace.edit("editor", {
+				theme: "ace/theme/tomorrow_night_eighties",
+				mode: "ace/mode/html",
+				maxLines: 30,
+				wrap: true,
+				autoScrollEditorIntoView: true
+			});*/
+		</script>
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				width: "100%",
+				height: "100%",
+				margin: 0,
+				minScale: 1,
+				maxScale: 1,
+				slideNumber: "c/t",
+				center: false,
+				display: 'grid',
+				history: true,
+				pdfMaxPagesPerSlide: 1,
+				backgroundTransition: 'slide',
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+			Reveal.addEventListener('ready', function( event ) {
+				var slides = document.querySelectorAll('.reveal .slides section');
+				var header = document.querySelector('.extras .header');
+				var footer = document.querySelector('.extras .footer');
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					var children = slide.childNodes;
+					for (var j = 0; j < children.length; j++) {
+						var child = children[j];
+						if (child.nodeName === 'SECTION') {
+							slide.skip = true;
+						}
+					}
+				}
+
+				for (var i = 0; i < slides.length; i++) {
+					var slide = slides[i];
+					if (slide.skip) {
+						slide.classList.add('wrapper')
+						continue;
+					}
+					slide.classList.add('slide')
+					var newChildren = [];
+					var before = [];
+					var after = [];
+					var addHeaderClass = false;
+					var addFooterClass = false;
+					while (slide.firstChild) {
+						var childNode = slide.removeChild(slide.firstChild);
+						var newChildNode = childNode.cloneNode(true);
+						var wrap = !(newChildNode.classList && (newChildNode.classList.contains('header') || newChildNode.classList.contains('footer')));
+						if (wrap) {
+							newChildren.push(newChildNode);
+						} else {
+							if (newChildNode.classList.contains('header')) {
+								before.push(newChildNode);
+								addHeaderClass = true;
+							} else if (newChildNode.classList.contains('footer')) {
+								after.push(newChildNode);
+								addFooterClass = true;
+							}
+						}
+
+					}
+
+					if (slide.classList.contains('header')) {
+						var newHeader = header.cloneNode(true);
+						slide.appendChild(newHeader);
+					}
+
+					for (var j = 0; j < before.length; j++) {
+						var childNode = before[j];
+						slide.appendChild(childNode);
+					}
+					
+					var content = document.createElement('div');
+					content.classList.add("content");
+					for (var j = 0; j < newChildren.length; j++) {
+						var childNode = newChildren[j];
+						content.appendChild(childNode);
+					}
+					slide.appendChild(content);
+
+					for (var j = 0; j < after.length; j++) {
+						var childNode = after[j];
+						slide.appendChild(childNode);
+					}
+
+					if (slide.classList.contains('footer')) {
+						var newFooter = footer.cloneNode(true);
+						slide.appendChild(newFooter);
+					}
+					
+					if (addHeaderClass) {
+						slide.classList.add('header');
+					}
+
+					if (addFooterClass) {
+						slide.classList.add('footer');
+					}
+					
+				}
+
+				// Extras
+			
+			} );
+		</script>
+	</body>
+</html>

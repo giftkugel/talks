@@ -215,7 +215,11 @@
 }
 
 .reveal > .slides section.slide > div .column.aligend {
-    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.reveal > .slides section.slide > div .column.distributed {
+    justify-content: space-between;
 }
 
 .reveal > .slides section.slide > div .row.aligend {
@@ -224,6 +228,10 @@
 
 .reveal > .slides section.slide > div .column > div {
     margin: 0 1.5em;
+}
+
+.reveal > .slides section.slide > div .column.aligend > div {
+    flex-grow: 1;
 }
 
 .reveal > .slides section.slide div.distance {
@@ -268,8 +276,10 @@
 }
 
 .reveal > .slides section img[src='images/profile.jpg'] {
-    border-radius: 50%;
-    border: 0.25em solid #69C86C;
+    border-radius: 10%;
+    border: 0.15em solid #69C86C;
+    transform: rotate(5deg);
+    margin-bottom: 2rem;
 }
 
 .reveal > .slides section.title a {
@@ -414,6 +424,28 @@ input[type=button]:disabled {
 .reveal .api-worldcloud svg {
     width: 80vw;
     font-weight: bold;
+}
+
+.reveal .cover {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reveal .cover.bottom {
+    height: 75vh;
+    align-items: flex-end;
+}
+
+.reveal .fragment.hidden {
+    display: none;
+}
+
+.reveal .fragment.hidden.visible {
+    display: initial;
 }
 
 @keyframes rotating {
