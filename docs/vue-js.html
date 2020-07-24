@@ -35,7 +35,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section class="header title">
-					<div class="title main">Falling in Love with Vue.js</div>
+					<div class="title main">Falling in <span style="color: red">&#x2764;</span> with Vue.js</div>
 					<div>&nbsp;</div>
 					<div><a class="small" href="https://giftkugel.github.io/talks/" target="_blank" rel="noopener">https://giftkugel.github.io/talks/</a></div>
 					<div><img src="images/QR.png"></div>
@@ -63,11 +63,11 @@
                 </section>
 				<section class="footer">
                     <div class="header before">Note</div>
-					<div class="title big">I <span style="color: red">&#x2764;</span> React</div>
+					<div class="title big">I <span style="color: red">&#x2764;</span> React<span class="fragment hidden">, but ...</span></div>
                 </section>
                 <section class="footer">
-                    <div class="header before">But meanwhile</div>
-					<div class="bigger"><img src="images/me_and_react_vue.png"></div>
+                    <div class="header before">Meanwhile</div>
+					<div class="bigger"><img src="images/me_and_react_vue_green.png"></div>
 				</section>
 				<section class="footer">
                     <div class="normal">Current state of</div>
@@ -116,7 +116,7 @@
                         <div class="row smaller fragment">
                             <div>Testing</div>
                             <div><span style="color: green">&#x2714;</span></div>
-                            <div><span style="color: green">&#x2714;</span></div>
+                            <div><span style="color: red">&#x274C;</span></div>
                             <div><span style="color: green">&#x2714;</span></div>
                         </div>
                         <div class="row smaller fragment">
@@ -191,9 +191,15 @@
                             <div><span style="color: green">&#x2714;</span></div>
                         </div>
                         <div class="row smaller fragment">
-                            <div>Without build</div>
+                            <div>Can be used as library</div>
                             <div><span style="color: red">&#x274C;</span></div>
                             <div><span style="color: green">&#x2714;</span></div>
+                            <div><span style="color: green">&#x2714;</span></div>
+                        </div>
+                        <div class="row smaller fragment">
+                            <div>Enterprise ready setup</div>
+                            <div><span style="color: green">&#x2714;</span></div>
+                            <div><span style="color: red">&#x274C;</span></div>                            
                             <div><span style="color: green">&#x2714;</span></div>
                         </div>
                     </div>
@@ -201,30 +207,61 @@
                         <a href="https://krausest.github.io/js-framework-benchmark/current.html" class="small" target="_blank" rel="noopener">Benchmark</a>
                     </div>
                 </section>
+                <section class="footer">
+					<div class="header before">Looks like</div>
+					<div class="row">
+						<div class="column evenly center">
+                            <img src="images/svg/angular.svg" class="bigger">
+                            <span style="font-size: 8rem">+</span>
+                            <img src="images/svg/react.svg" class="bigger">
+                            <span style="font-size: 8rem">=</span>
+                            <img src="images/svg/vue.svg" class="bigger">
+                        </div>
+					</div>
+                </section>
                 <section class="header footer title">
-                    <div class="title big main">Vue.js</div>
+                    <div class="title big main">Falling in <span style="color: red">&#x2764;</span> with Vue.js</div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">How to start?</div>
                 </section>
                 <section class="footer top">
-                    <div class="header before">Vue.js</div>
-                    <div class="row">
-                        <div>No installation necessary</div>
+                    <div class="header before">How to start?</div>
+                    <div class="row fragment distance">
+                        <div>Withtout installation</div>
                         <pre><code class="html stretch">
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
                         </code></pre>
                     </div>
+                    <div class="row fragment distance">
+                        <div>With NPM</div>
+                        <pre><code class="bash stretch">
+npm install vue
+                        </code></pre>
+                    </div>
+                    <div class="row fragment">
+                        <div>With CLI</div>
+                        <pre><code class="bash stretch">
+npx @vue/cli my-project
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">First application</div>
                 </section>
                 <section class="footer top">
-                    <div class="header before">Vue.js</div>
-                    <div class="row">
+                    <div class="header before">First application</div>
+                    <div class="row distance fragment">
                         <div>DOM</div>
                         <pre><code class="html stretch">
 <div id="app">
     {{ message }}
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
                         </code></pre>
                     </div>
-                    <div class="row">
-                        <div>Application</div>
+                    <div class="row fragment">
+                        <div>JavaScript</div>
                         <pre><code class="javascript stretch">
 const app = new Vue({
     el: '#app',
@@ -236,19 +273,19 @@ const app = new Vue({
                     </div>
                 </section>
                 <section class="footer top">
-                    <div class="header before">Vue.js</div>
-                    <div class="row">
+                    <div class="header before">First application with user input</div>
+                    <div class="row fragment distance">
                         <pre><code class="html stretch">
 <div id="app">
     {{ count }}
     <div>
         <button v-on:click="count++">+</button>
-        <button v-on:click="count--">-</button>
+        <button v-on:click="count--" v-bind:disabled="count === 0">-</button>
     </div>
 </div>
                         </code></pre>
                     </div>
-                    <div class="row">
+                    <div class="row fragment">
                         <pre><code class="javascript stretch">
 const app = new Vue({
     el: '#app',
@@ -258,15 +295,160 @@ const app = new Vue({
 })
                         </code></pre>
                     </div>
-                    <div class="row">
+                    <div class="row fragment">
                         <div id="vue1">
                             {{ count }}
                             <div>
                                 <button v-on:click="count++">+</button>
-                                <button v-on:click="count--">-</button>
+                                <button v-on:click="count--" v-bind:disabled="count === 0">-</button>
                             </div>
                         </div>
                     </div>
+                </section>
+                <section class="footer left top">
+                    <div class="header before">Building blocks</div>
+					<div class="row">
+						<div class="title distance">Building blocks</div>
+						<div class="distance fragment">Vue instance</div>
+                        <div class="distance fragment">Template / DOM</div>                      
+                        <div class="distance fragment italic">Stylesheets</div>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Vue instance</div>
+                </section>
+                <section class="footer left top">
+                    <div class="header before">Vue instance</div>
+					<div class="row">
+						<div class="title distance">Vue instance</div>
+						<div class="distance fragment">Every Vue application starts by creating a new Vue instance with the Vue function</div>
+                        <div class="distance fragment">When you create a Vue instance, you pass in an <span class="hightlight">options object</span></div>
+                        <div class="distance fragment">
+                            <pre class="content"><code class="javascript stretch">
+const app = new Vue({ ... })
+                            </code></pre>
+                        </div>
+                        <div class="distance fragment">Detailed documentation: <a href="https://vuejs.org/v2/api" target="_blank" rel="noopener">Vue API</a></div>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Options</div>
+                    <div class="normal fragment distance">at least some of them</div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Options</div>
+                    <div>Data</div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+const app = new Vue({
+    props: { ... },
+    data: { ... },
+    computed: { ... },
+    methods: { ... },
+    watch: { ... }
+})
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Options</div>
+                    <div>Lifecycle Hooks</div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+const app = new Vue({
+    beforeCreate: { ... },
+    created: { ... },
+    beforeMount: { ... },
+    mounted: { ... },
+    beforeUpdate: { ... },
+    updated: { ... },
+    beforeDestroy: { ... },
+    destroyed: { ... },
+    errorCaptured: { ... }
+})
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Options</div>
+                    <div>Components</div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+const app = new Vue({
+    name: { ... },
+    template: { ... },
+    components: { ... }
+})
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Options</div>
+                    <div>DOM</div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+const app = new Vue({
+    el: { ... },
+    render: { ... },
+    renderError: { ... }
+})
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Templates</div>
+                    <div class="normal fragment distance">and Directives</div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Templates and Directives</div>
+                    <div class="row>">
+                        <div>Template</div>
+                    </div>
+                    <div class="row">
+                        <pre><code class="html stretch">
+<div id="app">
+    {{ count }}
+</div>
+                        </code></pre>
+                    </div>
+                    <div class="row">
+                        <div class="distance small fragment">Mustache syntax</div>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Templates and Directives</div>
+                    <div class="row> fragment">
+                        <div>Directive</div>
+                    </div>
+                    <div class="row fragment distance">
+                        <pre><code class="html stretch">
+<button v-on:click="count++">+</button>
+<button v-on:click="count--">-</button>
+                        </code></pre>
+                    </div>
+                    <div class="row fragment distance">
+                        <pre><code class="html stretch">
+<div v-if="type === 'A'">A</div>
+<div v-else-if="type === 'B'">B</div>
+<div v-else>Not A/B</div>
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer left top">
+                    <div class="header before">Templates and Directives</div>
+					<div class="row">
+						<div class="title distance">Directives</div>
+                        <div class="fragment">Data</div>
+                        <div class="small fragment distance">v-bind, v-model</div>
+                        <div class="fragment">Events</div>
+                        <div class="fragment small distance">v-on</div>                      
+                        <div class="fragment">Control / Flow</div>
+                        <div class="fragment small">v-if, v-else, v-else-if, v-for, v-show</div>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Components</div>
+                    <div class="normal fragment distance">and composition</div>
                 </section>
 			</div>
 		</div>

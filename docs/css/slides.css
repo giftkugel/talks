@@ -269,6 +269,7 @@
 
 .reveal > .slides section.slide > div .column.distributed {
     justify-content: space-between;
+
 }
 
 .reveal > .slides section.slide > div .column.evenly {
@@ -280,6 +281,10 @@
 }
 
 .reveal > .slides section.slide > div .row.center {
+    align-items: center;
+}
+
+.reveal > .slides section.slide > div .column.center {
     align-items: center;
 }
 
@@ -421,6 +426,10 @@
 
 .reveal > .slides section.slide .italic {
     font-style: italic;
+}
+
+.reveal > .slides section.slide .hightlight {
+    text-decoration: underline;
 }
 
 .reveal > .slides section.slide .subtext {
