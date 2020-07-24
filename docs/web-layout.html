@@ -55,8 +55,6 @@
 								<div class="smaller"><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener">https://dev.karakun.com</a></div>
 							</div>
 						</div>
-						<div>&nbsp;</div>
-						<div>&nbsp;</div>
 						<div>
 							<img src="images/profile.jpg">
 							<div class="subtext"><a class="dark" href="https://www.twitter.com/giftkugel" target="_blank" rel="noopener"><img class="text" src="images/svg/094.svg">&nbsp;giftkugel</a></div>
@@ -142,15 +140,17 @@
 					<div class="fragment small"><a href="https://www.w3.org/TR/html5-diff/#obsolete-elements" target="_blank" rel="noopener">Obsolete Element in HTML 5</a></div>
 				</section>
 				<section class="transparent" data-background-image="images/killer-websites.jpg" data-background-position="left">
+					<div class="title">Creating</div>
 					<div class="title big">Killer Web Sites</div>
+					<div class="title">The Art of Third-Generation Site Design</div>
 				</section>
 				<section class="footer left top">
 					<div class="header before">Killer Web Sites</div>
 					<div class="row">
 						<div class="title distance">Creating Killer Web Sites</div>
-						<div class="distance fragment"><a href="https://www.amazon.com/Creating-Killer-Sites-David-Siegel/dp/1568304331/ref=pd_ybh_a_1?_encoding=UTF8&psc=1&refRID=8YKHKWVV9W2WWVD5FKY5" target="_blank" rel="noopener">1995 by David Siegel</a></div>
+						<div class="distance fragment"><a href="https://www.amazon.com/Creating-Killer-Sites-David-Siegel/dp/1568304331/ref=pd_ybh_a_1?_encoding=UTF8&psc=1&refRID=8YKHKWVV9W2WWVD5FKY5" target="_blank" rel="noopener">1995 Book by David Siegel</a></div>
 						<div class="distance fragment">Transparent 1-Pixel GIF Trick</div>
-						<div class="distance fragment">Table Layout <span class="fragment">&rarr; Slices</span></div>
+						<div class="distance fragment">Table Layout <span class="fragment">&rarr; Slices (Photoshop etc.)</span></div>
 						<div class="distance fragment"><a href="https://www.xml.com/pub/a/w3j/s1.people.html" target="_blank" rel="noopener">The Web is Ruined and I ruined it</a></div>
 					</div>
 				</section>
@@ -161,8 +161,17 @@
 					<div class="header before">A bit of histroy</div>
 					<div class="row">
 						<div class="distance">Float and clear</div>
+						<div class="row">
+							<div class="distance fragment small">Float should be used for text flow, not layout</div>
+						</div>
 						<div class="distance fragment">Absolute positioning</div>
+						<div class="row">
+							<div class="distance fragment small">Just pushing things around</div>
+						</div>
 						<div class="distance fragment">Bootstrap Grid System</div>
+						<div class="row">
+							<div class="distance fragment small">Many media-queries, but finally we got responsive again</div>
+						</div>
 					</div>
 				</section>
 				<section class="transparent" data-background-image="images/future-2020-3-9.jpg" data-background-position="left">
@@ -170,6 +179,522 @@
 				</section>
 				<section class="header footer title">
 					<div class="title big main">Flexbox</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Flexbox</div>
+					<div>The Flexbox Layout provides an efficient way to align</div>
+					<div>and distribute flex items in a one-dimensional flex container</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="title distance">Terminology</div>
+						<div class="distance fragment">Container</div>
+						<div class="distance fragment">Items</div>
+						<div class="distance fragment">Distribution</div>
+						<div class="row">
+							<div class="distance fragment small">Axes</div>
+							<div class="distance fragment small">Start and end</div>
+							<div class="distance fragment small">Size</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div>Main and Cross axis</div>
+						<div><img src="images/svg/axis.svg" class="main big"></div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="title">Example</div>
+					<div>HTML structure</div>
+					<pre class="distance"><code class="html">
+&lt;div class=&quot;container&quot;&gt;
+	&lt;div&gt;Item 1&lt;/div&gt;
+	&lt;div&gt;Item 2&lt;/div&gt;
+	&lt;div&gt;Big 3&lt;/div&gt;
+	&lt;div&gt;Item 4&lt;/div&gt;
+&lt;/div&gt;
+					</code></pre>
+					<div class="fragment">
+						<div>Reminder</div>
+						<div class="small">Items are displayed in order of the occurrence</div>
+						<div class="small">&lt;div&gt; elements are block level elements</div>
+					</div>
+				</section>
+				</section>
+				<section class="footer">
+					<div class="header before">Flexbox</div>
+					<div class="title big">Container</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">display</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">block</div>
+								<div class="example container">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">flex</div>
+								<div class="flex example container distance">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+								<div class="fragment small">
+									<div>Main axis from left to right (ltr)</div>
+									<div>Cross axis from top to bottom</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">flex-direction</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">row (default)</div>
+								<div class="flex example container fd-row">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">row-reverse</div>
+								<div class="flex example container fd-row-reverse">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">column</div>
+								<div class="flex example container fd-column">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">column-reverse</div>
+								<div class="flex example container fd-column-reverse">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">flex-wrap</div>
+						<div class="column top distance">
+							<div class="row fragment center">
+								<div class="small">nowrap (default)</div>
+								<div class="flex example container fw-nowrap">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment center">
+								<div class="small">wrap</div>
+								<div class="flex example container fw-wrap">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment center">
+								<div class="small">wrap-reverse</div>
+								<div class="flex example container fw-wrap-reverse">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">justify-content</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">flex-start (default)</div>
+								<div class="flex example container jc-flex-start">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">flex-end</div>
+								<div class="flex example container jc-flex-end">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">center</div>
+								<div class="flex example container jc-center">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">space-between</div>
+								<div class="flex example container jc-space-between">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">space-around</div>
+								<div class="flex example container jc-space-around">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small italic">space-evenly</div>
+								<div class="flex example container jc-space-evenly">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">align-items</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">stretch (default)</div>
+								<div class="flex example container ai-stretch">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">center</div>
+								<div class="flex example container ai-center">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">flex-start</div>
+								<div class="flex example container ai-flex-start">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">flex-end</div>
+								<div class="flex example container ai-flex-end">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment center">
+								<div class="small">baseline</div>
+								<div class="flex example container ai-baseline">
+									<div class="flex example item small" style="height: 55px; font-size: 1.1em">Other 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small" style="font-size: 1.2em">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">align-content</div>
+						<div class="column top distance">
+							<div class="row fragment center">
+								<div class="small">flex-start (default)</div>
+								<div class="flex example container ac-flex-start">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment center">
+								<div class="small">flex-end</div>
+								<div class="flex example container ac-flex-end">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment center">
+								<div class="small">center</div>
+								<div class="flex example container ac-center">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column top distance">
+							<div class="row fragment center">
+								<div class="small">stretch</div>
+								<div class="flex example container ac-stretch">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment center">
+								<div class="small">space-around</div>
+								<div class="flex example container ac-space-around">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment center">
+								<div class="small italic">space-between</div>
+								<div class="flex example container ac-space-between">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="title distance">Container recap</div>
+						<div class="distance fragment"><span class="underline">display</span>: flex | inline-flex</div>
+						<div class="distance fragment"><span class="underline">flex-direction</span> set the axes</div>
+						<div class="distance fragment"><span class="underline">flex-wrap</span> set wrap (multiline)</div>
+						<div class="distance fragment"><span class="underline">justify-content</span> along the main axis</div>
+						<div class="distance fragment"><span class="underline">align-items</span> along the cross axis</div>
+						<div class="distance fragment"><span class="underline">align-content</span> when content has multiple lines</div>
+					</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Flexbox</div>
+					<div class="title big">Items</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">order</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">order of the occurrence</div>
+								<div class="flex example container">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">changed</div>
+								<div class="flex example container distance">
+									<div class="flex example item small" style="order: 10">Item 1 (10)</div>
+									<div class="flex example item small" style="order: 10">Item 2 (10)</div>
+									<div class="flex example item small" style="order: -1">Big 3 (-1)</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+						<div class="fragment">It's like the z-index for flex items...</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">flex-grow</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">as wide as necessary (0)</div>
+								<div class="flex example container">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">one item changed</div>
+								<div class="flex example container distance jc-space-around ai-stretch">
+									<div class="flex example item small" style="flex-grow: 1">Item 1 (1)</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">multiple items changed</div>
+								<div class="flex example container">
+									<div class="flex example item small" style="flex-grow: 1">Item 1 (1)</div>
+									<div class="flex example item small" style="flex-grow: 1">Item 2 (1)</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">a bigger one</div>
+								<div class="flex example container distance jc-space-around ai-stretch">
+									<div class="flex example item small" style="flex-grow: 1">Item 1 (1)</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small" style="flex-grow: 2">Big 3 (2)</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="distance">flex-shrink</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">as wide as necessary (1)</div>
+								<div class="flex example container">
+									<div class="flex example item small">Item 1</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">one item changed</div>
+								<div class="flex example container distance jc-space-around ai-stretch">
+									<div class="flex example item small" style="flex-shrink: 1">Item 1 (1)</div>
+									<div class="flex example item small">Item 2</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+						</div>
+						<div class="column top distance">
+							<div class="row fragment">
+								<div class="small">multiple items changed</div>
+								<div class="flex example container">
+									<div class="flex example item small" style="flex-shrink: 1">Item 1 (1)</div>
+									<div class="flex example item small" style="flex-shrink: 1">Item 2 (1)</div>
+									<div class="flex example item small">Big 3</div>
+									<div class="flex example item small">Item 4</div>
+								</div>
+							</div>
+							<div class="row fragment">
+								<div class="small">all changed</div>
+								<div class="flex example container distance jc-space-around ai-stretch">
+									<div class="flex example item small" style="flex-shrink: 1">Item 1 (1)</div>
+									<div class="flex example item small" style="flex-shrink: 1">Item 2 (1)</div>
+									<div class="flex example item small" style="flex-shrink: 2">Big 3 (2)</div>
+									<div class="flex example item small" style="flex-shrink: 1">Item 4 (1)</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Flexbox</div>
+					<div class="row">
+						<div class="title distance">Item recap</div>
+						<div class="distance fragment"><span class="underline">order</span> change the order of occurrence</div>
+						<div class="distance fragment"><span class="underline">flex-grow</span> allows to take more space</div>
+						<div class="distance fragment"><span class="underline">flex-shrink</span> allows to shrink if necessary</div>
+						<div class="distance fragment"><span class="underline">align-self</span> change the distribution along the cross axis</div>
+					</div>
+				</section>
+				<section class="header footer title">
+					<div class="title big main">Grid</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Grid</div>
+					<div>The Grid Layout provides an efficient way to align</div>
+					<div>and distribute items in a two-dimensional grid container</div>
 				</section>
 			</div>
 		</div>

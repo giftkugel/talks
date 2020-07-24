@@ -214,8 +214,16 @@
     justify-content: center;
 }
 
+.reveal > .slides section.slide > div .row  > .row {
+    padding-left: 1em;
+}
+
 .reveal > .slides section.slide > div .column.aligend {
     justify-content: flex-start;
+}
+
+.reveal > .slides section.slide > div .column.top {
+    align-items: flex-start;
 }
 
 .reveal > .slides section.slide > div .column.distributed {
@@ -224,6 +232,14 @@
 
 .reveal > .slides section.slide > div .row.aligend {
     align-items: flex-start;
+}
+
+.reveal > .slides section.slide > div .row.center {
+    align-items: center;
+}
+
+.reveal > .slides section.slide > div .row.aligend > div {
+    flex-grow: 1;
 }
 
 .reveal > .slides section.slide > div .column > div {
@@ -447,6 +463,167 @@ input[type=button]:disabled {
 .reveal .fragment.hidden.visible {
     display: initial;
 }
+
+.reveal .example {
+    padding: 0.25rem;
+    margin: 1rem;
+    max-width: 70vw;
+}
+
+.reveal .example.container {
+    border: 0.25rem solid black;
+    font-size: 1.75rem;
+}
+
+.reveal .example.flex.container {
+    display: flex;
+    border: 0.25rem solid black;
+    font-size: 1.75rem;
+}
+
+.reveal .example.flex.item {
+    border: 0.15rem solid black;
+}
+
+.reveal .example.flex.item:nth-child(1) {
+    background-color: #45dacc;
+}
+
+.reveal .example.flex.item:nth-child(2) {
+    background-color: #45da8e;
+}
+
+.reveal .example.flex.item:nth-child(3) {
+    background-color: #50b330;
+    height: 80px;
+}
+
+.reveal .example.flex.item:nth-child(4) {
+    background-color: #d8e23d;
+}
+
+.reveal .example.flex.container.fd-row {
+    flex-direction: row;
+}
+
+.reveal .example.flex.container.fd-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.reveal .example.flex.container.fd-column {
+    flex-direction: column;
+}
+
+.reveal .example.flex.container.fd-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.reveal .example.flex.container.fw-nowrap {
+    flex-wrap: nowrap;
+    width: 266px
+}
+
+.reveal .example.flex.container.fw-wrap {
+    flex-wrap: wrap;
+    width: 400px
+}
+
+.reveal .example.flex.container.fw-wrap-reverse {
+    flex-wrap: wrap-reverse;
+    width: 400px
+}
+
+.reveal .example.flex.container.jc-flex-start {
+    justify-content: flex-start;
+}
+
+.reveal .example.flex.container.jc-flex-end {
+    justify-content: flex-end;
+}
+
+.reveal .example.flex.container.jc-center {
+    justify-content: center;
+}
+
+.reveal .example.flex.container.jc-space-between {
+    justify-content: space-between;
+}
+
+.reveal .example.flex.container.jc-space-around {
+    justify-content: space-around;
+}
+
+.reveal .example.flex.container.jc-space-evenly {
+    justify-content: space-evenly;
+}
+
+.reveal .example.flex.container.ai-flex-start {
+    align-items: flex-start;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-flex-end {
+    align-items: flex-end;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-center {
+    align-items: center;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-stretch {
+    align-items: stretch;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-baseline {
+    align-items: baseline;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ac-flex-start {
+    align-content: flex-start;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-flex-end {
+    align-content: flex-end;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-center {
+    align-content: center;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-space-between {
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-space-around {
+    align-content: space-around;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-stretch {
+    align-content: stretch;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
 
 @keyframes rotating {
     from {
