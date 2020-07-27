@@ -193,7 +193,7 @@
                         <div class="row smaller fragment">
                             <div>Can be used as library</div>
                             <div><span style="color: red">&#x274C;</span></div>
-                            <div><span style="color: green">&#x2714;</span></div>
+                            <div><span style="color: orange">&#x2714;</span></div>
                             <div><span style="color: green">&#x2714;</span></div>
                         </div>
                         <div class="row smaller fragment">
@@ -210,14 +210,17 @@
                 <section class="footer">
 					<div class="header before">Looks like</div>
 					<div class="row">
-						<div class="column evenly center">
+						<div class="column evenly center distance">
                             <img src="images/svg/angular.svg" class="bigger">
                             <span style="font-size: 8rem">+</span>
                             <img src="images/svg/react.svg" class="bigger">
                             <span style="font-size: 8rem">=</span>
                             <img src="images/svg/vue.svg" class="bigger">
                         </div>
-					</div>
+                    </div>
+                    <div class="row fragment smaller hidden">
+                        Vue combines the enterprise capabilities of Angular with the ease of React
+                    </div>
                 </section>
                 <section class="header footer title">
                     <div class="title big main">Falling in <span style="color: red">&#x2764;</span> with Vue.js</div>
@@ -232,6 +235,7 @@
                         <pre><code class="html stretch">
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
                         </code></pre>
+                        <div class="smaller">Without anything else!</div>
                     </div>
                     <div class="row fragment distance">
                         <div>With NPM</div>
@@ -242,8 +246,9 @@ npm install vue
                     <div class="row fragment">
                         <div>With CLI</div>
                         <pre><code class="bash stretch">
-npx @vue/cli my-project
+npx @vue/cli create my-project
                         </code></pre>
+                        <div class="smaller">Complete project setup</div>
                     </div>
                 </section>
                 <section class="header footer">
@@ -310,7 +315,7 @@ const app = new Vue({
 					<div class="row">
 						<div class="title distance">Building blocks</div>
 						<div class="distance fragment">Vue instance</div>
-                        <div class="distance fragment">Template / DOM</div>                      
+                        <div class="distance fragment">DOM (or Template for components)</div>                      
                         <div class="distance fragment italic">Stylesheets</div>
                     </div>
                 </section>
@@ -439,9 +444,9 @@ const app = new Vue({
 					<div class="row">
 						<div class="title distance">Directives</div>
                         <div class="fragment">Data</div>
-                        <div class="small fragment distance">v-bind, v-model</div>
+                        <div class="small fragment distance">v-bind (:), v-model</div>
                         <div class="fragment">Events</div>
-                        <div class="fragment small distance">v-on</div>                      
+                        <div class="fragment small distance">v-on (@)</div>                      
                         <div class="fragment">Control / Flow</div>
                         <div class="fragment small">v-if, v-else, v-else-if, v-for, v-show</div>
                     </div>
@@ -450,8 +455,251 @@ const app = new Vue({
                     <div class="title big">Components</div>
                     <div class="normal fragment distance">and composition</div>
                 </section>
+                <section class="footer top">
+                    <div class="header before">Components</div>
+                    <div class="row>">
+                        <div>Our first component</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+Vue.component('button-counter', {
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    template: '<button v-on:click="count++">You clicked: {{ count }}</button>'
+})
+                        </code></pre>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html stretch">
+<div id="app">
+    <button-counter></button-counter>
+</div>
+                        </code></pre>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html stretch">
+new Vue({ el: '#app'})
+                        </code></pre>
+                    </div>
+                    <div id="vue2" class="fragment">
+                        <button-counter></button-counter>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Components</div>
+                    <div class="row>">
+                        <div>With properties</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+Vue.component('button-counter-text', {
+    props: ['text'],
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    template: '<button v-on:click="count++">{{ text }}:{{ count }}</button>'
+})
+                        </code></pre>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html stretch">
+<div id="app">
+    <button-counter-text text="Foo"></button-counter-text>
+    <button-counter-text text="Bar"></button-counter-text>
+</div>
+                        </code></pre>
+                    </div>
+                    <div id="vue3" class="fragment">
+                        <button-counter-text text="Foo"></button-counter-text>
+                        <button-counter-text text="Bar"></button-counter-text>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Components</div>
+                    <div class="row>">
+                        <div>With slots in templates</div>
+                        <div class="smaller fragment">Slots are an addition to templates for Vue components and inspired by Web Components</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+Vue.component('button-counter-slot', {
+    data: function () {
+        return {
+            count: 0
+        }
+    },
+    template: '<button v-on:click="count++"><slot></slot>:{{ count }}</button>'
+})
+                        </code></pre>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html stretch">
+<div id="app">
+    <button-counter-slot>Foo</button-counter-slot>
+    <button-counter-slot>Bar</button-counter-slot>
+</div>
+                        </code></pre>
+                    </div>
+                    <div id="vue4" class="fragment">
+                        <button-counter-slot>Foo</button-counter-slot>
+                        <button-counter-slot>Bar</button-counter-slot>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Components</div>
+                    <div class="row>">
+                        <div>With events</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="javascript stretch">
+Vue.component('button-counter-event', {
+    ...,
+    methods: {
+        increase(): {
+            this.$emit("increase", this.count);
+        }
+    }
+})
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top left">
+                    <div class="header before">Components</div>
+					<div class="row">
+                        <div class="title distance">Data flow for Vue components</div>
+						<div class="fragment distance">Down to components (Properties)</div>
+                        <div class="fragment distance">Up from components (Events)</div>              
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">SFC</div>
+                    <div>Single File Components (Build setup)</div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Single File Components</div>
+                    <div class="row>">
+                        <div>Single File Components</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html javascript stretch">
+<template>
+    <button v-on:click="count++">
+        <slot></slot>:{{ count }}
+    </button>
+</template>
+
+<script>
+export {
+    data: function () {
+        return {
+            count: 0
+        }
+    }
+}
+</script>
+
+<styles>
+...
+</styles>
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Single File Components</div>
+                    <div class="row>">
+                        <div>Bring back a bit of separation</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html javascript stretch">
+<template>
+    <button v-on:click="count++">
+        <slot></slot>:{{ count }}
+    </button>
+</template>
+
+<script src="./button.js"></script>
+
+<styles src="./button.css"></styles>
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">Single File Components</div>
+                    <div class="row>">
+                        <div>Different languages and pre-processors</div>
+                    </div>
+                    <div class="row fragment">
+                        <pre><code class="html javascript stretch">
+<template>
+    <button v-on:click="count++">
+        <slot></slot>:{{ count }}
+    </button>
+</template>
+
+<script lang="ts">
+...
+</script>
+
+<styles lang="scss">
+...
+</styles>
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top left">
+                    <div class="header before">Single File Components</div>
+					<div class="row">
+                        <div class="title distance">Magic happens during build process</div>
+						<div class="fragment distance">Webpack &rArr; Vue-Loader</div>
+                        <div class="fragment distance">Creates separate files for Webpack on the fly</div>              
+                        <div class="fragment distance">Plugin for IDE</div>
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Build / Testing</div>
+                </section>
+                <section class="footer top left">
+                    <div class="header before">Build / Testing</div>
+					<div class="row">
+                        <div class="title distance">Webpack based build</div>
+						<div class="fragment distance">No need to "eject"</div>
+                        <div class="fragment distance">Can change every Webpack option</div>
+                        <div class="fragment distance">Build targets: App, Library, Web Components</div>
+                        <div class="title fragment distance">Testing</div>
+						<div class="fragment distance">Mocha + Chai</div>
+                        <div class="fragment distance">Jest</div>           
+                    </div>
+                </section>
+                <section class="header footer">
+                    <div class="title big">Conclusion</div>
+                </section>
+				<section class="footer">
+                    <div class="header before">Conclusion</div>
+					<div class="title big">I <span style="color: red">&#x2764;</span> Vue</div>
+                </section>
+                <section class="footer top left">
+                    <div class="header before">Conclusion</div>
+					<div class="row distance">
+						<div class="fragment distance">Easy to learn and use</div>
+                        <div class="fragment distance">Great IDE support</div>              
+                        <div class="fragment distance">Open Source from the community to the community</div>
+                        <div class="fragment distance">Valid option for enterprise projects</div>
+                        <div class="fragment distance">Vue 3 is coming soon</div>
+                    </div>
+                    <div class="row fragment distance">
+                        <div class="title">Tank you for listening<span class="fragment">, questions?</span></div>
+                    </div>
+                    <div class="column fragment distance">
+                        <div class="medium">&#x1F64C;</div>
+                    </div>
+                </section>
 			</div>
-		</div>
+        </div>
 		<div style="display: none" class="extras">
 			<div class="header">&nbsp;</div>
 			<div class="footer">
@@ -579,6 +827,41 @@ const app = new Vue({
                         count: 10
                     }
                 })
+
+                Vue.component('button-counter', {
+                    data: function () {
+                        return {
+                        count: 0
+                        }
+                    },
+                    template: '<button v-on:click="count++">You clicked: {{ count }}</button>'
+                })
+
+                const vue2 = new Vue({ el: '#vue2'})
+
+
+                Vue.component('button-counter-text', {
+                    props: ['text'],
+                    data: function () {
+                        return {
+                            count: 0
+                        }
+                    },
+                    template: '<button v-on:click="count++">{{ text }}:{{ count }}</button>'
+                })
+
+                const vue3 = new Vue({ el: '#vue3'})
+
+                Vue.component('button-counter-slot', {
+                    data: function () {
+                        return {
+                            count: 0
+                        }
+                    },
+                    template: '<button v-on:click="count++"><slot></slot>:{{ count }}</button>'
+                })
+
+                const vue4 = new Vue({ el: '#vue4'})
 			
 			} );
         </script>
