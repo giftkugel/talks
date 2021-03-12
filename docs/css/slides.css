@@ -361,6 +361,10 @@
     color: #69C86C;
 }
 
+.reveal > .slides section .white {
+    color: #FFFFFF;
+}
+
 .reveal > .slides section img[src='images/profile.jpg'] {
     border-radius: 10%;
     border: 0.15em solid #69C86C;

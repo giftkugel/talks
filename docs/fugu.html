@@ -8,10 +8,10 @@
 		<meta name="twitter:site" content="@giftkugel" />
 		<meta name="twitter:creator" content="@giftkugel" />
 		<meta property="og:url" content="https://giftkugel.github.io/talks/" />
-		<meta property="og:title" content="PWA (next level)" />
+		<meta property="og:title" content="Progressive Web Applications on steroids" />
 		<meta property="og:description" content="Slides of my talk" />
 
-		<title>PWA (next level)</title>
+		<title>Progressive Web Applications on steroids</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
@@ -35,7 +35,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section class="header title">
-					<div class="title main">PWA (next level)</div>
+					<div class="title main">Progressive Web Applications on steroids</div>
 					<div>&nbsp;</div>
 					<div><a class="small" href="https://giftkugel.github.io/talks/" target="_blank" rel="noopener">https://giftkugel.github.io/talks/</a></div>
 					<div><img src="images/QR.png"></div>
@@ -48,11 +48,11 @@
 							<div class="title">Simon Skoczylas</div>
 							<div>Senior Software Engineer</div>
 							<div class="distance">&nbsp;</div>
-							<div>
-								<img class="raccoon-logo" src="images/svg/racoon.svg">
-								<div><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener"><span class="my-karakun">Karakun</span> Developer Hub</a></div>
-								<div class="smaller"><a href="https://dev.karakun.com" class="invisible" target="_blank" rel="noopener">https://dev.karakun.com</a></div>
-							</div>
+                            <div class="left">
+                                <div class="distance">Java</div>
+                                <div class="distance">JavaScript / TypeScript</div>
+                                <div class="distance">Web technologies</div>
+                            </div>
 						</div>
 						<div>
 							<img src="images/profile.jpg">
@@ -87,6 +87,7 @@
                             <div class="small distance"><a href="https://w3c.github.io/ServiceWorker/" target="_blank" rel="noopener">https://w3c.github.io/ServiceWorker/</a></div>
                         </div>
                         <div class="distance fragment">HTTPS<span class="fragment">, HTTP/2 &#x1f60d;</span></div>
+                        <div class="distance fragment">Progressive enhancement approach</div>
 					</div>
 				</section>
                 <section class="footer">
@@ -129,7 +130,7 @@
                 <section class="footer left">
 					<div class="header before">Still a gap</div>
 					<div class="row center">
-                        <div class="distance">Cannot interact with DWG file from my machine</div>
+                        <div class="distance">Cannot interact with DWG file from my machine &#x1f62d;</div>
                         <div class="distance">
 						    <img class="main" src="images/autocad_web.jpeg" alt="AutoCAD Web">
                         </div>
@@ -139,35 +140,86 @@
                 <section class="transparent" data-background-image="images/brian-yurasits-Nb92G8NEnOg-unsplash.jpeg" data-background-position="right">
                     <div class="distance title big">Project Fugu</div>
                 </section>
-				<section class="footer left">
+				<section class="footer">
 					<div class="header before">Project Fugu</div>
-					<div class="row center">
-                        <div class="small distance"><span class="highlight">Delicious</span> if prepared correctly, <span class="highlight">deadly if not!</span></div>
-                        <div class="fragment hidden">
+    					<div class="row">
+                            <div class="distance">Cross-vendor initiative</div>
+                            <div class="distance fragment">Initiated by the Chromium Team (Google) in 2019</div>
+                            <div class="fragment">
+                                <div class="distance column evenly">
+                                    <img class="icon bigger" src="images/svg/Google__G__Logo.svg">
+                                    <img class="icon bigger" src="images/svg/M_box.svg">
+                                    <img class="icon bigger" src="images/svg/Intel_logo_2020.svg">
+                                </div>
+                            </div>
+                            <div class="distance fragment"><a href="https://bit.ly/fugu-sync" target="_blank" rel="noopener">Fugu Community Sync notes</a></div>
+	    				</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Project Fugu</div>
+					<div class="row">
+                        <div class="distance">Name is derived from an asian puffer fish dish called <a href="https://en.wikipedia.org/wiki/Fugu" target="_blank" rel="noopener">fugu</a></div>
+                        <div class="distance fragment"><span class="highlight">Delicious</span> if prepared correctly, <span class="highlight">deadly if not!</span></div>
+                        <div class="fragment">
 						    <img class="mid h" src="images/fugu00.gif" alt="Fugu">
                         </div>
 					</div>
 				</section>
+				<section class="footer left top">
+					<div class="header before">Project Fugu</div>
+					<div class="row">
+						<div class="distance title">New capabilities</div>
+						<div class="distance fragment small">Web apps should be able to do anything iOS/Android/desktop apps can</div>
+                        <div class="fragment distance small">
+                            <div>By exposing the capabilities of these platforms to the web platform</div>
+                            <div>while maintaining user security, privacy, trust, and other core tenets of the web</div>
+                        </div>
+                        <div class="fragment distance small">Nothing should ever be granted access by default, but instead rely on a permission model that puts the user in total control, and is easily revoke-able. It needs to be crystal clear when, and how these APIs are being used</div>
+                        <div class="distance fragment small"><a href="https://web.dev/fugu-status/" target="_blank" rel="noopener">https://web.dev/fugu-status/</a></div>
+					</div>
+				</section>
+				<section  data-background-image="images/pexels-ahmed-adly-1270184.jpeg" data-background-position="right" data-background-opacity="0.25">
+					<div class="title main white">Be <span class="highlight">delicious</span>, not <span class="highlight">deadly!</span><span class="fragment hidden"> But how?</span></div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Project Fugu</div>
+					<div class="row">
+						<div class="distance title">Iterative Process</div>
+						<div class="distance fragment">Identify need and use-cases</div>
+                        <div class="distance fragment">Write a <a href="https://w3ctag.github.io/explainers.html" target="_blank" rel="noopener">explainer</a></div>
+                        <div class="distance fragment">Get feedback</div>
+                        <div class="distance fragment">Create a formal specification (first <a href="https://www.w3.org/community/wicg/" target="_blank" rel="noopener">WICG</a>, and then maybe <a href="https://www.w3.org/" target="_blank" rel="noopener">W3C</a>)</div>
+                        <div class="distance fragment">
+                            <div><a href="http://googlechrome.github.io/OriginTrials/developer-guide.html" target="_blank" rel="noopener">Origin trails</a> / Experimental flags</div>
+                            <div class="small">HTTP header, HTML meta tag</div>
+                        </div>
+                        <div class="distance fragment">Ship it</div>
+					</div>
+				</section>
 				<section class="footer">
 					<div class="header before">Project Fugu</div>
-					<div class="row center">
-                        <div class="middle">
-                            <img class="icon bigger" src="images/svg/Google__G__Logo.svg">
-                            &nbsp;
-                            <img class="icon bigger" src="images/svg/M_box.svg">
-                            &nbsp;
-                            <img class="icon bigger" src="images/svg/Intel_logo_(2006).svg">
-                        </div>
-					</div>
+    					<div class="row">
+                            <div class="distance">Try it yourself</div>
+                            <div class="fragment column evenly">
+                                <div>
+                                    <div><img class="bixgger" src="images/fugu-journal_QR.png"></div>
+                                    <div class="distance small"><a href="https://fugu-journal.web.app/">https://fugu-journal.web.app/</a></div>
+                                </div>
+                                <div>
+                                    <div><img class="bixgger" src="images/fugu-editor_QR.png"></div>
+                                    <div class="distance small"><a href="https://fugu-journal.web.app/">https://googlechromelabs.github.io/text-editor/</a></div>
+                                </div>
+                            </div>
+	    				</div>
 				</section>
                 <section class="footer top left">
                     <div class="header before">Conclusion</div>
 					<div class="row distance">
-                        <div class="fragment distance">Easy to learn and use</div>
-                        <div class="fragment distance">Good documentation &#x1F970;</span></div>
-                        <div class="fragment distance">Open Source from the community to the community</div>
-                        <div class="fragment distance">Valid option for enterprise projects &#x1F4AF;<span class="fragment">, even legacy ones</span></div>
-                        <div class="fragment distance">Vue 3 is coming soon</div>
+                        <div class="title distance">Project Fugu provides new capabilities</div>
+                        <div class="fragment distance">Progressive enhancement approach &#x1F970;</span></div>
+                        <div class="fragment distance">API Tracker at <a href="https://fugu-tracker.web.app/" target="_blank" rel="noopener">https://fugu-tracker.web.app/</a></div>
+                        <div class="fragment distance">You can make a difference, add a new request at <a href="https://goo.gl/qWhHXU" target="_blank" rel="noopener">https://goo.gl/qWhHXU</a></div>
+                        <div class="fragment distance">Or say what you want at <a href="https://webwewant.fyi/" target="_blank" rel="noopener">https://webwewant.fyi/</a></div>
                     </div>
                     <div class="row fragment distance">
                         <div class="title">Thank you for listening &#x1F64C;</div>
@@ -187,7 +239,6 @@
 		</div>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
@@ -296,47 +347,6 @@
 				}
 
                 // Extras
-                const vue1 = new Vue({
-                    el: '#vue1',
-                    data: {
-                        count: 10
-                    }
-                })
-
-                Vue.component('button-counter', {
-                    data: function () {
-                        return {
-                        count: 0
-                        }
-                    },
-                    template: '<button v-on:click="count++">You clicked: {{ count }}</button>'
-                })
-
-                const vue2 = new Vue({ el: '#vue2'})
-
-
-                Vue.component('button-counter-text', {
-                    props: ['text'],
-                    data: function () {
-                        return {
-                            count: 0
-                        }
-                    },
-                    template: '<button v-on:click="count++">{{ text }}:{{ count }}</button>'
-                })
-
-                const vue3 = new Vue({ el: '#vue3'})
-
-                Vue.component('button-counter-slot', {
-                    data: function () {
-                        return {
-                            count: 0
-                        }
-                    },
-                    template: '<button v-on:click="count++"><slot></slot>:{{ count }}</button>'
-                })
-
-                const vue4 = new Vue({ el: '#vue4'})
 			
 			} );
         </script>
