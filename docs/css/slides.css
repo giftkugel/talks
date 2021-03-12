@@ -135,8 +135,27 @@
     width: 32vmin;
 }
 
+.reveal > .slides section.slide img.biggest.h {
+    height: 32vmin;
+    width: inherit;
+}
+
 .reveal > .slides section.slide img.sub {
     width: 64vmin;
+}
+
+.reveal > .slides section.slide img.sub.h {
+    height: 64vmin;
+    width: inherit;
+}
+
+.reveal > .slides section.slide img.mid {
+    width: 48vmin;
+}
+
+.reveal > .slides section.slide img.mid.h {
+    height: 48vmin;
+    width: inherit;
 }
 
 .reveal > .slides section.slide img.main {
@@ -337,7 +356,8 @@
     color: #FFFFFF;
 }
 
-.reveal > .slides section.title .main {
+.reveal > .slides section.title .main,
+.reveal > .slides section .highlight {
     color: #69C86C;
 }
 
