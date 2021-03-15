@@ -148,7 +148,7 @@ if ('foo' in window) {
                             <div class="small">For example AutoCAD Web, <a href="https://web.autocad.com" target="_blank" rel="noopener">https://web.autocad.com</a></div>
 						    <img class="mid" src="images/autocad_web.jpeg" alt="AutoCAD Web">
                         </div>
-                        <div class="distance fragment">But, I cannot interact with DWG file from my machine &#x1f62d;</div>
+                        <div class="distance fragment">But, I cannot interact with DWG files from my machine &#x1f62d;</div>
                         <div class="distance fragment">Therefore application vendors use tools like <a href="https://www.electronjs.org/" target="_blank" rel="noopener">Electron</a></div>
 					</div>
 				</section>
@@ -381,7 +381,7 @@ shareButton.addEventListener("click", async () => {
                         <div>Snippet</div>
                         <pre><code class="javascript stretch">
 selectRecipientsButton.addEventListener('click', async () => {
-    const contacts = await navigator.contacts.select(['name', 'email'], { multiple: true });
+    const contacts = await navigator.contacts.select(['name', 'email', 'address', 'icon', 'tel'], { multiple: true });
         
     if (!contacts.length) {
         // Either no contacts were selected in the picker, or the picker could
@@ -406,9 +406,9 @@ selectRecipientsButton.addEventListener('click', async () => {
                     </div>
                 </section>
 				<section class="footer left top">
-					<div class="header before">File System Access</div>
+					<div class="header before">File System Access API</div>
 					<div class="row">
-						<div class="distance title">File System Access</div>
+						<div class="distance title">File System Access API</div>
 						<div class="distance small fragment">Explainer: <a href="https://wicg.github.io/file-system-access/EXPLAINER.html">https://wicg.github.io/file-system-access/EXPLAINER.html</a></div>
                         <div class="distance small fragment italic">
                             <div class="distance">This API enables developers to build powerful apps that interact with other (non-Web) apps on the user’s device via the device’s file system.</div>
@@ -418,7 +418,7 @@ selectRecipientsButton.addEventListener('click', async () => {
 					</div>
 				</section>
                 <section class="footer top">
-                    <div class="header before">File System Access</div>
+                    <div class="header before">File System Access API</div>
                     <div class="row">
                         <div>Snippet</div>
                         <pre><code class="javascript stretch">
@@ -435,7 +435,7 @@ const openFile = async () => {
                     </div>
                 </section>
                 <section class="footer top">
-                    <div class="header before">File System Access</div>
+                    <div class="header before">File System Access API</div>
                     <div class="row">
                         <div>Snippet</div>
                         <pre><code class="javascript stretch">
