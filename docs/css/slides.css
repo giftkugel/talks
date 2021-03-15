@@ -135,8 +135,29 @@
     width: 32vmin;
 }
 
+.reveal > .slides section.slide img.biggest.h {
+    height: 32vmin;
+    width: inherit;
+}
+
 .reveal > .slides section.slide img.sub {
     width: 64vmin;
+}
+
+.reveal > .slides section.slide img.sub.h,
+.reveal > .slides section.slide iframe.sub {
+    height: 64vmin;
+    width: inherit;
+}
+
+.reveal > .slides section.slide img.mid {
+    width: 48vmin;
+}
+
+.reveal > .slides section.slide img.mid.h,
+.reveal > .slides section.slide iframe.mid {
+    height: 48vmin;
+    width: inherit;
 }
 
 .reveal > .slides section.slide img.main {
@@ -214,6 +235,47 @@
     justify-content: center;
 }
 
+.reveal > .slides section.slide > div .grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reveal > .slides section.slide > div .grid > .row {
+    display: grid;
+    padding: 1rem 0;
+}
+
+.reveal > .slides section.slide > div .grid > .row > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reveal > .slides section.slide > div .grid > .row:nth-child(even) {
+    background-color: #efefef;
+}
+
+.reveal > .slides section.slide > div .grid.g2 > .row {
+    grid-template-columns: 1fr 1fr;
+}
+
+.reveal > .slides section.slide > div .grid.g3 > .row {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.reveal > .slides section.slide > div .grid.g4 > .row {
+    grid-template-columns: 1fr 1fr 1fr 1fr;  
+}
+
+.reveal > .slides section.slide > div .grid.g5 > .row {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.reveal > .slides section.slide > div .row  > .row {
+    padding-left: 1em;
+}
+
 .reveal > .slides section.slide > div .column.aligend {
     justify-content: flex-start;
 }
@@ -222,8 +284,41 @@
     justify-content: space-between;
 }
 
+.reveal > .slides section.slide > div .column.aligend.space > * {
+    padding-right: 5%;
+}
+
+.reveal > .slides section.slide > div .column.top {
+    align-items: flex-start;
+}
+
+.reveal > .slides section.slide > div .column.left {
+    justify-content: flex-start;
+}
+
+.reveal > .slides section.slide > div .column.distributed {
+    justify-content: space-between;
+
+}
+
+.reveal > .slides section.slide > div .column.evenly {
+    justify-content: space-evenly;
+}
+
 .reveal > .slides section.slide > div .row.aligend {
     align-items: flex-start;
+}
+
+.reveal > .slides section.slide > div .row.center {
+    align-items: center;
+}
+
+.reveal > .slides section.slide > div .column.center {
+    align-items: center;
+}
+
+.reveal > .slides section.slide > div .row.aligend > div {
+    flex-grow: 1;
 }
 
 .reveal > .slides section.slide > div .column > div {
@@ -271,8 +366,13 @@
     color: #FFFFFF;
 }
 
-.reveal > .slides section.title .main {
+.reveal > .slides section.title .main,
+.reveal > .slides section .highlight {
     color: #69C86C;
+}
+
+.reveal > .slides section .white {
+    color: #FFFFFF;
 }
 
 .reveal > .slides section img[src='images/profile.jpg'] {
@@ -362,6 +462,10 @@
     font-style: italic;
 }
 
+.reveal > .slides section.slide .hightlight {
+    text-decoration: underline;
+}
+
 .reveal > .slides section.slide .subtext {
     font-size: 0.75em;
     font-style: italic;
@@ -446,6 +550,181 @@ input[type=button]:disabled {
 
 .reveal .fragment.hidden.visible {
     display: initial;
+}
+
+.reveal .example {
+    padding: 0.25rem;
+    margin: 1rem;
+    max-width: 70vw;
+}
+
+.reveal .example.container {
+    border: 0.25rem solid black;
+    font-size: 1.75rem;
+}
+
+.reveal .example.flex.container {
+    display: flex;
+    border: 0.25rem solid black;
+    font-size: 1.75rem;
+}
+
+.reveal .example.flex.item {
+    border: 0.15rem solid black;
+}
+
+.reveal .example.flex.item:nth-child(1) {
+    background-color: #45dacc;
+}
+
+.reveal .example.flex.item:nth-child(2) {
+    background-color: #45da8e;
+}
+
+.reveal .example.flex.item:nth-child(3) {
+    background-color: #50b330;
+    height: 80px;
+}
+
+.reveal .example.flex.item:nth-child(4) {
+    background-color: #d8e23d;
+}
+
+.reveal .example.flex.container.fd-row {
+    flex-direction: row;
+}
+
+.reveal .example.flex.container.fd-row-reverse {
+    flex-direction: row-reverse;
+}
+
+.reveal .example.flex.container.fd-column {
+    flex-direction: column;
+}
+
+.reveal .example.flex.container.fd-column-reverse {
+    flex-direction: column-reverse;
+}
+
+.reveal .example.flex.container.fw-nowrap {
+    flex-wrap: nowrap;
+    width: 266px
+}
+
+.reveal .example.flex.container.fw-wrap {
+    flex-wrap: wrap;
+    width: 400px
+}
+
+.reveal .example.flex.container.fw-wrap-reverse {
+    flex-wrap: wrap-reverse;
+    width: 400px
+}
+
+.reveal .example.flex.container.jc-flex-start {
+    justify-content: flex-start;
+}
+
+.reveal .example.flex.container.jc-flex-end {
+    justify-content: flex-end;
+}
+
+.reveal .example.flex.container.jc-center {
+    justify-content: center;
+}
+
+.reveal .example.flex.container.jc-space-between {
+    justify-content: space-between;
+}
+
+.reveal .example.flex.container.jc-space-around {
+    justify-content: space-around;
+}
+
+.reveal .example.flex.container.jc-space-evenly {
+    justify-content: space-evenly;
+}
+
+.reveal .example.flex.container.ai-flex-start {
+    align-items: flex-start;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-flex-end {
+    align-items: flex-end;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-center {
+    align-items: center;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-stretch {
+    align-items: stretch;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ai-baseline {
+    align-items: baseline;
+    height: 125px;
+}
+
+.reveal .example.flex.container.ac-flex-start {
+    align-content: flex-start;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-flex-end {
+    align-content: flex-end;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-center {
+    align-content: center;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-space-between {
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-space-around {
+    align-content: space-around;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal .example.flex.container.ac-stretch {
+    align-content: stretch;
+    flex-wrap: wrap;
+    height: 250px;
+    width: 350px;
+}
+
+.reveal pre.content {
+    width: initial;
+    position: static;
+    box-shadow: none;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.reveal pre.content code {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes rotating {

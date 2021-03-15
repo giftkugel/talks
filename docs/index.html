@@ -10,11 +10,115 @@
 
 		<title>My talks</title>
 
+		<style>
+			@font-face {
+				font-family: 'Encode Sans';
+				font-style: normal;
+				font-weight: 300;
+				src: url('fonts/encode-sans-v2-latin_latin-ext-300.eot'); /* IE9 Compat Modes */
+				src: local('Encode Sans Light'), local('EncodeSans-Light'),
+				url('fonts/encode-sans-v2-latin_latin-ext-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/encode-sans-v2-latin_latin-ext-300.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-300.woff') format('woff'), /* Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-300.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/encode-sans-v2-latin_latin-ext-300.svg#EncodeSans') format('svg'); /* Legacy iOS */
+			}
+
+			@font-face {
+				font-family: 'Encode Sans';
+				font-style: normal;
+				font-weight: 600;
+				src: url('fonts/encode-sans-v2-latin_latin-ext-600.eot'); /* IE9 Compat Modes */
+				src: local('Encode Sans SemiBold'), local('EncodeSans-SemiBold'),
+				url('fonts/encode-sans-v2-latin_latin-ext-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/encode-sans-v2-latin_latin-ext-600.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-600.woff') format('woff'), /* Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-600.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/encode-sans-v2-latin_latin-ext-600.svg#EncodeSans') format('svg'); /* Legacy iOS */
+			}
+
+			@font-face {
+				font-family: 'Encode Sans';
+				font-style: normal;
+				font-weight: 700;
+				src: url('fonts/encode-sans-v2-latin_latin-ext-700.eot'); /* IE9 Compat Modes */
+				src: local('Encode Sans Bold'), local('EncodeSans-Bold'),
+				url('fonts/encode-sans-v2-latin_latin-ext-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/encode-sans-v2-latin_latin-ext-700.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-700.woff') format('woff'), /* Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-700.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/encode-sans-v2-latin_latin-ext-700.svg#EncodeSans') format('svg'); /* Legacy iOS */
+			}
+
+			@font-face {
+				font-family: 'Encode Sans';
+				font-style: normal;
+				font-weight: 800;
+				src: url('fonts/encode-sans-v2-latin_latin-ext-800.eot'); /* IE9 Compat Modes */
+				src: local('Encode Sans ExtraBold'), local('EncodeSans-ExtraBold'),
+				url('fonts/encode-sans-v2-latin_latin-ext-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/encode-sans-v2-latin_latin-ext-800.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-800.woff') format('woff'), /* Modern Browsers */
+				url('fonts/encode-sans-v2-latin_latin-ext-800.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/encode-sans-v2-latin_latin-ext-800.svg#EncodeSans') format('svg'); /* Legacy iOS */
+			}
+
+			@font-face {
+				font-family: 'Open Sans';
+				font-style: normal;
+				font-weight: 400;
+				src: url('fonts/open-sans-v15-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+				src: local('Open Sans Regular'), local('OpenSans-Regular'),
+				url('fonts/open-sans-v15-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/open-sans-v15-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/open-sans-v15-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+				url('fonts/open-sans-v15-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/open-sans-v15-latin_latin-ext-regular.svg#OpenSans') format('svg'); /* Legacy iOS */
+			}
+
+			@font-face {
+				font-family: 'Source Code Pro';
+				font-style: normal;
+				font-weight: 400;
+				src: url('fonts/source-code-pro-v7-latin_latin-ext-regular.eot'); /* IE9 Compat Modes */
+				src: local('Source Code Pro'), local('SourceCodePro-Regular'),
+				url('fonts/source-code-pro-v7-latin_latin-ext-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+				url('fonts/source-code-pro-v7-latin_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
+				url('fonts/source-code-pro-v7-latin_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+				url('fonts/source-code-pro-v7-latin_latin-ext-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+				url('fonts/source-code-pro-v7-latin_latin-ext-regular.svg#SourceCodePro') format('svg'); /* Legacy iOS */
+			}
+
+			html, body {
+				margin: 0;
+				padding: 1rem;
+				background-color: #0A1C24;
+				font-family: 'Encode Sans', sans-serif;
+			}
+
+			h1 {
+				color: white;
+			}
+
+			a {
+				color: #69C86C;
+				font-weight: bold;
+			}
+
+			.talks > div {
+				padding-bottom: 2rem;
+			}
+		</style>
+
 	</head>
 	<body>
         <h1>My talks</h1>
-        <div><a href="pwa.html">PWA</a></div>
-		<div><a href="web-api.html">Web API</a></div>
-		<div><a href="web-layout.html">Web Layout</a></div>
+		<div class="talks">
+			<div><a href="pwa.html">PWA</a></div>
+			<div><a href="web-api.html">Web API</a></div>
+			<!-- <div><a href="web-layout.html">Web Layout</a></div> -->
+			<div><a href="vue-js.html">Vue.js</a></div>
+			<div><a href="fugu.html">Project Fugu: Next level Progressive Web Applications</a></div>
+		</div>
     </body>
 </html>
