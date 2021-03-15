@@ -144,7 +144,8 @@
     width: 64vmin;
 }
 
-.reveal > .slides section.slide img.sub.h {
+.reveal > .slides section.slide img.sub.h,
+.reveal > .slides section.slide iframe.sub {
     height: 64vmin;
     width: inherit;
 }
@@ -153,7 +154,8 @@
     width: 48vmin;
 }
 
-.reveal > .slides section.slide img.mid.h {
+.reveal > .slides section.slide img.mid.h,
+.reveal > .slides section.slide iframe.mid {
     height: 48vmin;
     width: inherit;
 }
@@ -276,6 +278,10 @@
 
 .reveal > .slides section.slide > div .column.aligend {
     justify-content: flex-start;
+}
+
+.reveal > .slides section.slide > div .column.aligend.space > * {
+    padding-right: 5%;
 }
 
 .reveal > .slides section.slide > div .column.top {

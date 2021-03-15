@@ -8,10 +8,10 @@
 		<meta name="twitter:site" content="@giftkugel" />
 		<meta name="twitter:creator" content="@giftkugel" />
 		<meta property="og:url" content="https://giftkugel.github.io/talks/" />
-		<meta property="og:title" content="Progressive Web Applications on steroids" />
+		<meta property="og:title" content="Project Fugu: Next level Progressive Web Applications" />
 		<meta property="og:description" content="Slides of my talk" />
 
-		<title>Progressive Web Applications on steroids</title>
+		<title>Project Fugu: Next level Progressive Web Applications</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/white.css">
@@ -35,7 +35,8 @@
 		<div class="reveal">
 			<div class="slides">
 				<section class="header title">
-					<div class="title main">Progressive Web Applications on steroids</div>
+                    <div class="title main">Project Fugu</div>
+					<div>Next level Progressive Web Applications</div>
 					<div>&nbsp;</div>
 					<div><a class="small" href="https://giftkugel.github.io/talks/" target="_blank" rel="noopener">https://giftkugel.github.io/talks/</a></div>
 					<div><img src="images/QR.png"></div>
@@ -68,8 +69,19 @@
 				<section class="footer left top">
 					<div class="header before">Recap</div>
 					<div class="row">
+						<div class="distance title">Web Applications</div>
+						<div class="distance fragment">Easy access (URL)</div>
+						<div class="distance fragment">References (External links)</div>
+                        <div class="distance fragment">Searchable (SEO)</div>
+                        <div class="distance fragment">Composeable (embedded via iframe)</div>
+                        <div class="distance fragment">Good <a href="https://giftkugel.github.io/talks/web-api.html#/" target="_blank" rel="noopener">Web APIs</a></div>
+					</div>
+				</section>
+				<section class="footer left top">
+					<div class="header before">Recap</div>
+					<div class="row">
 						<div class="distance title">Progressive Web Applications</div>
-						<div class="distance fragment">Install</div>
+						<div class="distance fragment">Can install the application</div>
 						<div class="distance fragment">Work offline / Background Sync</div>
                         <div class="distance fragment">Notify the user (Push notifications)</div>
 					</div>
@@ -90,6 +102,24 @@
                         <div class="distance fragment">Progressive enhancement approach</div>
 					</div>
 				</section>
+				<section class="footer top left">
+					<div class="header before">Recap</div>
+					<div class="row">
+						<div class="main">Progressive enhancement approach</div>
+                        <div class="distance">Feature detection</div>
+                        <div class="fragment">
+                            <pre><code class="javascript stretch">
+if ('foo' in window) {
+    // Cool! Use new feature! 🥳
+} else {
+    // D'oh! Legacy approach is required. 😔
+}
+
+                            </code></pre>
+                        </div>
+                        <div class="fragment smaller center">Because some features will probably never be implemented by all browser vendors</div>
+					</div>
+				</section>
                 <section class="footer">
                     <div class="header before">Recap</div>
                     <div class="row">
@@ -100,14 +130,7 @@
                         <div class="small">Listed as application in the launcher</div>
                     </div>
                 </section>
-				<section class="footer left">
-					<div class="header before">Recap</div>
-					<div class="row center">
-                        <div>
-						    <img class="mid h" src="images/twitter_pwa.jpeg" alt="Twitter PWA">
-                        </div>
-                        <div class="small">Twitter PWA on Desktop</div>
-					</div>
+				<section class="footer" class="transparent" data-background-image="images/pwa_desktop.jpeg" data-background-position="top left">
 				</section>
 				<section class="transparent" data-background-image="images/pexels-pixabay-163444.jpeg" data-background-position="right">
                     <div class="normal">Main goal</div>
@@ -117,42 +140,47 @@
                     <div class="title bigger">Guess what?</div>
                     <div class="distance title big fragment">There is still a gap!</div>
                 </section>
+                <section class="footer top left">
+					<div class="header before">Still a gap</div>
+					<div class="row">
+                        <div class="distance">Great applications are already available on the Web</div>
+                        <div class="distance fragment">
+                            <div class="small">For example AutoCAD Web, <a href="https://web.autocad.com" target="_blank" rel="noopener">https://web.autocad.com</a></div>
+						    <img class="mid" src="images/autocad_web.jpeg" alt="AutoCAD Web">
+                        </div>
+                        <div class="distance fragment">But, I cannot interact with DWG file from my machine &#x1f62d;</div>
+                        <div class="distance fragment">Therefore application vendors use tools like <a href="https://www.electronjs.org/" target="_blank" rel="noopener">Electron</a></div>
+					</div>
+				</section>
 				<section class="footer left top">
 					<div class="header before">Still a gap</div>
 					<div class="row">
 						<div class="distance title">Missing features</div>
 						<div class="distance fragment">Access local files without upload</div>
                         <div class="distance fragment">Use features of the OS</div>
-                        <div class="distance fragment">Network access</div>
-                        <div class="distance fragment">... and more ...</div>
-					</div>
-				</section>
-                <section class="footer left">
-					<div class="header before">Still a gap</div>
-					<div class="row center">
-                        <div class="distance">Cannot interact with DWG file from my machine &#x1f62d;</div>
-                        <div class="distance">
-						    <img class="main" src="images/autocad_web.jpeg" alt="AutoCAD Web">
-                        </div>
-                        <div class="small">AutoCAD Web, <a href="https://web.autocad.com" target="_blank" rel="noopener">https://web.autocad.com</a></div>
+                        <div class="distance fragment">Interface access (Network, Serial)</div>
+                        <div class="distance fragment">Socializing (Share, Contacts)</div>
+                        <div class="distance fragment">and more ...</div>
 					</div>
 				</section>
                 <section class="transparent" data-background-image="images/brian-yurasits-Nb92G8NEnOg-unsplash.jpeg" data-background-position="right">
-                    <div class="distance title big">Project Fugu</div>
+                    <div class="title big">Web Capabilities Project</div>
+                    <div class="distance title bigger">alias Project Fugu</div>
                 </section>
-				<section class="footer">
+				<section class="footer top left">
 					<div class="header before">Project Fugu</div>
     					<div class="row">
                             <div class="distance">Cross-vendor initiative</div>
-                            <div class="distance fragment">Initiated by the Chromium Team (Google) in 2019</div>
+                            <div class="distance fragment">Initiated by the Google in ~2018</div>
                             <div class="fragment">
-                                <div class="distance column evenly">
+                                <div class="distance column aligend space">
                                     <img class="icon bigger" src="images/svg/Google__G__Logo.svg">
                                     <img class="icon bigger" src="images/svg/M_box.svg">
                                     <img class="icon bigger" src="images/svg/Intel_logo_2020.svg">
                                 </div>
                             </div>
                             <div class="distance fragment"><a href="https://bit.ly/fugu-sync" target="_blank" rel="noopener">Fugu Community Sync notes</a></div>
+                            <div class="fragment"><a href="https://bugs.chromium.org/p/chromium/issues/list?q=proj-fugu&can=1">Chromium Issue Tracker</a></div>
 	    				</div>
 				</section>
 				<section class="footer left top">
@@ -161,7 +189,7 @@
                         <div class="distance">Name is derived from an asian puffer fish dish called <a href="https://en.wikipedia.org/wiki/Fugu" target="_blank" rel="noopener">fugu</a></div>
                         <div class="distance fragment"><span class="highlight">Delicious</span> if prepared correctly, <span class="highlight">deadly if not!</span></div>
                         <div class="fragment">
-						    <img class="mid h" src="images/fugu00.gif" alt="Fugu">
+						    <img class="mid h" src="images/fugu01.gif" alt="Fugu">
                         </div>
 					</div>
 				</section>
@@ -184,7 +212,7 @@
 				<section class="footer left top">
 					<div class="header before">Project Fugu</div>
 					<div class="row">
-						<div class="distance title">Iterative Process</div>
+						<div class="distance title"><a href="http://goo.gle/fugu-process" target="_blank" rel="noopener">Iterative Process</a></div>
 						<div class="distance fragment">Identify need and use-cases</div>
                         <div class="distance fragment">Write a <a href="https://w3ctag.github.io/explainers.html" target="_blank" rel="noopener">explainer</a></div>
                         <div class="distance fragment">Get feedback</div>
@@ -196,16 +224,251 @@
                         <div class="distance fragment">Ship it</div>
 					</div>
 				</section>
+				<section class="footer left top">
+					<div class="header before">Project Fugu</div>
+					<div class="row">
+						<div class="distance title">Abstraction layer</div>
+						<img class="mid h" src="images/svg/abstraction.svg">
+					</div>
+				</section>
+                <section class="transparent" data-background-image="images/pexels-artem-podrez-5025653.jpeg" data-background-position="right">
+                    <div class="distance title big">Which APIs will we get?</div>
+                </section>
+                <section class="footer left">
+					<div class="header before">Project Fugu</div>
+					<div class="row center">
+                        <div class="distance">Bunch of APIs coming to town</div>
+                        <div class="distance">
+						    <img class="main" src="images/api_tracker_table.jpeg">
+                        </div>
+                        <div class="small"><a href="https://docs.google.com/spreadsheets/d/1de0ZYDOcafNXXwMcg4EZhT0346QM-QFvZfoD8ZffHeA/edit#gid=557099940" target="_blank" rel="noopener">API tracker in Google Sheets</a></div>
+					</div>
+				</section>
+				<section class="footer top">
+					<div class="header before">Project Fugu</div>
+					<div class="row center">
+                        <div class="distance"><a href="https://fugu-tracker.web.app/" target="_blank" rel="noopener">https://fugu-tracker.web.app/</a></div>
+						<iframe class="mid" width="100%" height="100%" src="https://fugu-tracker.web.app/"></iframe>
+					</div>
+				</section>
+                <section class="transparent" data-background-image="images/pexels-pixabay-221538.jpeg" data-background-position="right">
+                    <div class="title big">Let's take a look</div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">Web Share API</div>
+					<div class="row">
+						<div class="distance title">Web Share API</div>
+						<div class="distance small fragment">Explainer: <a href="https://w3c.github.io/web-share/docs/explainer.html">https://w3c.github.io/web-share/docs/explainer.html</a></div>
+                        <div class="distance small fragment italic">Web Share is a proposed web API to enable a site to share data (text, URLs, images, etc) to an arbitrary destination of the user’s choice</div>
+                        <div class="distance small fragment">Web Share API Level 2 allows sharing of files</div>
+                        <div class="distance small fragment">Status: <span class="highlight">Shipped</span></div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">Web Share API</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+shareButton.addEventListener("click", async () => {
+    try {
+        await navigator.share({ title: "Example Page", url: "" });
+        console.log("Data was shared successfully");
+    } catch (err) {
+        console.error("Share failed:", err.message);
+    }
+});
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer">
+                    <div class="header before">Web Share API</div>
+                    <div class="row">
+                        <div class="middle">
+                            <img class="sub" src="images/Screenshot-Web-Share-API-1.png">
+                            <img class="sub" src="images/Screenshot-Web-Share-API-2.png">
+                        </div>
+                    </div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">Web Share Target API</div>
+					<div class="row">
+						<div class="distance title">Web Share Target API</div>
+						<div class="distance small fragment">Explainer: <a href="hhttps://w3c.github.io/web-share-target/docs/explainer.html">https://w3c.github.io/web-share-target/docs/explainer.html</a></div>
+                        <div class="distance small fragment italic">Web Share Target is a proposed web API to enable a web site to receive shared data from other sites or apps</div>
+                        <div class="distance small fragment">Status: <span class="highlight">Shipped</span></div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">Web Share Target API</div>
+                    <div class="row">
+                        <div>Snippet (Web manifest)</div>
+                        <pre><code class="javascript stretch">
+{
+    "name": "Example Social",
+    "short_name": "Example Social",
+    "icons": [...],
+    "share_target": {
+        "action": "share.html",
+        "method": "POST"
+        "params": {
+            "title": "name",
+            "text": "description",
+            "url": "link"
+        }
+    }
+}
+                        </code></pre>
+                    </div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">App shortcuts</div>
+					<div class="row">
+						<div class="distance title">App shortcuts</div>
+						<div class="distance small fragment">Explainer: <a href="https://w3c.github.io/manifest/explainer.html#adding-shortcuts">https://w3c.github.io/manifest/explainer.html#adding-shortcuts</a></div>
+                        <div class="distance small fragment italic">
+                            <div class="distance">Numerous operating systems grant native applications the ability to add menu items to the app icon itself.</div>
+                            <div>For web applications, you can define a set of shortcuts to be exposed when the app is installed.</div>
+                        </div>
+                        <div class="distance small fragment">Status: <span class="highlight">Shipped</span></div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">App shortcuts</div>
+                    <div class="row">
+                        <div>Snippet (Web manifest)</div>
+                        <pre><code class="javascript stretch">
+"shortcuts": [
+{
+    "name": "Play Later",
+    "description": "View the list of podcasts you saved for later",
+    "url": "/play-later",
+    "icons": [
+        {
+            "src": "/icons/play-later.svg",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}]
+
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer">
+                    <div class="header before">App shortcuts</div>
+                    <div class="row">
+                        <div class="column aligend evenly">
+                            <img class="mid" src="images/twitter_shortcut.jpeg">
+                            <img class="mid" src="images/twitter_shortcut2.jpeg">
+                        </div>
+                    </div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">Contact Picker API</div>
+					<div class="row">
+						<div class="distance title">Contact Picker API</div>
+						<div class="distance small fragment">Explainer: <a href="https://github.com/WICG/contact-api/blob/main/README.md">https://github.com/WICG/contact-api/blob/main/README.md</a></div>
+                        <div class="distance small fragment italic">
+                            <div class="distance">Contact information is among the most sensitive information on a device, which is why we're proposing a picker rather than a lower level API.</div>
+                            <div>This enables user agents to offer an experience that's consistent with platform expectations, and to highlight the exact information that is to be shared with the website.</div>
+                        </div>
+                        <div class="distance small fragment">Status: <span class="highlight">Shipped</span></div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">Contact Picker API</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+selectRecipientsButton.addEventListener('click', async () => {
+    const contacts = await navigator.contacts.select(['name', 'email'], { multiple: true });
+        
+    if (!contacts.length) {
+        // Either no contacts were selected in the picker, or the picker could
+        // not be launched. Exposure of the API implies expected availability.
+        return;
+    }
+    
+    // Use the names and e-mail addresses in |contacts| to populate the
+    // recipients field in the website's UI.
+    populateRecipients(contacts);
+});
+
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer">
+                    <div class="header before">Contact Picker API</div>
+                    <div class="row">
+                        <div class="column">
+                            <img class="mid" src="images/contact-picker-left.jpeg">
+                        </div>
+                    </div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">File System Access</div>
+					<div class="row">
+						<div class="distance title">File System Access</div>
+						<div class="distance small fragment">Explainer: <a href="https://wicg.github.io/file-system-access/EXPLAINER.html">https://wicg.github.io/file-system-access/EXPLAINER.html</a></div>
+                        <div class="distance small fragment italic">
+                            <div class="distance">This API enables developers to build powerful apps that interact with other (non-Web) apps on the user’s device via the device’s file system.</div>
+                            <div>After a user grants a web app access, this API allows the app to read or save changes directly to files and folders on the user’s device.</div>
+                        </div>
+                        <div class="distance small fragment">Status: <span class="highlight">Shipped</span></div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">File System Access</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+const openFile = async () => {
+    try {
+        // Always returns an array.
+        const [handle] = await window.showOpenFilePicker();
+        return handle.getFile();
+    } catch (err) {
+        console.error(err.name, err.message);
+    }
+};
+                        </code></pre>
+                    </div>
+                </section>
+                <section class="footer top">
+                    <div class="header before">File System Access</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+const saveFile = async (blob) => {
+    try {
+        const handle = await window.showSaveFilePicker({
+        types: [{
+            accept: {
+            // Omitted
+            },
+        }],
+        });
+        const writable = await handle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+        return handle;
+    } catch (err) {
+        console.error(err.name, err.message);
+    }
+};
+                        </code></pre>
+                    </div>
+                </section>
 				<section class="footer">
 					<div class="header before">Project Fugu</div>
     					<div class="row">
                             <div class="distance">Try it yourself</div>
-                            <div class="fragment column evenly">
-                                <div>
+                            <div class="column evenly">
+                                <div class="fragment">
                                     <div><img class="bixgger" src="images/fugu-journal_QR.png"></div>
                                     <div class="distance small"><a href="https://fugu-journal.web.app/">https://fugu-journal.web.app/</a></div>
                                 </div>
-                                <div>
+                                <div class="fragment">
                                     <div><img class="bixgger" src="images/fugu-editor_QR.png"></div>
                                     <div class="distance small"><a href="https://fugu-journal.web.app/">https://googlechromelabs.github.io/text-editor/</a></div>
                                 </div>
@@ -213,13 +476,22 @@
 	    				</div>
 				</section>
                 <section class="footer top left">
+					<div class="header before">Project Fugu</div>
+					<div class="row">
+                        <div class="distance">Web is moving forward, to close the gap!</div>
+                        <div class="distance">
+						    <img class="sub" src="images/fugu00.gif">
+                        </div>
+					</div>
+				</section>
+                <section class="footer top left">
                     <div class="header before">Conclusion</div>
 					<div class="row distance">
                         <div class="title distance">Project Fugu provides new capabilities</div>
-                        <div class="fragment distance">Progressive enhancement approach &#x1F970;</span></div>
                         <div class="fragment distance">API Tracker at <a href="https://fugu-tracker.web.app/" target="_blank" rel="noopener">https://fugu-tracker.web.app/</a></div>
                         <div class="fragment distance">You can make a difference, add a new request at <a href="https://goo.gl/qWhHXU" target="_blank" rel="noopener">https://goo.gl/qWhHXU</a></div>
                         <div class="fragment distance">Or say what you want at <a href="https://webwewant.fyi/" target="_blank" rel="noopener">https://webwewant.fyi/</a></div>
+                        <div class="fragment distance">Still not perfect &#x1f615; Goolge to fast, Apple not interested?</span></div>
                     </div>
                     <div class="row fragment distance">
                         <div class="title">Thank you for listening &#x1F64C;</div>
