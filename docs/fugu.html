@@ -336,7 +336,7 @@ shareButton.addEventListener("click", async () => {
                     <div class="header before">App shortcuts</div>
                     <div class="row">
                         <div>Snippet (Web manifest)</div>
-                        <pre><code class="javascript stretch">
+                        <pre><code class="stretch">
 "shortcuts": [
 {
     "name": "Play Later",
@@ -381,7 +381,9 @@ shareButton.addEventListener("click", async () => {
                         <div>Snippet</div>
                         <pre><code class="javascript stretch">
 selectRecipientsButton.addEventListener('click', async () => {
-    const contacts = await navigator.contacts.select(['name', 'email', 'address', 'icon', 'tel'], { multiple: true });
+    const contacts = await navigator.contacts.select(
+        ['name', 'email', 'address', 'icon', 'tel'], { multiple: true }
+    );
         
     if (!contacts.length) {
         // Either no contacts were selected in the picker, or the picker could
@@ -459,10 +461,66 @@ const saveFile = async (blob) => {
                         </code></pre>
                     </div>
                 </section>
+				<section class="footer left top">
+					<div class="header before">Idle Detection API</div>
+					<div class="row">
+						<div class="distance title">Idle Detection API</div>
+						<div class="distance small fragment">Explainer: <a href="https://wicg.github.io/idle-detection/HOWTO.html">https://wicg.github.io/idle-detection/HOWTO.html</a></div>
+                        <div class="distance small fragment italic">
+                            <div class="distance">This proposed API allows developers to add an event listener for when the user becomes idle (e.g. they don’t interact with the keyboard, mouse or touchscreen, when a screensaver activates or when the screen is locked).</div>
+                            <div>Unlike solutions based on monitoring input events this capability extends beyond the site's content area (e.g. when users move to a different window or tab).</div>
+                        </div>
+                        <div class="distance small fragment">Status: Origin Trail</div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">Idle Detection API</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+const idleDetector = new IdleDetector();
+idleDetector.addEventListener('change', () => {
+    console.log(`Idle change: ${idleDetector.userState}, ${idleDetector.screenState}.`);
+});    
+await idleDetector.start({
+    threshold: 60000,
+    signal,
+});
+                        </code></pre>
+                    </div>
+                </section>
+				<section class="footer left top">
+					<div class="header before">Notification Triggers API</div>
+					<div class="row">
+						<div class="distance title">Notification Triggers API</div>
+						<div class="distance small fragment">Explainer: <a href="https://github.com/beverloo/notification-triggers/blob/master/README.md">https://github.com/beverloo/notification-triggers/blob/master/README.md</a></div>
+                        <div class="distance small fragment italic">
+                            <div class="distance">Notification Triggers are a mechanism for preparing notifications that are to be shown when certain conditions are met.</div>
+                            <div>The trigger could be time-based, location-based or otherwise—for this explainer, we'll focus on time-based triggers.</div>
+                        </div>
+                        <div class="distance small fragment">Status: Origin Trail</div>
+					</div>
+				</section>
+                <section class="footer top">
+                    <div class="header before">Notification Triggers API</div>
+                    <div class="row">
+                        <div>Snippet</div>
+                        <pre><code class="javascript stretch">
+const createScheduledNotification = async (tag, title, timestamp) => {
+    const registration = await navigator.serviceWorker.getRegistration();
+    registration.showNotification(title, {
+        tag: tag,
+        body: 'This notification was scheduled 30 seconds ago',
+        showTrigger: new TimestampTrigger(timestamp + 30 * 1000),
+    });
+};
+                        </code></pre>
+                    </div>
+                </section>
 				<section class="footer">
 					<div class="header before">Project Fugu</div>
     					<div class="row">
-                            <div class="distance">Try it yourself</div>
+                            <div class="distance">Try it yourself (Shipped features)</div>
                             <div class="column evenly">
                                 <div class="fragment">
                                     <div><img class="bixgger" src="images/fugu-journal_QR.png"></div>
@@ -471,6 +529,22 @@ const saveFile = async (blob) => {
                                 <div class="fragment">
                                     <div><img class="bixgger" src="images/fugu-editor_QR.png"></div>
                                     <div class="distance small"><a href="https://fugu-journal.web.app/">https://googlechromelabs.github.io/text-editor/</a></div>
+                                </div>
+                            </div>
+	    				</div>
+				</section>
+				<section class="footer">
+					<div class="header before">Project Fugu</div>
+    					<div class="row">
+                            <div class="distance">Try it yourself (Origin Trail features)</div>
+                            <div class="column evenly">
+                                <div class="fragment">
+                                    <div><img class="bixgger" src="images/idle_QR.png"></div>
+                                    <div class="distance small"><a href="https://idle-detection.glitch.me/">https://idle-detection.glitch.me/</a></div>
+                                </div>
+                                <div class="fragment">
+                                    <div><img class="bixgger" src="images/notification-triggers_QR.png"></div>
+                                    <div class="distance small"><a href="https://notification-triggers.glitch.me/">https://notification-triggers.glitch.me/</a></div>
                                 </div>
                             </div>
 	    				</div>
